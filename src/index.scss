@@ -11,31 +11,13 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  --light-grey: #dddddd;
-  --grey: #8b8b8b;
-  --divider_grey: #282828; 
-
-  --green: #92a134;
-  --light_green: #f2f6d3;
-
-  --txt-white: #ffffff;
-  --txt-black: #424436;
-  --txt-grey:#8b8b8b;
-  --sale: #f26d22; 
 }
 
 a {
   font-weight: 500;
-  text-decoration: inherit;
+  color: #424436;
+  text-decoration: none;
+  &:hover {
+    color: #92a134;
+  }
 }
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-}
-
-
-
-
