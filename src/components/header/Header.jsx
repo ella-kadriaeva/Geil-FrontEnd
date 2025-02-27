@@ -1,6 +1,10 @@
 import React from "react";
-import styles from './Header.module.scss'
-
+// import styles from "./Header.module.scss";
+import Container from "../container/Container";
 export default function Header() {
-  return <div className={styles.container}>Header</div>;
+  return (
+    <header>
+      <Container>Navigation</Container>
+    </header>
+  );
 }
