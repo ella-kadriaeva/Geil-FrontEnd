@@ -1,3 +1,4 @@
+import {Candy} from "lucide-react";
 import React from "react";
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
       <h2>Categories Section</h2>
       <h2>Form Section</h2>
       <h2>Product Section</h2>
+      <Candy size="64" color="violet"/>
     </div>
   );
 }
