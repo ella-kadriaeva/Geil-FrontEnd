@@ -1,5 +1,6 @@
-import {Candy} from "lucide-react";
+import { Candy } from "lucide-react";
 import React from "react";
+import Exemple from "../../components/exemple/Exemple";
 
 export default function Home() {
   return (
@@ -8,7 +9,8 @@ export default function Home() {
       <h2>Categories Section</h2>
       <h2>Form Section</h2>
       <h2>Product Section</h2>
-      <Candy size="64" color="violet"/>
+      <Exemple />
+      <Candy size="64" color="violet" />
     </div>
   );
 }
