@@ -2,6 +2,7 @@ import {Candy} from "lucide-react";
 import React from "react";
 
 export default function Home() {
+
   return (
     <div>
       <h1>Hero</h1>
