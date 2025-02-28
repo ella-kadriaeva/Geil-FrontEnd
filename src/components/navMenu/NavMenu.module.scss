@@ -15,7 +15,7 @@
 }
 .active {
   @extend .link;
-  color: $green;
+  color: $green !important;
 }
 .container {
   display: none;

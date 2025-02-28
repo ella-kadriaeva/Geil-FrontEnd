@@ -36,3 +36,8 @@
   -moz-box-shadow: 0px 1px 3px 1px $shadowHoverLight;
   box-shadow: 0px 1px 3px 1px $shadowHoverLight;
 }
+@mixin shadowDark {
+  -webkit-box-shadow: 0px 1px 3px 1px $shadowHoverDark;
+  -moz-box-shadow: 0px 1px 3px 1px $shadowHoverDark;
+  box-shadow: 0px 2px 3px 2px $shadowHoverDark;
+}

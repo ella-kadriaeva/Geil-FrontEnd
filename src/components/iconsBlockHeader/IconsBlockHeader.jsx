@@ -5,7 +5,7 @@ export default function IconsBlockHeader() {
   return (
     <div className={styles.icons}>
       <div className={styles.navIcons}>
-        <Link to="/heart">
+        <Link to="/likes">
           <Heart className={styles.svgLink} />
         </Link>
         <Link to="/cart">

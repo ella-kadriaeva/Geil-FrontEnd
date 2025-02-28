@@ -45,11 +45,8 @@
 }
 .themeSwitch:checked + .btn::before {
   background-color: $grey;
-}
-.themeSwitch:checked + .btn::before {
   transform: translateX(30px);
 }
-
 .iconMoon,
 .iconSun {
   position: absolute;
@@ -63,4 +60,9 @@
 }
 .iconSun {
   right: 60%;
+}
+
+.iconSun path,
+circle {
+  stroke: $grey;
 }

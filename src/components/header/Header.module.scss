@@ -4,10 +4,10 @@
 .discountBtn {
   @include linkSectionNav;
   background-color: $green;
-  color: $txt-white;
+  color: $txt-white !important;
   &:hover {
-    @include shadowLight;
-    color: $txt-white;
+    scale: 0.9;
+    color: $txt-white !important;
   }
 }
 
