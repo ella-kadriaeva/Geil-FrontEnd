@@ -18,7 +18,7 @@ export default function NavMenu() {
           to={path}
           label={label}
           key={label}
-          classNameLink={isActiveClass}
+          className={isActiveClass}
         />
       ))}
     </nav>
