@@ -18,7 +18,6 @@
   color: $green !important;
 }
 .container {
-  display: none;
   @include on-tablet {
     display: flex;
     gap: 20px;

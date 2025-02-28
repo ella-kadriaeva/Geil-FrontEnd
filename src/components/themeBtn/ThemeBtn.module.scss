@@ -45,21 +45,29 @@
 }
 .themeSwitch:checked + .btn::before {
   background-color: $grey;
-  transform: translateX(30px);
+  transform: translateX(25px);
+  @include on-tablet {
+    transform: translateX(30px);
+  }
 }
 .iconMoon,
 .iconSun {
   position: absolute;
-  top: 15%;
-  width: 20px;
-  height: 20px;
+  top: 17%;
+  width: 17px;
+  height: 17px;
+  @include on-tablet {
+    top: 20%;
+    width: 20px;
+    height: 20px;
+  }
 }
 .iconMoon {
   left: 56%;
   stroke: $txt-white;
 }
 .iconSun {
-  right: 60%;
+  right: 56%;
 }
 
 .iconSun path,
