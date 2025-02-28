@@ -22,16 +22,13 @@
   @include on-tablet {
     display: flex;
     gap: 20px;
-    max-width: 400px;
     margin: auto;
   }
   @include on-laptop {
-    max-width: 494px;
     gap: 24px;
   }
 
   @include on-design {
-    max-width: 518px;
     gap: 32px;
   }
 }

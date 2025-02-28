@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./NavMenu.module.scss";
-import NavigationLink from "../ui/navLink/NavigationLink";
+import NavigationLink from "../ui/NavigationLink";
+
 const navigation = [
   { path: "/", label: "Main Page", exact: true },
   { path: "/categories", label: "Categories" },
