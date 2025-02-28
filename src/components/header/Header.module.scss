@@ -1,25 +1,36 @@
 @use "../../assets/styles/mixin" as *;
+@use "../../assets/styles/colors" as *;
 
-.container {
-  max-width: 320px;
-  background-color: aqua;
-  height: 200px;
-  margin: auto;
-  @include on-mobile {
-    background-color: rgb(115, 255, 0);
-    max-width: 600px;
+.discountBtn {
+  @include linkSectionNav;
+  background-color: $green;
+  color: $txt-white;
+  &:hover {
+    @include shadowLight;
+    color: $txt-white;
   }
+}
+.navWripped {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+.navWripped {
+  display: none;
   @include on-tablet {
-    background-color: rgb(255, 0, 234);
-    max-width: 800px;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    display: flex;
+    max-width: 400px;
+    margin: auto;
   }
   @include on-laptop {
-    background-color: rgb(255, 123, 0);
-    max-width: 900px;
+    max-width: 494px;
   }
 
   @include on-design {
-    max-width: 1440px;
-    background-color: rgb(17, 0, 255);
+    max-width: 518px;
   }
 }
