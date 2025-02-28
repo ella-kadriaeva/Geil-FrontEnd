@@ -1,6 +1,12 @@
 import React from "react";
-import styles from './Header.module.scss'
+import styles from "./Header.module.scss";
+import NavMenu from "../navMenu/NavMenu";
 
 export default function Header() {
-  return <div className={styles.container}>Header</div>;
+  return (
+    <>
+      <NavMenu />
+      <div className={styles.container}></div>
+    </>
+  );
 }
