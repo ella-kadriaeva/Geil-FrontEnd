@@ -4,6 +4,7 @@ import React from "react";
 import Exemple from "../../components/exemple/Exemple";
 
 export default function Home() {
+
   return (
     <div>
       <h1>Hero</h1>
