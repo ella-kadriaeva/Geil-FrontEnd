@@ -10,13 +10,8 @@
     color: $txt-white;
   }
 }
-.navWripped {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: center;
-}
-.navWripped {
+
+.navWrapper {
   display: none;
   @include on-tablet {
     flex-direction: column;
@@ -24,7 +19,6 @@
     align-items: center;
     display: flex;
     max-width: 400px;
-    margin: auto;
   }
   @include on-laptop {
     max-width: 494px;
@@ -32,5 +26,16 @@
 
   @include on-design {
     max-width: 518px;
+  }
+}
+
+.headerWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid $light-grey;
+  @include on-mobile {
+    padding: 30px 0;
   }
 }
