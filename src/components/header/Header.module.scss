@@ -1,0 +1,36 @@
+@use "../../assets/styles/mixin" as *;
+@use "../../assets/styles/colors" as *;
+
+.discountBtn {
+  @include linkSectionNav;
+  background-color: $green;
+  color: $txt-white;
+  &:hover {
+    @include shadowLight;
+    color: $txt-white;
+  }
+}
+.navWripped {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+.navWripped {
+  display: none;
+  @include on-tablet {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    display: flex;
+    max-width: 400px;
+    margin: auto;
+  }
+  @include on-laptop {
+    max-width: 494px;
+  }
+
+  @include on-design {
+    max-width: 518px;
+  }
+}
