@@ -1,16 +1,17 @@
 import React from "react";
 import { Menu } from "lucide-react";
-import Container from "../container/Container";
+
 import NavMenu from "../navMenu/NavMenu";
 import ButtonLink from "../ui/ButtonLink";
 import IconsBlockHeader from "../iconsBlockHeader/IconsBlockHeader";
 import LogoThemeBlock from "../logoThemeBlock/LogoThemeBlock";
 import styles from "./Header.module.scss";
 import { useModal } from "../../context/ModalContext";
+import Container from "../container/Container";
 export default function Header() {
   const { isMobile } = useModal();
   return (
-    <header>
+    <header className={styles.header}>
       <Container>
         <div className={styles.headerWrapper}>
           <LogoThemeBlock />
