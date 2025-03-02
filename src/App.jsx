@@ -5,11 +5,11 @@ import Home from "./pages/home/Home";
 import Categories from "./pages/categories/Categories";
 import Products from "./pages/products/Products";
 import Sales from "./pages/sales/Sales";
-
 import NotFound from "./pages/notFound/NotFound";
-import "./App.scss";
 import Cart from "./pages/cart/Cart";
 import Likes from "./pages/likes/Likes";
+import "./App.scss";
+
 function App() {
   return (
     <>
