@@ -1,5 +1,5 @@
 const BASE_URL = "http://localhost:3333";
-
+// const BASE_URL = "http://exam-server-5c4e.onrender.com";
 export const getAllCategories = async () => {
   try {
     const response = await fetch(`${BASE_URL}/categories/all`);
@@ -10,7 +10,7 @@ export const getAllCategories = async () => {
   } catch (error) {
     console.error(error);
   }
-}
+};
 
 export const getCategoryById = async (id) => {
   try {
@@ -22,7 +22,7 @@ export const getCategoryById = async (id) => {
   } catch (error) {
     console.error(error);
   }
-}
+};
 
 export const getAllProducts = async () => {
   try {
@@ -34,7 +34,7 @@ export const getAllProducts = async () => {
   } catch (error) {
     console.error(error);
   }
-}
+};
 
 export const getProductById = async (id) => {
   try {
@@ -46,7 +46,7 @@ export const getProductById = async (id) => {
   } catch (error) {
     console.error(error);
   }
-}
+};
 
 export const sendForSale = async (data) => {
   try {
@@ -56,13 +56,13 @@ export const sendForSale = async (data) => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(data)
-    })
+    });
 
     return await response.json();
   } catch (error) {
     console.error(error);
   }
-}
+};
 
 export const sendForOrder = async (data) => {
   try {
@@ -72,10 +72,10 @@ export const sendForOrder = async (data) => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(data)
-    })
+    });
 
     return await response.json();
   } catch (error) {
     console.error(error);
   }
-}
+};
