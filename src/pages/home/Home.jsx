@@ -1,15 +1,12 @@
-import {Candy} from "lucide-react";
-
 import React from "react";
-import Exemple from "../../components/exemple/Exemple";
 import SectionTitle from "../../components/sectionTitle/sectionTitle";
 import Container from "../../components/container/Container";
+import MainSection from "../../components/mainSection/MainSection";
 
 export default function Home() {
-
   return (
-    <div>
-      <h1>Hero</h1>
+    <>
+     <MainSection />
       <Container>
       <SectionTitle>
         Categories
@@ -18,8 +15,6 @@ export default function Home() {
       <h2>Categories Section</h2>
       <h2>Form Section</h2>
       <h2>Product Section</h2>
-      <Exemple />
-      <Candy size="64" color="violet" />
-    </div>
+    </>
   );
 }

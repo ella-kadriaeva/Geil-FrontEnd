@@ -1,0 +1,38 @@
+@use "../../assets/styles/mixin" as *;
+@use "../../assets/styles/colors" as *;
+
+.label {
+  display: block;
+  font-size: 16px;
+  align-items: center;
+  @include on-tablet {
+    font-size: 18px;
+  }
+  @include on-design {
+    font-size: 20px;
+  }
+}
+.container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  @include on-tablet {
+    gap: 16px;
+  }
+}
+.formContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 12px 0;
+  row-gap: 16px;
+  @include on-tablet {
+    padding: 16px 0;
+    row-gap: 20px;
+    column-gap: 40px;
+  }
+  @include on-design {
+    gap: 40px;
+    padding: 20px 0;
+  }
+}

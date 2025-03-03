@@ -11,18 +11,37 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --bg-light: #fffff1;
+  --txt-black: #424436;
+  --txt-white: #ffffff;
 }
-
 a {
   font-weight: 500;
-  color: #424436;
   text-decoration: none;
-  &:hover {
-    color: #92a134;
+}
+h1 {
+  color: var(--txt-white);
+}
+
+body.light {
+  background-color: var(--bg-light);
+  color: var(--txt-black);
+  & a {
+    color: var(--txt-black);
+    &:hover {
+      color: #92a134;
+    }
   }
 }
-button {
-  display: inline;
-  border: none;
-  cursor: pointer;
+
+body.dark {
+  background-color: var(--txt-black);
+  color: var(--txt-white);
+  & a {
+    color: var(--txt-white);
+    &:hover,
+    .active {
+      color: #92a134;
+    }
+  }
 }
