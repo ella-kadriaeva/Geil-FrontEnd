@@ -1,21 +1,10 @@
 @use "../../assets/styles/mixin" as *;
 
 .container {
-  width: 320px;
-  margin: auto;
+  max-width: 1440px;
+  margin-inline: auto;
   padding: 0 20px;
-  @include on-mobile {
-    width: 480px;
-  }
-  @include on-tablet {
-    width: 768px;
-  }
-  @include on-laptop {
-    width: 1000px;
-  }
-
   @include on-design {
     padding: 0 40px;
-    width: 1440px;
   }
 }
