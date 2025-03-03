@@ -7,19 +7,9 @@ export default function Home() {
   return (
     <>
       <MainSection />
-    </>
-    <div>
-      <h1>Hero</h1>
       <Container>
-      <SectionTitle>
-        Categories
-      </SectionTitle>
+        <SectionTitle>Categories</SectionTitle>
       </Container>
-      <h2>Categories Section</h2>
-      <h2>Form Section</h2>
-      <h2>Product Section</h2>
-      <Exemple />
-      <Candy size="64" color="violet" />
-    </div>
+    </>
   );
 }
