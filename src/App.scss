@@ -1,6 +1,5 @@
 @use "assets/styles/base";
+@use "assets/styles/colors";
+@use "assets/styles/fonts" as *;
 
-#root {
-  max-width: 1440px;
-  margin: 0 auto;
-}
+
