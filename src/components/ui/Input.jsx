@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./Input.module.scss";
-const Input = ({ value, onChange, placeholder, name, id }) => {
+
+const Input = ({ value, onChange, placeholder, name, id, className }) => {
   return (
     <input
       type="text"
@@ -9,7 +9,7 @@ const Input = ({ value, onChange, placeholder, name, id }) => {
       placeholder={placeholder}
       name={name}
       id={id}
-      className={styles.inputField}
+      className={className}
     />
   );
 };
