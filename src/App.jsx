@@ -7,6 +7,7 @@ import Products from "./pages/products/Products";
 import Sales from "./pages/sales/Sales";
 import NotFound from "./pages/notFound/NotFound";
 import "./App.scss";
+import Cart from "./pages/cart/cart";
 function App() {
   return (
     <>
@@ -16,6 +17,7 @@ function App() {
         <Route path="categories" element={<Categories />} />
         <Route path="products" element={<Products />} />
         <Route path="sales" element={<Sales />} />
+        <Route path="cart" element={<Cart />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

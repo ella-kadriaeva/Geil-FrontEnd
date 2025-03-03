@@ -1,0 +1,57 @@
+@use "../../assets/styles/colors" as *;
+@use "../../assets/styles/mixin" as *;
+
+.cart {
+  padding-block: 40px;
+
+  &_titleBlock {
+    border: 1px solid $light_green;
+    margin-bottom: 24px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &_title {
+    color: $txt-black;
+    font-size: 2.5rem;
+  }
+
+  &_button__outlined {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 156px;
+    height: 32px;
+    font-size: 0.875rem;
+    transition-duration: 300ms;
+    border-radius: 6px;
+    background-color: transparent;
+    color: $txt-grey;
+    border: 1px solid $light-grey;
+
+    &:hover {
+      background-color: $light_green;
+      cursor: pointer;
+    }
+  }
+
+  &_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 286px;
+    height: 48px;
+    background-color: $green;
+    transition-duration: 300ms;
+    border-radius: 6px;
+    border: 1px solid $green;
+    
+
+    &:hover {
+      background-color: $light_green;
+      cursor: pointer;
+    }
+  }
+}
