@@ -8,9 +8,10 @@ export default function Cart() {
     <section className={styles.cart}>
       <Container>
         <div className={styles.cart_titleBlock}>
-          <h2 ref={titleRef} className={styles.cart_title}>
+          <h2 className={styles.cart_title}>
             Shopping cart
           </h2>
+          <span className={styles.cart_titleLine}></span>
           <ButtonLink
             to="/products"
             text="Back to the store"
@@ -19,7 +20,7 @@ export default function Cart() {
         </div>
 
         <div className="cart_empty">
-          <p>Looks like you have no items in your basket currently.</p>
+          <p className={styles.cart_emptyInfo}>Looks like you have no items in your basket currently.</p>
           <ButtonLink
             to="/products"
             text="Continue Shopping"

@@ -5,20 +5,46 @@
   padding-block: 40px;
 
   &_titleBlock {
-    border: 1px solid $light_green;
     margin-bottom: 24px;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include on-laptop {
+      margin-bottom: 32px;
+    }
   }
 
   &_title {
     color: $txt-black;
     font-size: 2.5rem;
+    flex: 0 0 auto;
+    padding-inline-end: 0;
+
+    @include on-tablet {
+      padding-inline-end: 20px;
+    }
+
+    @include on-laptop {
+      padding-inline-end: 32px;
+    }
+  }
+
+  &_titleLine {
+    flex: 1;
+    width: 100%;
+    height: 1px;
+    background-color: $light-grey;
+    display: none;
+
+    @include on-tablet {
+      display: block;
+    }
   }
 
   &_button__outlined {
+    flex: 0 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,6 +61,10 @@
       background-color: $light_green;
       cursor: pointer;
     }
+  }
+
+  &_emptyInfo {
+    margin-bottom: 20px;
   }
 
   &_button {
