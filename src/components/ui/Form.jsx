@@ -44,6 +44,7 @@ const Form = ({
             {fields.map((field, index) => (
                 <div key={field.name || index} className="form-group">
                   <input
+
                       id={field.name}
                       type={field.type || 'text'}
                       name={field.name}
