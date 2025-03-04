@@ -3,7 +3,6 @@ import Container from "../container/Container";
 import NavMenu from "../navMenu/NavMenu";
 import ButtonLink from "../ui/ButtonLink";
 import styles from "./Header.module.scss";
-import Discount from "../DiscountForm/Discount.jsx";
 export default function Header() {
   return (
     <header>
@@ -23,8 +22,6 @@ export default function Header() {
 
         <div className={styles.container}></div>
       </Container>
-
     </header>
-
   );
 }
