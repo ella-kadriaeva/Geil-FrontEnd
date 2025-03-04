@@ -4,6 +4,10 @@
 .cart {
   padding-block: 40px;
 
+  &_empty {
+    margin-bottom: 24px;
+  }
+
   &_titleBlock {
     margin-bottom: 24px;
 
@@ -61,10 +65,35 @@
       background-color: $light_green;
       cursor: pointer;
     }
+
+    &_inTitle {
+      display: none;
+
+      @include on-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    &_outside {
+      margin-inline: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include on-mobile {
+        display: none;
+      }
+    }
   }
 
   &_emptyInfo {
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+
+    @include on-laptop {
+      margin-bottom: 32px;
+    }
   }
 
   &_button {
@@ -74,6 +103,7 @@
     width: 286px;
     height: 48px;
     background-color: $green;
+    color: $txt-white;
     transition-duration: 300ms;
     border-radius: 6px;
     border: 1px solid $green;
