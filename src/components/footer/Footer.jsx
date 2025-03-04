@@ -3,7 +3,7 @@ import styles from './Footer.module.scss';
 import Container from '../container/Container';
 import React from 'react';
 import SectionTitle from '../sectionTitle/sectionTitle';
-
+import Icon from '../ui/Icon';
 export default function Footer() {
   return (
     <footer className={styles.footer}>
@@ -38,10 +38,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img
-                  src="src/components/footer/icon/ic-whatsapp.svg"
-                  alt="whatsapp icon"
-                />
+                <Icon id="ic-whatsapp" w={43} h={43} />
               </a>
             </p>
           </li>
