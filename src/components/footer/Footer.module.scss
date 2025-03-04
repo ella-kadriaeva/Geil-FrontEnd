@@ -1,9 +1,8 @@
-@use "../../assets/styles/mixin" as *; 
-@use "../../assets/styles/colors" as *;
-
+@use '../../assets/styles/mixin' as *;
+@use '../../assets/styles/colors' as *;
 
 .footer {
-    margin-bottom: 56px;
+  padding-bottom: 56px;
   &Title {
     font-size: 40px;
     color: $txt-black;
@@ -11,20 +10,20 @@
     font-weight: 700;
     line-height: 44px;
     @include on-mobile {
-        font-size: 48px;
-        line-height: 52px;
+      font-size: 48px;
+      line-height: 52px;
     }
     @include on-tablet {
-        font-size: 56px;
-        line-height: 61px;
-        margin-bottom: 32px;
+      font-size: 56px;
+      line-height: 61px;
+      margin-bottom: 32px;
     }
-    @include on-laptop{
-        font-size: 64px;
-        line-height: 70px;
+    @include on-laptop {
+      font-size: 64px;
+      line-height: 70px;
     }
-    @include on-design{
-        margin-bottom: 40px;
+    @include on-design {
+      margin-bottom: 40px;
     }
   }
 
@@ -34,17 +33,16 @@
     align-items: center;
     gap: 12px;
     @include on-tablet {
-        grid-template-columns: 2.1fr 0.9fr;
-        gap: 20px;
+      grid-template-columns: 2.1fr 0.9fr;
+      gap: 20px;
     }
-    @include on-laptop{
-        grid-template-columns: 1fr 1fr;
+    @include on-laptop {
+      grid-template-columns: 1fr 1fr;
     }
     @include on-design {
-        grid-template-columns: 1.4fr 1fr;
-        gap: 32px;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 32px;
     }
-
 
     &Card {
       background-color: $light_green;
@@ -60,66 +58,66 @@
       }
       &:nth-last-child(1) {
         @include on-laptop {
-            min-height: 224px;
+          min-height: 224px;
         }
-        @include on-design{
-            min-height: 194px;
+        @include on-design {
+          min-height: 194px;
         }
       }
-      
+
       &:nth-child(2) {
         flex-direction: row;
         align-items: flex-start;
         gap: 20px;
         @include on-tablet {
-            flex-direction: column;
-            gap: 16px;
-          }
+          flex-direction: column;
+          gap: 16px;
+        }
       }
 
-    .cardTitle{
+      .cardTitle {
         font-size: 18px;
         font-weight: 500;
         color: $txt-grey;
         line-height: 23px;
         @include on-tablet {
-            font-size: 20px;
+          font-size: 20px;
         }
-    }
-    .cardData{
+      }
+      .cardData {
         display: flex;
         align-items: center;
         font-size: 28px;
         gap: 12px;
-        width: 100%; 
-        color: #282828;
+        width: 100%;
+        // color: #282828;
         text-decoration: none;
         @include on-tablet {
-            font-size: 40px;
+          font-size: 40px;
         }
         .addressLink {
-            color: #282828;
+          color: #282828;
         }
-        .cardDataLink{
-            color: #282828;
+        .cardDataLink {
+          color: #282828;
         }
       }
     }
   }
-  &Map{
+  &Map {
     margin-top: 12px;
     @include on-tablet {
-        margin-top: 20px;
+      margin-top: 20px;
     }
-    @include on-design{
-        margin-top: 32px;
+    @include on-design {
+      margin-top: 32px;
     }
-    iframe{
-        width: 100%;
-        height: 250px;
-        @include on-design {
-            height: 350px;
-        }   
+    iframe {
+      width: 100%;
+      height: 250px;
+      @include on-design {
+        height: 350px;
+      }
     }
   }
 }
