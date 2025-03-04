@@ -7,11 +7,10 @@ import CategoryProducts from './pages/categoryProducts/CategoryProducts';
 import Products from './pages/products/Products';
 import Sales from './pages/sales/Sales';
 import NotFound from './pages/notFound/NotFound';
-import Cart from './pages/cart/Cart';
-import Likes from './pages/likes/Likes';
 import './App.scss';
 import Discount from "./components/DiscountForm/Discount.jsx";
-import "./App.scss";
+import Cart from "./pages/cart/Cart";
+import Likes from "./pages/likes/Likes";
 function App() {
   return (
     <>
