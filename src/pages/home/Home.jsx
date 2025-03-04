@@ -1,5 +1,3 @@
-import { Candy } from 'lucide-react';
-
 import React from 'react';
 import SectionTitle from '../../components/sectionTitle/sectionTitle';
 import Container from '../../components/container/Container';
