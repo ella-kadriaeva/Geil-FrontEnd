@@ -37,7 +37,7 @@ const Form = ({
   };
 
   return (
-      <div className="form-container">
+      <>
         <h1>{title}</h1>
         <form onSubmit={handleSubmit} className={formClass}>
           <fieldset>
@@ -60,7 +60,9 @@ const Form = ({
             <button type="submit" className={buttonClass}>{buttonText}</button>
           </div>
         </form>
-      </div>
+      </>
+
+
   );
 };
 

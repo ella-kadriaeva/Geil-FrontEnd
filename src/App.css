@@ -8,8 +8,6 @@
 *,
 *::before,
 *::after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -118,6 +116,4 @@ input::-webkit-search-results-decoration {
   font-family: "Montserrat", sans-serif;
   font-size: 1rem;
   line-height: 1;
-}
-
-/*# sourceMappingURL=App.css.map */
+}/*# sourceMappingURL=App.css.map */

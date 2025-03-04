@@ -10,8 +10,9 @@ export default function Home() {
         <MainSection />
         <Container>
           <SectionTitle>Categories</SectionTitle>
-          <Discount />
         </Container>
+        <Discount />
+
       </>
   );
 }
