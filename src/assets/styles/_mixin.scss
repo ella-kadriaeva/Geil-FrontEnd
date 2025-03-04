@@ -32,3 +32,7 @@
   transition-duration: 300ms;
 }
 
+@mixin borderFilter {
+  border: 1px solid $light-grey;
+  border-radius: 6px;
+}
