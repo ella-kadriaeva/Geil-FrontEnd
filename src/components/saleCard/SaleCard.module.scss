@@ -1,0 +1,223 @@
+// @use "../../assets/styles/mixin" as *;
+// @use "../../assets/styles/colors" as *;
+
+// .productCard {
+//     width: 100%;
+//     position: relative;
+//     overflow: hidden;
+//     border-radius: 8px;
+//     @include borderFilter
+
+//   }
+//   .productCard_image>img {
+//     width: 100%;
+//     object-fit: cover;
+//     cursor: pointer;
+//     min-height: 17.75rem;
+//   }
+//   .productCard_discount {
+//     position: absolute;
+//     top: 1rem;
+//     left: 1rem;
+//     padding: 0.25rem 0.5rem;
+//     border-radius: 0.25rem;
+//     font-size: 1.25rem;
+//     font-weight: 600;
+//     background-color: $sale;
+//     color: $txt-white;
+//   }
+
+//   .productCard_text {
+//     padding: 1.25rem 2rem 2rem 2rem;
+//     background-color: $txt-white;
+//     border-top: 1px solid $light-grey;
+//     display: flex; 
+//     flex-direction: column;
+//     justify-content: space-between; 
+//     min-height: 9rem;
+//   }
+//   .productCard_text>h3 {
+//     font-size: 14px;
+//     min-height: 3rem;
+//     display: -webkit-box;
+//      -webkit-line-clamp: 2; 
+//      -webkit-box-orient: vertical; overflow: hidden;
+//       text-overflow: ellipsis; 
+//     font-weight: 500;
+//     @include on-tablet{
+//         font-size: 16px;
+//         @include on-laptop {
+//             font-size: 18px; 
+//         }
+//     }
+//   }
+
+//   .productCard_text_priceBlock {
+//     display: flex;
+//     flex-direction: row;
+//     align-items: end;
+//     margin-top: 1rem;
+//     gap: 1rem;
+
+//   }
+//   .productCard_text_actualPrice {
+//     font-size: 2.5rem;
+//     font-weight: 600;
+//     cursor: pointer;
+//   }
+
+//   .productCard_text_price {
+//     font-size: 1.25rem;
+//     line-height: 1.625rem;
+//     font-weight: 500;
+//     text-align: left;
+//     text-decoration-line: line-through;
+//     color: $txt-grey;
+//     margin-bottom: 0.25rem;
+//   }
+
+//   .icons {
+//     position: absolute;
+//     top: 1rem;
+//     right: 1rem;
+//     display: flex;
+//     flex-direction: column;
+//     & svg{
+//         fill: $txt-white;
+//     }
+//   }
+
+
+
+@use "../../assets/styles/mixin" as *;
+@use "../../assets/styles/colors" as *;
+
+.productCard {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  @include borderFilter;
+}
+
+.productCard_image > img {
+  width: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  min-height: 17.75rem;
+}
+
+.productCard_discount {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  background-color: $sale;
+  color: $txt-white;
+}
+
+.productCard_text {
+  padding: 1.25rem 2rem 2rem 2rem;
+  background-color: $txt-white;
+  border-top: 1px solid $light-grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 12rem;  // Фиксированная минимальная высота
+  flex-grow: 1;       // Чтобы блок с текстом занимал оставшееся пространство
+
+  @include on-mobile {
+    min-height: 11rem; // Меньше для мобильных, но все равно фиксированная высота
+    max-height: 13rem;
+  }
+
+  @include on-tablet {
+    min-height: 12rem;
+    max-height: 14rem;
+  }
+
+  @include on-laptop {
+    min-height: 13rem;
+    max-height: 15rem;
+  }
+}
+
+.productCard_text > h3 {
+  font-size: 14px;
+  line-height: 1.4rem; // Контроль высоты строки
+  display: -webkit-box;
+  -webkit-line-clamp: 2; // Ограничиваем количество строк до 2-х
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+
+  @include on-mobile {
+    font-size: 12px; // Меньше шрифт на мобильных
+    line-height: 1.2rem;
+  }
+
+  @include on-tablet {
+    font-size: 14px; // Средний размер шрифта для планшетов
+  }
+
+  @include on-laptop {
+    font-size: 16px; // Шрифт больше для ноутбуков
+  }
+
+  &.three-lines {
+    -webkit-line-clamp: 3; // Для 3-х строк на экранах с большим контентом
+    font-size: 15px; // Уменьшаем шрифт, чтобы текст вмещался
+  }
+}
+
+.productCard_text_priceBlock {
+  display: flex;
+  flex-direction: row;  // Цена и скидка всегда в одной строке
+  align-items: center;
+  margin-top: 1rem;
+  gap: 1rem;
+
+  @include on-mobile {
+    flex-direction: row;  // Обеспечиваем горизонтальное расположение для мобильных
+  }
+}
+
+.productCard_text_actualPrice {
+  font-size: 2.5rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  @include on-mobile {
+    font-size: 1.8rem; // Меньше на мобильных
+  }
+}
+
+.productCard_text_price {
+  font-size: 1.25rem;
+  line-height: 1.625rem;
+  font-weight: 500;
+  text-align: left;
+  text-decoration-line: line-through;
+  color: $txt-grey;
+  margin-bottom: 0.25rem;
+
+  @include on-mobile {
+    font-size: 1.1rem; // Меньше для мобильных
+  }
+}
+
+.icons {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  & svg {
+    fill: $txt-white;
+  }
+}

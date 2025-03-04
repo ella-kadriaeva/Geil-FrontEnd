@@ -1,9 +1,8 @@
-import { Candy } from 'lucide-react';
-
 import React from 'react';
 import SectionTitle from '../../components/sectionTitle/sectionTitle';
 import Container from '../../components/container/Container';
 import MainSection from '../../components/mainSection/MainSection';
+import SaleSection from "../../components/saleSection/SaleSection";
 
 export default function Home() {
   return (
@@ -12,6 +11,8 @@ export default function Home() {
       <Container>
         <SectionTitle>Categories</SectionTitle>
       </Container>
+    
+      <SaleSection/>
     </>
   );
 }
