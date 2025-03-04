@@ -6,6 +6,7 @@ import Categories from "./pages/categories/Categories";
 import Products from "./pages/products/Products";
 import Sales from "./pages/sales/Sales";
 import NotFound from "./pages/notFound/NotFound";
+import Discount from "./components/DiscountForm/Discount.jsx";
 import "./App.scss";
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="sales" element={<Sales />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      {/*<Discount />*/}
       <Footer />
     </>
   );
