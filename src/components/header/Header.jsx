@@ -1,13 +1,13 @@
-import React from "react";
-import { Menu } from "lucide-react";
+import React from 'react';
+import { Menu } from 'lucide-react';
 
-import NavMenu from "../navMenu/NavMenu";
-import ButtonLink from "../ui/ButtonLink";
-import IconsBlockHeader from "../iconsBlockHeader/IconsBlockHeader";
-import LogoThemeBlock from "../logoThemeBlock/LogoThemeBlock";
-import styles from "./Header.module.scss";
-import { useModal } from "../../context/ModalContext";
-import Container from "../container/Container";
+import NavMenu from '../navMenu/NavMenu';
+import ButtonLink from '../ui/ButtonLink';
+import IconsBlockHeader from '../iconsBlockHeader/IconsBlockHeader';
+import LogoThemeBlock from '../logoThemeBlock/LogoThemeBlock';
+import styles from './Header.module.scss';
+import { useModal } from '../../context/ModalContext';
+import Container from '../container/Container';
 export default function Header() {
   const { isMobile } = useModal();
   return (
