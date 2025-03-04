@@ -1,0 +1,12 @@
+.container {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: 0 20px;
+}
+@media (min-width: 1440px) {
+  .container {
+    padding: 0 40px;
+  }
+}
+
+/*# sourceMappingURL=Container.module.css.map */

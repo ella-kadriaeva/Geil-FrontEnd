@@ -7,6 +7,7 @@ import Products from "./pages/products/Products";
 import Sales from "./pages/sales/Sales";
 
 import NotFound from "./pages/notFound/NotFound";
+import Discount from "./components/DiscountForm/Discount.jsx";
 import "./App.scss";
 import Cart from "./pages/cart/Cart";
 import Likes from "./pages/likes/Likes";
@@ -23,6 +24,7 @@ function App() {
         <Route path="likes" element={<Likes />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      {/*<Discount />*/}
       <Footer />
     </>
   );
