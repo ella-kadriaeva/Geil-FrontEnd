@@ -6,7 +6,8 @@ export const filtersSlice = createSlice({
     category: "",
     priceFrom: null,
     priceTo: null,
-    name: ""
+    name: "",
+    sale:[]
   },
 
   reducers: {

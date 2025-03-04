@@ -1,23 +1,22 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import Container from '../../components/container/Container';
-
-import {
-  fetchCategories,
-} from '../../store/slices/api/categories';
 import { Link } from 'react-router';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchCategories } from '../../utils/fetchClient';
+import Container from '../../components/container/Container';
+import SectionTitle from '../../components/sectionTitle/sectionTitle';
 
 export default function Categories() {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.categories);
-  const { categories, loading, error } = data;
-
+  const { categories, loading, error } = useSelector(
+    (state) => state.categories
+  );
   useEffect(() => {
     dispatch(fetchCategories());
   }, []);
 
   return (
     <Container>
+      <SectionTitle />
       {loading && <div>Loading</div>}
       {categories &&
         categories.length > 0 &&

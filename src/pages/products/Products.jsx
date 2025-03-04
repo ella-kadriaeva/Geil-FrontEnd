@@ -1,29 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import useFetchProducts from '../../utils/useFetchProducts';
 import Container from '../../components/container/Container';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts } from '../../store/slices/api/categories';
-import { Link } from 'react-router';
-const Products = () => {
-  const dispatch = useDispatch();
-  const data = useSelector((state) => state);
-  // const { products, loading, error } = data;
-  console.log(data);
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, []);
+import SectionTitle from '../../components/sectionTitle/sectionTitle';
+import ProductsList from '../../components/productsList/ProductsList';
+import Filter from '../../components/filter/Filter';
+export default function Products() {
+  const { data, loading, error } = useFetchProducts('all');
+
   return (
     <Container>
-      {/* {loading && <div>Loading</div>}
-      {products &&
-        products.map((item) => (
-          <p key={item.id}>{item.id}</p>
-          // <Link to={`/categories/${item.id}`} key={item.id}>
-          //   {item.title}
-          // </Link>
-        ))}
-      {error && <div>{error}</div>} */}
+      <SectionTitle>All Products</SectionTitle>
+      <Filter />
+      <ProductsList data={data} loading={loading} error={error} />
     </Container>
   );
-};
-
-export default Products;
+}
