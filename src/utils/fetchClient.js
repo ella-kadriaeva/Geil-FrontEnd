@@ -1,10 +1,11 @@
-const BASE_URL = "http://localhost:3333";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+const BASE_URL = 'http://localhost:3333';
 // const BASE_URL = "http://exam-server-5c4e.onrender.com";
 export const getAllCategories = async () => {
   try {
     const response = await fetch(`${BASE_URL}/categories/all`);
     if (!response.ok) {
-      throw new Error("Something went wrong!");
+      throw new Error('Something went wrong!');
     }
     return await response.json();
   } catch (error) {
@@ -16,7 +17,7 @@ export const getCategoryById = async (id) => {
   try {
     const response = await fetch(`${BASE_URL}/categories/${id}`);
     if (!response.ok) {
-      throw new Error("Something went wrong!");
+      throw new Error('Something went wrong!');
     }
     return await response.json();
   } catch (error) {
@@ -28,7 +29,7 @@ export const getAllProducts = async () => {
   try {
     const response = await fetch(`${BASE_URL}/products/all`);
     if (!response.ok) {
-      throw new Error("Something went wrong!");
+      throw new Error('Something went wrong!');
     }
     return await response.json();
   } catch (error) {
@@ -40,7 +41,7 @@ export const getProductById = async (id) => {
   try {
     const response = await fetch(`${BASE_URL}/products/${id}`);
     if (!response.ok) {
-      throw new Error("Something went wrong!");
+      throw new Error('Something went wrong!');
     }
     return await response.json();
   } catch (error) {
@@ -51,11 +52,11 @@ export const getProductById = async (id) => {
 export const sendForSale = async (data) => {
   try {
     const response = await fetch(`${BASE_URL}/sale/send`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     });
 
     return await response.json();
@@ -67,11 +68,11 @@ export const sendForSale = async (data) => {
 export const sendForOrder = async (data) => {
   try {
     const response = await fetch(`${BASE_URL}/order/send`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     });
 
     return await response.json();
@@ -79,3 +80,45 @@ export const sendForOrder = async (data) => {
     console.error(error);
   }
 };
+
+export const fetchProducts = createAsyncThunk(
+  'product/fetchProducts',
+  async (type) => {
+    const response = await fetch(`${BASE_URL}/products/all`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch!' + response.statusText);
+    }
+    let data = await response.json();
+    if (type === 'all') {
+      return data;
+    } else {
+      return data.filter((item) => item.discont_price > 0);
+    }
+  }
+);
+
+export const fetchCategories = createAsyncThunk(
+  'product/fetchCategories',
+  async () => {
+    const response = await fetch(`${BASE_URL}/categories/all`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch!' + response.statusText);
+    }
+
+    let data = await response.json();
+    return data;
+  }
+);
+
+export const fetchProductsByCategoryId = createAsyncThunk(
+  'product/fetchProductsByCategoryId',
+  async (categoryId) => {
+    const response = await fetch(`${BASE_URL}/categories/${categoryId}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch!' + response.statusText);
+    }
+
+    let data = await response.json();
+    return data;
+  }
+);

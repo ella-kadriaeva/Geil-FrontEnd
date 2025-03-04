@@ -1,7 +1,6 @@
 import React from "react";
-import styles from "./Checkbox.module.scss";
 
-const Checkbox = ({ checked, onChange, name, id }) => {
+const Checkbox = ({ checked, onChange, name, id, className }) => {
   return (
     <input
       type="checkbox"
@@ -9,7 +8,7 @@ const Checkbox = ({ checked, onChange, name, id }) => {
       name={name}
       checked={checked}
       onChange={onChange}
-      className={styles.checkboxInput}
+      className={className}
     />
   );
 };

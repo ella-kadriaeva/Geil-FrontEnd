@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import Checkbox from "../ui/checkbox/Checkbox";
+import Checkbox from "../ui/Checkbox";
 import styles from "./Filter.module.scss";
 import Select from "../select/Select";
-import Input from "../ui/input/Input";
+import Input from "../ui/Input";
 import Container from "../container/Container";
 
 export default function Filter() {
   const [formData, setFormData] = useState({
+    category: '',
     from: "",
     to: "",
     isDiscounted: false
@@ -39,6 +40,7 @@ export default function Filter() {
             value={formData.from}
             onChange={handleChange}
             placeholder="from"
+            className={styles.inputField}
           />
           <Input
             name="to"
@@ -46,6 +48,7 @@ export default function Filter() {
             value={formData.to}
             onChange={handleChange}
             placeholder="to"
+            className={styles.inputField}
           />
         </div>
         <div className={styles.container}>
@@ -58,6 +61,7 @@ export default function Filter() {
             id="isDiscounted"
             checked={formData.isDiscounted}
             onChange={handleCheckboxChange}
+            className={styles.checkboxInput}
           />
         </div>
         <div className={styles.container}>
