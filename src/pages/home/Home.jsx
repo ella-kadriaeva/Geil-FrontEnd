@@ -1,7 +1,9 @@
-import React from "react";
-import MainSection from "../../components/mainSection/MainSection";
-import SectionTitle from "../../components/sectionTitle/sectionTitle";
-import Container from "../../components/container/Container";
+import { Candy } from 'lucide-react';
+
+import React from 'react';
+import SectionTitle from '../../components/sectionTitle/sectionTitle';
+import Container from '../../components/container/Container';
+import MainSection from '../../components/mainSection/MainSection';
 
 export default function Home() {
   return (
