@@ -1,9 +1,9 @@
 import { Link } from "react-router";
 import { Heart, ShoppingBag } from "lucide-react";
 import styles from "./IconsBlockHeader.module.scss";
-export default function IconsBlockHeader() {
+export default function IconsBlockHeader({className}) {
   return (
-    <div className={styles.navIcons}>
+    <div className={className || styles.navIcons}>
       <Link to="/likes">
         <Heart className={styles.svgLink} />
       </Link>
