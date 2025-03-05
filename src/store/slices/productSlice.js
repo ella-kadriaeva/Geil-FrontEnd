@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchProductsByCategoryId,
   fetchProducts,
+  fetchProductById,
 } from '../../utils/fetchClient';
 
 export const productSlice = createSlice({
@@ -54,7 +55,19 @@ export const productSlice = createSlice({
       .addCase(fetchProductsByCategoryId.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
-      });
+      })
+      .addCase(fetchProductById.pending, (state) => {
+        state.loading = true;
+        state.error = '';
+      })
+      .addCase(fetchProductById.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data = action.payload.data;
+      })
+      .addCase(fetchProductById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });;
   },
 });
 export const { setSelectedCategoryId } = productSlice.actions;

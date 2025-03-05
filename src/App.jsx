@@ -6,10 +6,11 @@ import Categories from './pages/categories/Categories';
 import CategoryProducts from './pages/categoryProducts/CategoryProducts';
 import Products from './pages/products/Products';
 import Sales from './pages/sales/Sales';
+import ProductDetails from './pages/productDetails/ProductDetails';
 import NotFound from './pages/notFound/NotFound';
 import './App.scss';
-import Cart from "./pages/cart/Cart";
-import Likes from "./pages/likes/Likes";
+import Cart from './pages/cart/Cart';
+import Likes from './pages/likes/Likes';
 function App() {
   return (
     <>
@@ -19,7 +20,7 @@ function App() {
         <Route path="categories" element={<Categories />} />
         <Route path="/categories/:id" element={<CategoryProducts />} />
         <Route path="/products" element={<Products />} />
-        {/* <Route path="products/:productId" element={<ProductDetails />} /> */}
+        <Route path="products/:productId" element={<ProductDetails />} />
         <Route path="/sale" element={<Sales />} />
         <Route path="cart" element={<Cart />} />
         <Route path="likes" element={<Likes />} />
