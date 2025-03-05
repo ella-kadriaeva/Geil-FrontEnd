@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './SaleCard.module.scss';
-import IconsBlockHeader from '../iconsBlockHeader/IconsBlockHeader';
 
 const BASE_URL = 'http://localhost:3333';
 
@@ -10,11 +9,13 @@ const SaleCard = ({ title, image, percent, price }) => {
 
   return (
     <div className={styles.productCard}>
-      <IconsBlockHeader className={styles.icons} />
       <div className={styles.productCard_image}>
-        <img src={`${BASE_URL}${image}`} alt={`Product ${title}`} />
+        <img
+          className={styles.image}
+          src={`${BASE_URL}${image}`}
+          alt={`Product ${title}`}
+        />
       </div>
-
       {percent && (
         <div className={styles.productCard_discount}>
           -{Math.round(percent)}%

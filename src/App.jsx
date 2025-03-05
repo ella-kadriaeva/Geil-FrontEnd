@@ -8,9 +8,12 @@ import Products from './pages/products/Products';
 import Sales from './pages/sales/Sales';
 import NotFound from './pages/notFound/NotFound';
 import './App.scss';
-import Cart from "./pages/cart/Cart";
-import Likes from "./pages/likes/Likes";
+import Cart from './pages/cart/Cart';
+import Likes from './pages/likes/Likes';
+import { useTheme } from './context/ThemeContext';
+
 function App() {
+  const { isDarkTheme } = useTheme();
   return (
     <>
       <Header />

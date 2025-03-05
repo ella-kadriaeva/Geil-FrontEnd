@@ -1,5 +1,5 @@
-@use "../../assets/styles/mixin" as *;
-@use "../../assets/styles/colors" as *;
+@use '../../assets/styles/mixin' as *;
+@use '../../assets/styles/colors' as *;
 
 .discountBtn {
   @include linkSectionNav;
@@ -43,4 +43,19 @@
   margin-inline: auto;
   max-width: 1440px;
   border-bottom: 1px solid $light-grey;
+}
+body.light {
+  --link-color: var(--link-color-light);
+}
+
+body.dark {
+  --link-color: var(--link-color-dark);
+}
+
+a {
+  color: var(--link-color);
+}
+
+a:hover {
+  text-decoration: underline;
 }
