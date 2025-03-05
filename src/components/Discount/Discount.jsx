@@ -1,10 +1,8 @@
 import React, {useContext, useState} from 'react';
 import styles from "./Discount.module.scss";
 import discountFormBackImg from "../../assets/img/background.png";
-import cn from "classnames";
 import Container from "../container/Container.jsx";
 import Form from "../ui/Form.jsx";
-import {ThemeContext} from "../../context/ThemeContext.jsx";
 
 const Discount = () => {
 
