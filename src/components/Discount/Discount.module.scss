@@ -1,11 +1,9 @@
+@use "../../assets/styles/mixin" as *;
+@use "../../assets/styles/colors" as *;
+
 .discountFormWrapper {
-  background-color: #fffff1;
   max-width: 1440px;
   width: 100%;
-}
-
-.discountFormWrapper.dark {
-  background-color: #424436;
 }
 
 .discountForm {
@@ -75,10 +73,7 @@
   font-weight: 500;
   color: #ffffff;
 
-  @media screen and (max-width: 480px) {
-    font-size: 18px;
-    line-height: 23px;
-  }
+
 }
 .discountFormButton {
   background-color: #fffff1;
@@ -95,10 +90,7 @@
   border: none;
   text-wrap: nowrap;
   cursor: pointer;
-  @media screen and (max-width: 480px) {
-    font-size: 18px;
-    line-height: 23px;
-  }
+
 }
 
 .discountFormButton:active {

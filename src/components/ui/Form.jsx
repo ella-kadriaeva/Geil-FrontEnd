@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 
 const Form = ({
                 fields = [],
-                title = 'Form',
                 buttonText = 'Submit',
                 onSubmit,
                 formClass = '',
