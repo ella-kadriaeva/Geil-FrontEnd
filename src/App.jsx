@@ -11,7 +11,10 @@ import NotFound from './pages/notFound/NotFound';
 import './App.scss';
 import Cart from './pages/cart/Cart';
 import Likes from './pages/likes/Likes';
+import { useTheme } from './context/ThemeContext';
+
 function App() {
+  const { isDarkTheme } = useTheme();
   return (
     <>
       <Header />
