@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 
 const Form = ({
                 fields = [],
@@ -12,16 +12,16 @@ const Form = ({
   const [formData, setFormData] = useState({});
 
   useEffect(() => {
-    setFormData(fields.reduce((acc, field) => ({ ...acc, [field.name]: '' }), {}));
+    setFormData(fields.reduce((acc, field) => ({...acc, [field.name]: ''}), {}));
   }, [fields]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevData => ({ ...prevData, [name]: value }));
+    const {name, value} = e.target;
+    setFormData(prevData => ({...prevData, [name]: value}));
   };
 
   const resetForm = () => {
-    setFormData(fields.reduce((acc, field) => ({ ...acc, [field.name]: '' }), {}));
+    setFormData(fields.reduce((acc, field) => ({...acc, [field.name]: ''}), {}));
   };
 
   const handleSubmit = (e) => {
@@ -37,30 +37,28 @@ const Form = ({
   };
 
   return (
-      <>
-        <h1>{title}</h1>
-        <form onSubmit={handleSubmit} className={formClass}>
-          <fieldset>
-            {fields.map((field, index) => (
-                <div key={field.name || index} className="form-group">
-                  <input
-                      id={field.name}
-                      type={field.type || 'text'}
-                      name={field.name}
-                      placeholder={field.placeholder}
-                      value={formData[field.name] || ''}
-                      onChange={handleChange}
-                      required={field.required ? true : undefined}
-                      className={inputClass}
-                  />
-                </div>
-            ))}
-          </fieldset>
-          <div className="button-container">
-            <button type="submit" className={buttonClass}>{buttonText}</button>
-          </div>
-        </form>
-      </>
+
+      <form onSubmit={handleSubmit} className={formClass}>
+        <fieldset>
+          {fields.map((field, index) => (
+              <div key={field.name || index} className="form-group">
+                <input
+                    id={field.name}
+                    type={field.type || 'text'}
+                    name={field.name}
+                    placeholder={field.placeholder}
+                    value={formData[field.name] || ''}
+                    onChange={handleChange}
+                    required={field.required ? true : undefined}
+                    className={inputClass}
+                />
+              </div>
+          ))}
+        </fieldset>
+        <div className="button-container">
+          <button type="submit" className={buttonClass}>{buttonText}</button>
+        </div>
+      </form>
 
 
   );

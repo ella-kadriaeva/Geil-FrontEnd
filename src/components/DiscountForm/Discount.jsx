@@ -35,7 +35,6 @@ const Discount = () => {
               </div>
               <Form
                   fields={fields}
-                  title=""
                   buttonText="Get Discount"
                   onSubmit={onFormSubmit}
                   formClass={styles.discountFormInform}

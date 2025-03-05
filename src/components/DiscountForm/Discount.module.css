@@ -1,7 +1,7 @@
 .discountFormWrapper {
+  background-color: #fffff1;
   max-width: 1440px;
-  background: linear-gradient(315deg, #55610B, #87933D);
-  border-radius: 10px;
+  width: 100%;
 }
 
 .discountFormWrapper.dark {
@@ -11,6 +11,8 @@
 .discountForm {
   max-width: 1360px;
   width: 100%;
+  border-radius: 10px;
+  background: linear-gradient(80.46deg, #87933d -0.68%, #55610b 66.66%);
 }
 
 .discountFormText {
@@ -28,12 +30,20 @@
   }
 }
 
+.discountFormBackImg {
+  height: 360px;
+  width: 100%;
+  background-position: bottom;
+  background-size: cover;
+}
+@media screen and (max-width: 480px) {
+  .discountFormBackImg {
+    order: 2;
+  }
+}
+
 .discountFormInfoWrapper {
   display: flex;
-  gap: 32px;
-  padding: 0 32px;
-  align-items: center;
-  width: 100%;
 }
 @media screen and (max-width: 480px) {
   .discountFormInfoWrapper {
@@ -42,19 +52,11 @@
   }
 }
 
-.discountFormBackImg {
-  height: 360px;
-  width: 100%;
-  flex: 1.5 1 0;
-  background-position: left bottom;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
 .discountFormInform {
-  flex: 1 1 0;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
+  margin: 0 32px;
+  max-width: 516px;
   width: 100%;
 }
 
@@ -106,6 +108,12 @@
     font-size: 18px;
     line-height: 23px;
   }
+}
+
+.discountFormButton:active {
+  background-color: #424436;
+  color: #ffffff;
+  transform: translateY(4px);
 }
 
 /*# sourceMappingURL=Discount.module.css.map */
