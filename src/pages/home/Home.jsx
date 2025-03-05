@@ -2,7 +2,7 @@ import React from "react";
 import MainSection from "../../components/mainSection/MainSection";
 import SectionTitle from "../../components/sectionTitle/sectionTitle";
 import Container from "../../components/container/Container";
-import Discount from "../../components/DiscountForm/Discount.jsx";
+import Discount from "../../components/Discount/Discount.jsx";
 
 export default function Home() {
   return (
