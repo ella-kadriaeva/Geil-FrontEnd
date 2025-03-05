@@ -1,0 +1,23 @@
+.navIcons {
+  display: flex;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.svgLink {
+  stroke-width: 1.1;
+  width: 32px;
+  height: 32px;
+}
+@media (min-width: 768px) {
+  .svgLink {
+    width: 44px;
+    height: 44px;
+  }
+}
+@media (min-width: 1440px) {
+  .svgLink {
+    width: 46px;
+    height: 46px;
+  }
+}/*# sourceMappingURL=IconsBlockHeader.module.css.map */

@@ -1,0 +1,66 @@
+.selectContainer {
+  position: relative;
+  width: 200px;
+}
+
+.selectBox {
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  padding: 8px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background-color: #ffffff;
+  font-size: 14px;
+  color: #424436;
+}
+@media (min-width: 768px) {
+  .selectBox {
+    font-size: 16px;
+  }
+}
+
+.selectText {
+  width: 200px;
+  font-size: 18px;
+  border-radius: 6px;
+  line-height: 1.26%;
+}
+
+.selectArrow {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.selectArrow.open {
+  transform: rotate(180deg);
+}
+
+.selectDropdown {
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #fffff1;
+  list-style: none;
+  padding: 11px 0 16px;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 10;
+  overflow: hidden;
+  color: #8b8b8b;
+}
+
+.selectDropdown li {
+  padding: 5px 16px;
+  cursor: pointer;
+}
+
+.selectDropdown li:hover {
+  background-color: #f2f6d3;
+}
+
+/*# sourceMappingURL=Select.module.css.map */

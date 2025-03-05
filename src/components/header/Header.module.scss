@@ -4,33 +4,44 @@
 .discountBtn {
   @include linkSectionNav;
   background-color: $green;
-  color: $txt-white;
+  color: $txt-white !important;
   &:hover {
-    @include shadowLight;
-    color: $txt-white;
+    scale: 0.9;
+    color: $txt-white !important;
+    filter: brightness(110%);
   }
 }
-.navWripped {
-  display: flex;
+.navWrapper {
   flex-direction: column;
   gap: 12px;
   align-items: center;
+  display: flex;
+  max-width: 518px;
 }
-.navWripped {
-  display: none;
-  @include on-tablet {
-    flex-direction: column;
-    gap: 12px;
-    align-items: center;
-    display: flex;
-    max-width: 400px;
-    margin: auto;
-  }
-  @include on-laptop {
-    max-width: 494px;
-  }
 
-  @include on-design {
-    max-width: 518px;
+.headerWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+
+  @include on-mobile {
+    padding: 30px 0;
+
   }
+}
+.icons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.svgBtn {
+  stroke-width: 1.3;
+  width: 44px;
+  height: 44px;
+}
+.header {
+  margin-inline: auto;
+  max-width: 1440px;
+  border-bottom: 1px solid $light-grey;
 }

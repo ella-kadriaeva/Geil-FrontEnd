@@ -2,11 +2,12 @@ import React from "react";
 import styles from "./NavMenu.module.scss";
 import NavigationLink from "../ui/NavigationLink";
 
+
 const navigation = [
-  { path: "/", label: "Main Page", exact: true },
-  { path: "/categories", label: "Categories" },
-  { path: "/products", label: "All products" },
-  { path: "/sales", label: "All sales" }
+  { path: '/', label: 'Main Page', exact: true },
+  { path: '/categories', label: 'Categories' },
+  { path: '/products', label: 'All products' },
+  { path: '/sale', label: 'All sales' },
 ];
 export default function NavMenu() {
   const isActiveClass = ({ isActive }) =>
@@ -18,7 +19,7 @@ export default function NavMenu() {
           to={path}
           label={label}
           key={label}
-          classNameLink={isActiveClass}
+          className={isActiveClass}
         />
       ))}
     </nav>

@@ -1,0 +1,19 @@
+@use '../../assets/styles/mixin' as *;
+@use '../../assets/styles/colors' as *;
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 24px 0 18px;
+  gap: 20px;
+  @include on-mobile {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  @include on-laptop {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    padding: 32px 0 30px;
+  }
+}

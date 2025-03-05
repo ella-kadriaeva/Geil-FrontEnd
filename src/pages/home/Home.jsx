@@ -1,14 +1,19 @@
-import {Candy} from "lucide-react";
-import React from "react";
+import React from 'react';
+import SectionTitle from '../../components/sectionTitle/sectionTitle';
+import Container from '../../components/container/Container';
+import MainSection from '../../components/mainSection/MainSection';
+import SaleSection from "../../components/saleSection/SaleSection";
+import Discount from "../../components/Discount/Discount.jsx";
 
 export default function Home() {
   return (
-    <div>
-      <h1>Hero</h1>
-      <h2>Categories Section</h2>
-      <h2>Form Section</h2>
-      <h2>Product Section</h2>
-      <Candy size="64" color="violet"/>
-    </div>
+    <>
+      <MainSection />
+      <Container>
+        <SectionTitle>Categories</SectionTitle>
+      </Container>
+      <Discount />
+      <SaleSection/>
+    </>
   );
 }

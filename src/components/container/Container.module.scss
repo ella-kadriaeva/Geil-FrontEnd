@@ -1,0 +1,10 @@
+@use "../../assets/styles/mixin" as *;
+
+.container {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: 0 20px;
+  @include on-design {
+    padding: 0 40px;
+  }
+}
