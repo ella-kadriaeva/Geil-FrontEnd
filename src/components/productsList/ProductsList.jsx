@@ -1,21 +1,26 @@
 import React from 'react';
-
-import Container from '../container/Container';
-
-export default function ProductsList({ data, loading, error }) {
+import { Link } from 'react-router';
+import styles from './ProductsList.module.scss';
+import SaleCard from '../saleCard/SaleCard';
+import IconsBlockHeader from '../iconsBlockHeader/IconsBlockHeader';
+export default function ProductsList({ data }) {
   return (
-    <Container>
-      {loading && <div>Loading</div>}
+    <div className={styles.cardsContainer}>
       {data.length > 0 &&
         data.map((item) => (
-          <p key={item.id}>
-            {item.title} /{item.discontPrice}
-          </p>
-          // <Link to={`/product/${item.id}`} key={item.id}>
-          //   {item.title}
-          // </Link>
+          <div key={item.id} className={styles.wrapperLink}>
+            <IconsBlockHeader className={styles.icons} />
+            <Link to={`/products/${item.id}`}>
+              <SaleCard
+                key={item.id}
+                price={item.price}
+                title={item.title}
+                image={item.image}
+                percent={item.discont_price}
+              />
+            </Link>
+          </div>
         ))}
-      {error && <div>{error}</div>}
-    </Container>
+    </div>
   );
 }

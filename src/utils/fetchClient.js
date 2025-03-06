@@ -122,3 +122,16 @@ export const fetchProductsByCategoryId = createAsyncThunk(
     return data;
   }
 );
+
+export const fetchProductById = createAsyncThunk(
+  'product/fetchProductById',
+  async (id) => {
+    const response = await fetch(`${BASE_URL}/products/${id}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch!' + response.statusText);
+    }
+
+    let data = await response.json();
+    return data;
+  }
+);

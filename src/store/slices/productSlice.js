@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchProductsByCategoryId,
   fetchProducts,
+
 } from '../../utils/fetchClient';
 
 export const productSlice = createSlice({
@@ -54,7 +55,8 @@ export const productSlice = createSlice({
       .addCase(fetchProductsByCategoryId.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
-      });
+      })
+ 
   },
 });
 export const { setSelectedCategoryId } = productSlice.actions;

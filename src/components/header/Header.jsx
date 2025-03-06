@@ -7,10 +7,11 @@ import IconsBlockHeader from '../iconsBlockHeader/IconsBlockHeader';
 import LogoThemeBlock from '../logoThemeBlock/LogoThemeBlock';
 import styles from './Header.module.scss';
 import { useModal } from '../../context/ModalContext';
+
 export default function Header() {
   const { isMobile } = useModal();
   return (
-    <header>
+    <header className={styles.header}>
       <Container>
         <div className={styles.headerWrapper}>
           <LogoThemeBlock />
