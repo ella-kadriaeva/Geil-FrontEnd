@@ -1,9 +1,9 @@
 import React from 'react';
-import SectionTitle from '../../components/sectionTitle/sectionTitle';
+import SectionTitle from '../../components/sectionTitle/SectionTitle';
 import Container from '../../components/container/Container';
 import MainSection from '../../components/mainSection/MainSection';
-import SaleSection from "../../components/saleSection/SaleSection";
-import Discount from "../../components/Discount/Discount.jsx";
+import SaleSection from '../../components/saleSection/SaleSection';
+import Discount from '../../components/Discount/Discount.jsx';
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
         <SectionTitle>Categories</SectionTitle>
       </Container>
       <Discount />
-      <SaleSection/>
+      <SaleSection />
     </>
   );
 }
