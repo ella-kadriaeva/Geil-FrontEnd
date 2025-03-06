@@ -36,16 +36,24 @@ export default function ItemInCart({product}) {
         <div className={styles.itemInCart_titleBox}>
           <h3>{productData.title}</h3>
           <button onClick={() => console.log('close')}>
-            <X size={28} color="black"/>
+            <X size={28} color="black" />
           </button>
         </div>
-        <div className={styles.itemInCart_amountBox}>
-          <button><Minus size={24}/></button>
-          <p>1</p>
-          <button><Plus size={24}/></button>
-        </div>
-        <div className={styles.itemInCart_priceBox}>
-          <p>${productData.price} <span>${productData.discont_price}</span></p>
+        <div className={itemInCart_infoSubBlock}>
+          <div className={styles.itemInCart_amountBox}>
+            <button>
+              <Minus size={24} />
+            </button>
+            <p>1</p>
+            <button>
+              <Plus size={24} />
+            </button>
+          </div>
+          <div className={styles.itemInCart_priceBox}>
+            <p>
+              ${productData.price} <span>${productData.discont_price}</span>
+            </p>
+          </div>
         </div>
       </div>
     </div>

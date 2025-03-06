@@ -32,6 +32,12 @@
     }
   }
 
+  &_infoSubBlock {
+    @include on-laptop {
+      display: flex;
+    }
+  }
+
   &_infoContainer {
     width: 100%;
     padding: 20px;
@@ -75,13 +81,16 @@
       height: 58px;
     }
 
+    @include on-design {
+      max-width: 200px;
+    }
+
     button {
       display: flex;
       justify-content: center;
       align-items: center;
       flex: 0 0 48px;
       height: 48px;
-      // width: 48px;
       background-color: transparent;
       color: $txt-black;
       border: 1px solid $light-grey;

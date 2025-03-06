@@ -5,7 +5,7 @@ import ItemInCart from "../../components/itemInCart/ItemInCart";
 import SectionTitle from "../../components/sectionTitle/SectionTitle";
 
 export default function Cart() {
-  const id = 13;
+  const id = 17;
 
   return (
     <section className={styles.cart}>
