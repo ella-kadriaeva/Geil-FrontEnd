@@ -11,7 +11,7 @@ import { useModal } from '../../context/ModalContext';
 export default function Header() {
   const { isMobile } = useModal();
   return (
-    <header>
+    <header className={styles.header}>
       <Container>
         <div className={styles.headerWrapper}>
           <LogoThemeBlock />
