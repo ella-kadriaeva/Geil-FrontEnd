@@ -6,14 +6,13 @@ import Categories from './pages/categories/Categories';
 import CategoryProducts from './pages/categoryProducts/CategoryProducts';
 import Products from './pages/products/Products';
 import Sales from './pages/sales/Sales';
-import ProductDetails from './pages/productDetails/ProductDetails';
 import NotFound from './pages/notFound/NotFound';
 import './App.scss';
 import Cart from './pages/cart/Cart';
 import Likes from './pages/likes/Likes';
 import { useTheme } from './context/ThemeContext';
-
 import ProductDetails from './pages/producrDetails/ProductDetails';
+
 function App() {
   const { isDarkTheme } = useTheme();
   return (
