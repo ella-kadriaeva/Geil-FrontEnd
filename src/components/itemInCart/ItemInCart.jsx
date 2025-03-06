@@ -39,7 +39,7 @@ export default function ItemInCart({product}) {
             <X size={28} color="black" />
           </button>
         </div>
-        <div className={itemInCart_infoSubBlock}>
+        <div className={styles.itemInCart_infoSubBlock}>
           <div className={styles.itemInCart_amountBox}>
             <button>
               <Minus size={24} />

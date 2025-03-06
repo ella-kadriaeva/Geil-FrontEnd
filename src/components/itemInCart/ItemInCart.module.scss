@@ -10,6 +10,14 @@
 
   container-type: inline-size;
 
+  @include on-tablet {
+    max-height: 150px;
+  }
+
+  @include on-laptop {
+    max-height: none;
+  }
+
   &_imageContainer {
     flex: 0 0 30%;
 
@@ -33,22 +41,24 @@
   }
 
   &_infoSubBlock {
-    @include on-laptop {
+    @include on-tablet {
       display: flex;
+      align-items: center;
     }
   }
 
   &_infoContainer {
     width: 100%;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 12px;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
+    // gap: 12px;
   }
 
   &_titleBox {
     max-height: 2.3rem;
+    margin-block-end: 12px;
     overflow: hidden;
     display: flex;
     justify-content: space-between;
@@ -68,6 +78,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-block-end: 12px;
     height: 48px;
     border: 1px solid $light-grey;
     border-inline-end: none;
@@ -79,6 +90,9 @@
     @include on-tablet {
       max-width: 176px;
       height: 58px;
+      flex: 1;
+      margin-block-end: 0;
+      margin-inline-end: 12px;
     }
 
     @include on-design {

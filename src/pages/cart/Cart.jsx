@@ -11,7 +11,9 @@ export default function Cart() {
     <section className={styles.cart}>
       <Container>
         <div className={`${styles.cart_titleBlock}`}>
-          <SectionTitle className={styles.cart_title}>Shopping cart</SectionTitle>
+          <SectionTitle className={styles.cart_title}>
+            Shopping cart
+          </SectionTitle>
           <span className={styles.cart_titleLine}></span>
           <ButtonLink
             to="/products"
@@ -20,7 +22,7 @@ export default function Cart() {
           />
         </div>
 
-        <div className={styles.cart_empty}>
+        {/* <div className={styles.cart_empty}>
           <p className={styles.cart_emptyInfo}>
             Looks like you have no items in your basket currently.
           </p>
@@ -29,10 +31,12 @@ export default function Cart() {
             text="Continue Shopping"
             className={styles.cart_button}
           />
-        </div>
+        </div> */}
 
         <div className={styles.cart_withItems}>
-          <ItemInCart product={id} />
+          <div className={styles.cart_items}>
+            <ItemInCart product={id} />
+          </div>
         </div>
 
         <ButtonLink
