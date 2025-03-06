@@ -1,0 +1,135 @@
+@use "../../assets/styles/mixin" as *;
+@use "../../assets/styles/colors" as *;
+
+.productCart {
+    font-family: Montserrat;
+    padding: 40px 0 76px 0;
+    display: flex;
+    gap: 32px;
+  }
+  .productImg {
+    width: 100%;
+    height: auto;
+    max-width: 780px;
+  }
+  .productInfoWrapper {
+    max-width: 548px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .productTitleWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .productTitle {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 44px;
+    letter-spacing: 3%;
+  }
+  .flexWrapper {
+    display: flex;
+  }
+  .productPrice {
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 70.4px;
+    align-self: flex-end;
+    margin-right: 32px;
+  }
+
+  .productDiscountPrice {
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 52px;
+    letter-spacing: 0%;
+    text-decoration: line-through;
+    align-self: flex-end;
+    margin-right: 16px;
+  }
+  .discountChip {
+    width: 63;
+    height: 34;
+    gap: 10px;
+    border-radius: 6px;
+    padding-top: 4px;
+    padding-right: 8px;
+    padding-bottom: 4px;
+    padding-left: 8px;
+    align-self: flex-start;
+    background-color: #f26d22;
+    color: white;
+  }
+  .countBtn {
+    display: flex;
+    width: 58px;
+    height: 58px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+  }
+  .countValue {
+    display: flex;
+    width: 96px;
+    height: 58px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+  }
+  .productDescriptionWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .descriptionTitle {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+  }
+  .descriptionText {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20.8px;
+  }
+  .moreBtn {
+    text-decoration: underline;
+  }
+
+  .svgLink {
+    stroke-width: 1.1;
+    width: 32px;
+    height: 32px;
+    @include on-tablet {
+      width: 44px;
+      height: 44px;
+    }
+  
+    @include on-design {
+      width: 46px;
+      height: 46px;
+    }
+  }
+
+  
+
+.addBtn {
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 286px;
+    height: 48px;
+    background-color: $green;
+    color: $txt-white;
+    transition-duration: 300ms;
+    border-radius: 6px;
+    border: 1px solid $green;
+    
+
+    &:hover {
+      background-color: $light_green;
+      cursor: pointer;
+    }
+  }
