@@ -6,11 +6,12 @@ import Categories from './pages/categories/Categories';
 import CategoryProducts from './pages/categoryProducts/CategoryProducts';
 import Products from './pages/products/Products';
 import Sales from './pages/sales/Sales';
+import Cart from './pages/cart/Cart';
 import NotFound from './pages/notFound/NotFound';
 import './App.scss';
-import Discount from "./components/DiscountForm/Discount.jsx";
-import Cart from "./pages/cart/Cart";
+// import Discount from "./components/DiscountForm/Discount.jsx";
 import Likes from "./pages/likes/Likes";
+
 function App() {
   return (
     <>
