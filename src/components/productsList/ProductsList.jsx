@@ -10,7 +10,7 @@ export default function ProductsList({ data }) {
         data.map((item) => (
           <div key={item.id} className={styles.wrapperLink}>
             <IconsBlockHeader className={styles.icons} />
-            <Link to={`/product/${item.id}`}>
+            <Link to={`/products/${item.id}`}>
               <SaleCard
                 key={item.id}
                 price={item.price}

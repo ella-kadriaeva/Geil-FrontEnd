@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategories } from '../../utils/fetchClient';
 import Container from '../../components/container/Container';
-import SectionTitle from '../../components/sectionTitle/sectionTitle';
+import SectionTitle from '../../components/sectionTitle/SectionTitle';
 
 export default function Categories() {
   const dispatch = useDispatch();

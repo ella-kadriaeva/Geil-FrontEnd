@@ -124,7 +124,7 @@ export const fetchProductsByCategoryId = createAsyncThunk(
 );
 
 export const fetchProductById = createAsyncThunk(
-  'product/src/utils/fetchClient.js',
+  'product/fetchProductById',
   async (id) => {
     const response = await fetch(`${BASE_URL}/products/${id}`);
     if (!response.ok) {
@@ -132,7 +132,6 @@ export const fetchProductById = createAsyncThunk(
     }
 
     let data = await response.json();
-    console.log(data);
     return data;
   }
 );

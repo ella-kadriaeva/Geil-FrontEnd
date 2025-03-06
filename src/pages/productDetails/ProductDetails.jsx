@@ -1,19 +1,27 @@
-import React from 'react';
+import Container from '../../components/container/Container';
+import useFetchDetails from '../../utils/useFetchDetails';
 import { useParams } from 'react-router';
-import { fetchProductById } from '../../utils/fetchClient';
-import ProductsList from '../../components/productsList/ProductsList';
-
 export default function ProductDetails() {
-  const { res } = useSelector((state) => state);
-  const { id } = useParams();
-  console.log(res);
-  useEffect(() => {
-    fetchProductById(id);
-  }, [id]);
+  const { productId } = useParams();
+  const { details, error, loading } = useFetchDetails(productId);
+  const product = details[0];
 
   return (
-    <div>
-      <ProductsList />
-    </div>
+    <section>
+      <Container>
+        {error && <div>Error fetching data</div>}
+        {loading && <div>Loading...</div>}
+        {details.length > 0 && (
+          <>
+            <p>{product?.categoryId}</p>
+            <p>{product?.description}</p>
+            <p>{product?.title}</p>
+            <p>{product?.image}</p>
+            <p>{product?.percent}</p>
+            <p>{product?.price}</p>
+          </>
+        )}
+      </Container>
+    </section>
   );
 }
