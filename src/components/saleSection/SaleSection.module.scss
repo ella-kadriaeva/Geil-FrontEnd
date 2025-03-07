@@ -1,19 +1,22 @@
 @use '../../assets/styles/mixin' as *;
 @use '../../assets/styles/colors' as *;
 
-.cardsContainer {
-  display: grid;
-  grid-template-columns: 1fr;
-  padding: 24px 0 18px;
-  gap: 20px;
-  @include on-mobile {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-  }
+.section {
+  padding-top: 68px;
+  padding-bottom: 40px;
 
-  @include on-laptop {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(1, 1fr);
-    padding: 32px 0 30px;
+  &_button__outlined {
+    @include buttonOutlined;
+    margin: auto;
+
+    margin-top: 24px;
+
+    &:hover {
+      background-color: $light_green;
+      cursor: pointer;
+    }
+    @include on-mobile {
+      display: none;
+    }
   }
 }

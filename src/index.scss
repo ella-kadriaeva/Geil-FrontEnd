@@ -17,6 +17,7 @@
   --divider_grey: #282828;
   --link-color-light: #ffffff;
   --link-color-dark: #424436;
+  --green: #92a134;
 }
 a {
   font-weight: 500;
@@ -41,9 +42,4 @@ body.dark {
       }
     }
   }
-}
-button {
-  display: inline;
-  border: none;
-  cursor: pointer;
 }

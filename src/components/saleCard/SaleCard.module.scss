@@ -3,21 +3,34 @@
 
 .productCard {
   width: 100%;
+  height: 335px;
   overflow: hidden;
   border-radius: 8px;
-  min-height: 422px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   @include borderFilter;
+  @include on-tablet {
+    height: 370px;
+  }
+  @include on-laptop {
+    height: 400px;
+  }
+  @include on-design {
+    height: 422px;
+  }
 }
 .productCard_image {
   z-index: 0;
-  height: 250px;
-  width: 100%; /* Блок растягивается по ширине контейнера */
-  background-color: white;
+  overflow: hidden;
+  height: 220px;
+  background-color: $txt-white;
+  width: 100%;
   @include on-laptop {
-    height: 250px; // Шрифт больше для ноутбуков
+    height: 250px;
+  }
+  @include on-design {
+    height: 284px;
   }
 }
 .image {
@@ -25,7 +38,6 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  scale: 0.99;
 }
 
 .productCard_discount {
@@ -42,38 +54,29 @@
 }
 
 .productCard_text {
-  padding: 1.25rem 1rem 1rem 1rem;
   border-top: 1px solid $light-grey;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 5rem; // Фиксированная минимальная высота
   flex-grow: 1; // Чтобы блок с текстом занимал оставшееся пространство
+  @include on-design {
+    padding: 20px 32px 32px;
+  }
 }
 
 .productCard_text > h3 {
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1.4rem; // Контроль высоты строки
   display: -webkit-box;
-  -webkit-line-clamp: 2; // Ограничиваем количество строк до 2-х
+  -webkit-line-clamp: 1; // Ограничиваем количество строк до 2-х
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: 500;
-
-  @include on-mobile {
-    font-size: 12px; // Меньше шрифт на мобильных
-    line-height: 1.2rem;
-  }
-
   @include on-tablet {
-    font-size: 14px; // Средний размер шрифта для планшетов
+    font-size: 20px;
   }
-
-  @include on-laptop {
-    font-size: 16px; // Шрифт больше для ноутбуков
-  }
-
   &.three-lines {
     -webkit-line-clamp: 3; // Для 3-х строк на экранах с большим контентом
     font-size: 15px; // Уменьшаем шрифт, чтобы текст вмещался
@@ -86,10 +89,7 @@
   align-items: center;
   margin-top: 1rem;
   gap: 1rem;
-
-  @include on-mobile {
-    flex-direction: row; // Обеспечиваем горизонтальное расположение для мобильных
-  }
+  align-items: flex-end;
 }
 
 .productCard_text_actualPrice {
@@ -97,8 +97,8 @@
   font-weight: 600;
   cursor: pointer;
 
-  @include on-mobile {
-    font-size: 1.8rem; // Меньше на мобильных
+  @include on-design {
+    font-size: 40px;
   }
 }
 
@@ -111,7 +111,7 @@
   color: $txt-grey;
   margin-bottom: 0.25rem;
 
-  @include on-mobile {
-    font-size: 1.1rem; // Меньше для мобильных
+  @include on-design {
+    font-size: 20px;
   }
 }
