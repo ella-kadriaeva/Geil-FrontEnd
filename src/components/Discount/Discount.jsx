@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react';
 import styles from "./Discount.module.scss";
 import discountFormBackImg from "../../assets/img/background.png";
 import Container from "../container/Container.jsx";
-import Form from "../ui/Form.jsx";
+import Form from "../form/Form.jsx";
 
 const Discount = () => {
 
@@ -31,14 +31,7 @@ const Discount = () => {
                 <div className={styles.discountFormBackImg}
                      style={{backgroundImage: `url(${discountFormBackImg})`}}>
                 </div>
-                <Form
-                    fields={fields}
-                    buttonText="Get Discount"
-                    onSubmit={onFormSubmit}
-                    formClass={styles.discountFormInform}
-                    inputClass={styles.discountFormInputs}
-                    buttonClass={styles.discountFormButton}
-                />
+                <Form type="discount" />
               </div>
             </div>
           </div>
