@@ -1,5 +1,5 @@
-@use "../../assets/styles/mixin" as *;
-@use "../../assets/styles/colors" as *;
+@use '../../assets/styles/mixin' as *;
+@use '../../assets/styles/colors' as *;
 
 .heroContent {
   position: absolute;
@@ -52,14 +52,14 @@
 .heroBtn {
   @include linkSectionNav;
   background-color: $green;
-  color: $txt-white !important;
+  border: 1px solid $green;
   padding: 12px 52px;
+  color: $txt-white;
   @include on-tablet {
     padding: 16px 56px;
   }
   &:hover {
-    scale: 0.9;
-    color: $txt-white !important;
-    filter: brightness(110%);
+    color: $green;
+    background-color: $light_green;
   }
 }

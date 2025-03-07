@@ -7,7 +7,7 @@ export default function LogoThemeBlock() {
     <div className={styles.flexContainer}>
       <div className={styles.logo}>
         <Link to="/">
-          <img src="media/logo.png" alt="logo" />
+          <img src="media/logo.svg" alt="logo" />
         </Link>
       </div>
       <ThemeBtn />

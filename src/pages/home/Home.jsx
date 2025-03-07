@@ -1,16 +1,20 @@
 import React from 'react';
-import SectionTitle from '../../components/sectionTitle/SectionTitle';
 import Container from '../../components/container/Container';
 import MainSection from '../../components/mainSection/MainSection';
 import SaleSection from '../../components/saleSection/SaleSection';
 import Discount from '../../components/Discount/Discount.jsx';
+import MainSectionTitle from '../../components/mainSectionTitle/MainSectionTitle.jsx';
 
 export default function Home() {
   return (
     <>
       <MainSection />
       <Container>
-        <SectionTitle>Categories</SectionTitle>
+        <MainSectionTitle
+          title="Categories "
+          to="/categories "
+          text="All categories"
+        />
       </Container>
       <Discount />
       <SaleSection />

@@ -1,5 +1,5 @@
-@use "../../assets/styles/mixin" as *;
-@use "../../assets/styles/colors" as *;
+@use '../../assets/styles/mixin' as *;
+@use '../../assets/styles/colors' as *;
 img {
   width: 100%;
   height: auto;
@@ -9,7 +9,6 @@ img {
 .logo {
   width: 44px;
   transition: filter 0.3s ease;
-  transition: scale 0.3s ease;
   @include on-tablet {
     width: 60px;
   }
@@ -20,7 +19,6 @@ img {
     width: 70px;
   }
   &:hover {
-    scale: 0.9;
     filter: brightness(105%);
   }
 }
