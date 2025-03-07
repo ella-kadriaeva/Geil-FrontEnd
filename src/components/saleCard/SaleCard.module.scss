@@ -63,6 +63,14 @@
   @include on-design {
     padding: 20px 32px 32px;
   }
+  &_dark {
+    background-color: $txt-black;
+    color: $txt-white;
+  }
+  &_light {
+    background-color: $txt-white;
+    color: $txt-black;
+  }
 }
 
 .productCard_text > h3 {

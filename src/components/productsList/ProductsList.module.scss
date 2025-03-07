@@ -10,6 +10,14 @@
   & svg {
     fill: $txt-white;
   }
+  &_dark {
+    & svg {
+      stroke: $txt-black;
+    }
+    & svg:hover {
+      stroke: $green;
+    }
+  }
 }
 .wrapperLink {
   position: relative;
