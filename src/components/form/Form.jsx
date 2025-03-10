@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {ShieldX} from 'lucide-react';
 import {useForm} from 'react-hook-form';
 import styles from './Form.module.scss';
 
 export default function Form({type}) {
+  const [successMessage, setSuccessMessage] = useState('')
   const stylesForm = type === 'discount' ? styles.discount : styles.order;
   const text = type === 'discount' ? 'GetDiscount' : 'Order';
   const {
@@ -14,8 +15,10 @@ export default function Form({type}) {
     onError,
   } = useForm();
 
-  const onSubmit = (data) => console.log('The discount has been successfully sent by email', data);
-
+  const onSubmit = (data) => {
+    console.log("The discount has been successfully sent by email", data);
+    setSuccessMessage("The discount has been successfully sent by email");
+  };
   console.log(watch('Email'));
 
   return (
@@ -79,6 +82,8 @@ export default function Form({type}) {
               {errors.email.message}
             </p>
         )}
+
+        {successMessage && <p className={styles.success_message}>{successMessage}</p>}
 
         <button className={styles.form_button}>{text}</button>
       </form>
