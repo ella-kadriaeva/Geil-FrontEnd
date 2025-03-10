@@ -30,9 +30,6 @@
     object-fit: cover;
     @include borderFilter;
 
-    @include on-mobile-old {
-        width: 320px;
-    }
 
     @include on-mobile {
         width: 210px;
@@ -187,14 +184,8 @@
     background: $bg-light;
     width: 100%;
     @include borderFilter;
-
-    @include on-mobile-old {
-        width: 164px;
-    }
-
-    @include on-mobile {
-        width: 164px;
-    }
+    width: 164px;
+    
 
     @include on-tablet {
         width: 200px;

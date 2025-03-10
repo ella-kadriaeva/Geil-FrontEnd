@@ -1,10 +1,5 @@
 @use './colors' as *;
 
-@mixin on-mobile-old {
-  @media (min-width: 360px) {
-    @content;
-  }
-}
 @mixin on-mobile {
   @media (min-width: 480px) {
     @content;

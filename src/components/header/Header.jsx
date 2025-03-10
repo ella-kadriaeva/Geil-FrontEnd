@@ -21,7 +21,7 @@ export default function Header() {
                 to="/categories" //НУЖНО ВЫЯСНИТЬ КУДА ПЕРЕБРАСЫВАЕТ
                 text="1 day discount"
                 className={styles.discountBtn}
-                type="link"
+                type="button"
               />
               <NavMenu />
             </div>

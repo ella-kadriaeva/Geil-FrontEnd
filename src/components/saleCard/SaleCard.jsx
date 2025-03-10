@@ -1,10 +1,15 @@
 
 import React from 'react';
 import styles from './SaleCard.module.scss';
+import { useTheme } from '../../context/ThemeContext';
 
 const BASE_URL = 'http://localhost:3333';
 
 const SaleCard = ({ title, image, percent, price }) => {
+  const { isDarkTheme } = useTheme();
+  const cardBackground = isDarkTheme
+    ? styles.productCard_text_dark
+    : styles.productCard_text_light;
   // Вычисляем скидку, чтобы вычесть ее из исходной цены
   const discountAmount = (price * percent) / 100;
   const discountPrice = price - discountAmount;  // Скидочная цена
@@ -26,7 +31,7 @@ const SaleCard = ({ title, image, percent, price }) => {
           -{Math.round(percent)}%
         </div>
       )}
-      <div className={styles.productCard_text}>
+      <div className={`${styles.productCard_text} ${cardBackground}`}>
         <h3>{title}</h3>
         <div className={styles.productCard_text_priceBlock}>
           <p className={styles.productCard_text_actualPrice}>

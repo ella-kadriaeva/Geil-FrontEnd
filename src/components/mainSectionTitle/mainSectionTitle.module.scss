@@ -1,6 +1,8 @@
 @use '../../assets/styles/mixin' as *;
 @use '../../assets/styles/colors' as *;
-.section {
+.sectionTitle {
+  padding: 40px 0;
+
   &_titleBlock {
     display: flex;
     justify-content: space-between;
@@ -35,18 +37,7 @@
   }
 
   &_button__outlined {
-    flex: 0 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 156px;
-    height: 32px;
-    font-size: 0.875rem;
-    transition-duration: 300ms;
-    border-radius: 6px;
-    background-color: transparent;
-    color: $txt-grey;
-    border: 1px solid $light-grey;
+    @include buttonOutlined;
 
     &:hover {
       background-color: $light_green;
@@ -72,6 +63,32 @@
       @include on-mobile {
         display: none;
       }
+    }
+  }
+
+  &_emptyInfo {
+    margin-bottom: 24px;
+
+    @include on-laptop {
+      margin-bottom: 32px;
+    }
+  }
+
+  &_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 286px;
+    height: 48px;
+    background-color: $green;
+    color: $txt-white;
+    transition-duration: 300ms;
+    border-radius: 6px;
+    border: 1px solid $green;
+
+    &:hover {
+      background-color: $light_green;
+      cursor: pointer;
     }
   }
 }
