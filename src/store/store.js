@@ -3,6 +3,7 @@ import productReducer from './slices/productSlice';
 import filtersReducer from './slices/filtersSlice';
 import categoriesReducer from './slices/categoriesSlice';
 import detailsReducer from './slices/detailsSlice';
+import cartReducer from './slices/cartSlice';
 
 export default configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export default configureStore({
     filters: filtersReducer,
     categories: categoriesReducer,
     details: detailsReducer,
+    cart: cartReducer,
   },
 });
