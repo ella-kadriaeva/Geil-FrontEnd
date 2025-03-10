@@ -10,11 +10,9 @@ import NotFound from './pages/notFound/NotFound';
 import './App.scss';
 import Cart from './pages/cart/Cart';
 import Likes from './pages/likes/Likes';
-
-import ProductDetails from './pages/producrDetails/ProductDetails';
+import ProductDetails from './pages/productDetails/ProductDetails';
 
 function App() {
-
   return (
     <>
       <Header />

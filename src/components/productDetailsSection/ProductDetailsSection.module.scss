@@ -238,13 +238,13 @@
       font-size: 24px;
   }
 
-  &:hover {
-      background: darken($bg-light, 5%);
-  }
+//   &:hover {
+//       background: darken($bg-light, 5%);
+//   }
 
-  &:active {
-      background: darken($bg-light, 10%);
-  }
+//   &:active {
+//       background: darken($bg-light, 10%);
+//   }
 }
 
 .quantityValue {
@@ -333,10 +333,10 @@
       background: $light-green;
   }
 
-  &:active {
-      background: darken($light-green, 5%);
-      transform: translateY(1px);
-  }
+//   &:active {
+//       background: darken($light-green, 5%);
+//       transform: translateY(1px);
+//   }
 }
 
 .productDescriptionWrapper {
