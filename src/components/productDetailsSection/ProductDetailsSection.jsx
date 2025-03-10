@@ -1,7 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
 import styles from './ProductDetailsSection.module.scss';
+import React from 'react';
+import { useState } from 'react';
+import styles from './ProductDetailsSection.module.scss';
 import ButtonLink from '../ui/ButtonLink';
+import { Heart } from 'lucide-react';
 import { Heart } from 'lucide-react';
 const BASE_URL = 'http://localhost:3333';
 
@@ -21,9 +25,15 @@ const ProductDetailsSection = ({
   const percent = discont_percent;
   // Убрали Math.round чтобы сохранить десятичные знаки
   const finalPrice = price - (price * percent) / 100;
+  const finalPrice = price - (price * percent) / 100;
   const count = 1;
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
+  // Функция для переключения состояния
+  const toggleDescription = () => {
+    setIsExpanded((prevState) => !prevState);
+  };
   // Функция для переключения состояния
   const toggleDescription = () => {
     setIsExpanded((prevState) => !prevState);
