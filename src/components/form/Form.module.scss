@@ -18,6 +18,9 @@
     }
   }
 
+  .success {
+    color: var(--text-color);
+  }
 }
 
 .order {
@@ -32,12 +35,10 @@
   padding: 0 20px;
 }
 
-
 .form {
   display: flex;
   flex-flow: column wrap;
   width: 100%;
-
 
   &_inputs {
     width: 100%;
@@ -87,8 +88,4 @@
       transform: translateY(4px);
     }
   }
-
 }
-
-
-
