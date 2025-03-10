@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {ShieldX} from 'lucide-react';
 import {useForm} from 'react-hook-form';
 import styles from './Form.module.scss';
 
@@ -14,7 +14,7 @@ export default function Form({type}) {
     onError,
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => console.log('The discount has been successfully sent by email', data);
 
   console.log(watch('Email'));
 
@@ -60,18 +60,21 @@ export default function Form({type}) {
         />
         {errors.name && (
             <p className={styles.error}>
+              <ShieldX size={20} className={styles.error_icon}/>
               Wrong input.
               {errors.name.message}
             </p>
         )}
         {errors.phone && (
             <p className={styles.error}>
+              <ShieldX size={20} className={styles.error_icon}/>
               Wrong input.
               {errors.phone.message}
             </p>
         )}
         {errors.email && (
             <p className={styles.error}>
+              <ShieldX size={20} className={styles.error_icon}/>
               Wrong input.
               {errors.email.message}
             </p>
