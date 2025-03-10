@@ -1,6 +1,6 @@
-import React from 'react'
-import Container from '../../components/container/Container'
-import ProductSection from '../../components/productSection/ProductSection'
+import React from 'react';
+import Container from '../../components/container/Container';
+import ProductSection from '../../components/productSection/ProductSection';
 import useFetchDetails from '../../utils/useFetchDetails';
 import { useParams } from 'react-router';
 
@@ -14,9 +14,16 @@ export default function ProductDetails() {
       <Container>
         {error && <div>Error fetching data</div>}
         {loading && <div>Loading...</div>}
-        {details.length > 0 && (<ProductSection categoryId={product.categoryId} description={product.description} image={product.image}    percent={product.percent}
-           price={product.price} title={product.title}/>
-      
+        {details.length > 0 && (
+          <ProductSection
+            categoryId={product.categoryId}
+            description={product.description}
+            image={product.image}
+            percent={product.percent}
+            price={product.price}
+            title={product.title}
+            productId={product.id}
+          />
         )}
       </Container>
     </section>

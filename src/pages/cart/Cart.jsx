@@ -24,7 +24,7 @@ export default function Cart() {
           />
         </div>
 
-        {!cartData && (
+        {cartData && (
           <div className={styles.cart_empty}>
             <p className={styles.cart_emptyInfo}>
               Looks like you have no items in your basket currently.
@@ -36,7 +36,9 @@ export default function Cart() {
             />
           </div>
         )}
-        {cartData && cartData.map((item) => <div key={item.id}>{item.id}</div>)}
+        {cartData &&
+          cartData.lehgth > 0 &&
+          cartData.map((item) => <div key={item.id}>{item.id}</div>)}
         <ButtonLink
           to="/products"
           text="Back to the store"
