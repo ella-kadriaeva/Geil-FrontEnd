@@ -30,7 +30,7 @@ export const productSlice = createSlice({
         state.loading = false;
         state.data = action.payload.map((item) => {
           let discountPercentage = 0;
-          console.log(222, item);
+        
           if (item.price > 0 && item.discont_price > 0) {
             discountPercentage = 100 - (item.discont_price * 100) / item.price;
           }

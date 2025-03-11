@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { initDataFromLocalStorage } from '../../store/slices/cartSlice';
 import SectionTitle from '../../components/sectionTitle/SectionTitle';
 import ItemInCart from '../../components/itemInCart/ItemInCart'
+import Form from '../../components/form/Form';
 
 export default function Cart() {
   const [id, setId] = useState(23);
@@ -65,6 +66,18 @@ export default function Cart() {
           text="Back to the store"
           className={`${styles.cart_button__outlined} ${styles.cart_button__outlined_outside}`}
         />
+
+        <div className={styles.cart_orderDetails}>
+          <h3>Order Details</h3>
+
+          <div className={styles.cart_orderPreis}>
+            <p>items</p> //TODO: count items
+            <div className={styles.total}>
+              <p>Total</p> //TODO: discount status
+            </div>
+            <Form type="order" />
+          </div>
+        </div>
       </Container>
     </section>
   );
