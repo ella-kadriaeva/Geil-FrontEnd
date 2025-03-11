@@ -66,7 +66,8 @@ export default function ProductsList({ data }) {
                   price={item.price}
                   title={item.title}
                   image={item.image}
-                  percent={item.discont_price}
+                  discont_price={item.discont_price}
+                  discountPercentage={item.discountPercentage}
                 />
               </Link>
             </div>
