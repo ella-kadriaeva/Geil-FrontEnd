@@ -5,14 +5,6 @@ import ButtonLink from '../ui/ButtonLink';
 import { Heart } from 'lucide-react';
 
 const BASE_URL = 'http://localhost:3333';
-
-const formatPrice = (price) => {
-  // Округляем до 2 знаков после запятой
-  const roundedPrice = Number(price).toFixed(2);
-  // Убираем .00 если число целое
-  return roundedPrice.endsWith('.00') ? Math.round(price) : roundedPrice;
-};
-<<<<<<<<< Temporary merge branch 1
 const ProductDetailsSection = ({
   description,
   image,
