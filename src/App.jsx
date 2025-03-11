@@ -12,8 +12,6 @@ import Cart from './pages/cart/Cart';
 import Likes from './pages/likes/Likes';
 import ProductDetailsSection from './components/productDetailsSection/ProductDetailsSection';
 
-
-
 function App() {
   return (
     <>

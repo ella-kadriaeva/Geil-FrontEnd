@@ -17,6 +17,7 @@
   border-radius: 8px;
   overflow: hidden;
   grid-column: span 1;
+  align-self: start;
   @include on-mobile {
     grid-column: 1 / 2;
   }
