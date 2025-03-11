@@ -10,10 +10,17 @@
 
   &_withItems {
     display: block;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
   }
 
   &_items {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
   }
 
   &_titleBlock {
@@ -32,9 +39,11 @@
     
     flex: 0 0 auto;
     padding-inline-end: 0;
+    width: min-content;
 
     @include on-tablet {
       padding-inline-end: 20px;
+      width: auto;
     }
 
     @include on-laptop {

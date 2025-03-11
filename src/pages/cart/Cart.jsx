@@ -2,15 +2,27 @@ import styles from './Cart.module.scss';
 import ButtonLink from '../../components/ui/ButtonLink';
 import Container from '../../components/container/Container';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { initDataFromLocalStorage } from '../../store/slices/cartSlice';
+import SectionTitle from '../../components/sectionTitle/SectionTitle';
+import ItemInCart from '../../components/itemInCart/ItemInCart'
 
 export default function Cart() {
+  const [id, setId] = useState(23);
   const dispatch = useDispatch();
   const { cartData } = useSelector((state) => state.cart);
+
   useEffect(() => {
-    dispatch(initDataFromLocalStorage());
+    const fetchCartData = async () => {
+      await dispatch(initDataFromLocalStorage());
+    }
+    
+    fetchCartData();
   }, []);
+
+  useEffect(() => {
+    console.log(cartData)
+  }, [cartData])
   return (
     <section className={styles.cart}>
       <Container>
@@ -25,7 +37,7 @@ export default function Cart() {
             className={`${styles.cart_button__outlined} ${styles.cart_button__outlined_inTitle}`}
           />
         </div>
-        
+
         {cartData.length === 0 && (
           <div className={styles.cart_empty}>
             <p className={styles.cart_emptyInfo}>
@@ -38,12 +50,15 @@ export default function Cart() {
             />
           </div>
         )}
-
-        <div className={styles.cart_withItems}>
-          <div className={styles.cart_items}>
-            <ItemInCart product={id} />
+        {cartData.length > 0 && (
+          <div className={styles.cart_withItems}>
+            <div className={styles.cart_items}>
+              {cartData.map((item) => (
+                <ItemInCart key={item.id || index} product={item.id} />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         <ButtonLink
           to="/products"
