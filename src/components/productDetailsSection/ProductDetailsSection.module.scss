@@ -6,6 +6,8 @@
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   gap: 20px;
+  height: fit-content;
+  transition-duration: 300ms;
   @include on-tablet {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
@@ -17,6 +19,7 @@
   border-radius: 8px;
   overflow: hidden;
   grid-column: span 1;
+  align-self: start;
   @include on-mobile {
     grid-column: 1 / 2;
   }
@@ -301,6 +304,7 @@
   flex-direction: column;
   gap: 12px;
   grid-column: span 1;
+
   @include on-mobile {
     grid-column: 1 / 3;
   }
@@ -370,7 +374,6 @@ body.dark {
   background-color: transparent;
   cursor: pointer;
   transition-duration: 300ms;
-
   justify-content: flex-end;
   & svg {
     stroke-width: 1.1;
