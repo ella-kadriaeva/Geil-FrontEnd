@@ -1,0 +1,48 @@
+@use "../../assets/styles/mixin" as *;
+@use "../../assets/styles/colors" as *;
+
+.discountFormWrapper {
+  max-width: 1440px;
+  width: 100%;
+}
+
+.discountForm {
+  max-width: 1360px;
+  width: 100%;
+  border-radius: 10px;
+  background: linear-gradient(80.46deg, #87933d -0.68%, #55610b 66.66%);
+}
+
+.discountFormText {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 70.4px;
+  text-align: center;
+  color: #ffffff;
+  padding: 32px 32px 24px 32px;
+  @media screen and (max-width: 480px) {
+    font-size: 48px;
+    line-height: 53px;
+  }
+}
+
+.discountFormBackImg {
+  height: 360px;
+  width: 100%;
+  background-position: bottom;
+  background-size: cover;
+  @media screen and (max-width: 480px) {
+    order: 2;
+  }
+
+}
+
+.discountFormInfoWrapper {
+  display: flex;
+
+  @media screen and (max-width: 480px) {
+    flex-wrap: wrap;
+    order: 1;
+  }
+}
+

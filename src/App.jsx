@@ -9,8 +9,10 @@ import Sales from './pages/sales/Sales';
 import Cart from './pages/cart/Cart';
 import NotFound from './pages/notFound/NotFound';
 import './App.scss';
-// import Discount from "./components/DiscountForm/Discount.jsx";
-import Likes from "./pages/likes/Likes";
+
+import Cart from './pages/cart/Cart';
+import Likes from './pages/likes/Likes';
+import ProductDetails from './pages/productDetails/ProductDetails';
 
 function App() {
   return (
@@ -21,7 +23,7 @@ function App() {
         <Route path="categories" element={<Categories />} />
         <Route path="/categories/:id" element={<CategoryProducts />} />
         <Route path="/products" element={<Products />} />
-        {/* <Route path="products/:productId" element={<ProductDetails />} /> */}
+        <Route path="/products/:productId" element={<ProductDetails />} />
         <Route path="/sale" element={<Sales />} />
         <Route path="cart" element={<Cart />} />
         <Route path="likes" element={<Likes />} />

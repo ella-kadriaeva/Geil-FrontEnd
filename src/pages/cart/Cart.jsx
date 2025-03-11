@@ -1,13 +1,16 @@
-import styles from "./Cart.module.scss"
-import ButtonLink from "../../components/ui/ButtonLink";
-import Container from "../../components/container/Container";
-import ItemInCart from "../../components/itemInCart/ItemInCart";
-import SectionTitle from "../../components/sectionTitle/sectionTitle";
+import styles from './Cart.module.scss';
+import ButtonLink from '../../components/ui/ButtonLink';
+import Container from '../../components/container/Container';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { initDataFromLocalStorage } from '../../store/slices/cartSlice';
 
 export default function Cart() {
-  const id = 17;
-  // const productsFromLocalStorage = localStorage.getItem("")
-
+  const dispatch = useDispatch();
+  const { cartData } = useSelector((state) => state.cart);
+  useEffect(() => {
+    dispatch(initDataFromLocalStorage());
+  }, []);
   return (
     <section className={styles.cart}>
       <Container>
@@ -22,17 +25,19 @@ export default function Cart() {
             className={`${styles.cart_button__outlined} ${styles.cart_button__outlined_inTitle}`}
           />
         </div>
-
-        <div className={styles.cart_empty}>
-          <p className={styles.cart_emptyInfo}>
-            Looks like you have no items in your basket currently.
-          </p>
-          <ButtonLink
-            to="/products"
-            text="Continue Shopping"
-            className={styles.cart_button}
-          />
-        </div>
+        
+        {cartData.length === 0 && (
+          <div className={styles.cart_empty}>
+            <p className={styles.cart_emptyInfo}>
+              Looks like you have no items in your basket currently.
+            </p>
+            <ButtonLink
+              to="/products"
+              text="Continue Shopping"
+              className={styles.cart_button}
+            />
+          </div>
+        )}
 
         <div className={styles.cart_withItems}>
           <div className={styles.cart_items}>

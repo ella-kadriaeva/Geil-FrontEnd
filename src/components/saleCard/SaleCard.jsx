@@ -1,30 +1,45 @@
 import React from 'react';
 import styles from './SaleCard.module.scss';
-import IconsBlockHeader from '../iconsBlockHeader/IconsBlockHeader';
+import { useTheme } from '../../context/ThemeContext';
 
 const BASE_URL = 'http://localhost:3333';
 
-const SaleCard = ({ title, image, percent, price }) => {
-  const discontPrice = Number(((price * percent) / 100).toFixed(2));
-  const actualPrice = percent > 0 ? discontPrice : Number(price.toFixed(2));
+const SaleCard = ({
+  title,
+  image,
+  discont_price,
+  price,
+  discountPercentage,
+}) => {
+  const { isDarkTheme } = useTheme();
+  const cardBackground = isDarkTheme
+    ? styles.productCard_text_dark
+    : styles.productCard_text_light;
+
+  // Если скидка есть, то показываем цену со скидкой, иначе обычную цену
+  const actualPrice = discountPercentage > 0 ? discont_price : price;
 
   return (
     <div className={styles.productCard}>
-      <IconsBlockHeader className={styles.icons} />
       <div className={styles.productCard_image}>
-        <img src={`${BASE_URL}${image}`} alt={`Product ${title}`} />
+        <img
+          className={styles.image}
+          src={`${BASE_URL}${image}`}
+          alt={`Product ${title}`}
+        />
       </div>
-
-      {percent && (
+      {discountPercentage > 0 && (
         <div className={styles.productCard_discount}>
-          -{Math.round(percent)}%
+          -{Math.round(discountPercentage)}%
         </div>
       )}
-      <div className={styles.productCard_text}>
+      <div className={`${styles.productCard_text} ${cardBackground}`}>
         <h3>{title}</h3>
         <div className={styles.productCard_text_priceBlock}>
           <p className={styles.productCard_text_actualPrice}>${actualPrice}</p>
-          {percent && <p className={styles.productCard_text_price}>${price}</p>}
+          {discountPercentage > 0 && (
+            <p className={styles.productCard_text_price}>${price}</p>
+          )}
         </div>
       </div>
     </div>

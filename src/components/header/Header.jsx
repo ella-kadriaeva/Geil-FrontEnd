@@ -3,14 +3,15 @@ import { Menu } from 'lucide-react';
 import Container from '../container/Container';
 import NavMenu from '../navMenu/NavMenu';
 import ButtonLink from '../ui/ButtonLink';
-import IconsBlockHeader from '../iconsBlockHeader/IconsBlockHeader';
+import { Link } from 'react-router';
 import LogoThemeBlock from '../logoThemeBlock/LogoThemeBlock';
 import styles from './Header.module.scss';
 import { useModal } from '../../context/ModalContext';
+import { Heart, ShoppingBag } from 'lucide-react';
 export default function Header() {
   const { isMobile } = useModal();
   return (
-    <header>
+    <header className={styles.header}>
       <Container>
         <div className={styles.headerWrapper}>
           <LogoThemeBlock />
@@ -20,14 +21,19 @@ export default function Header() {
                 to="/categories" //НУЖНО ВЫЯСНИТЬ КУДА ПЕРЕБРАСЫВАЕТ
                 text="1 day discount"
                 className={styles.discountBtn}
-                type="link"
+                type="button"
               />
               <NavMenu />
             </div>
           )}
 
           <div className={styles.icons}>
-            <IconsBlockHeader />
+            <Link to="/likes">
+              <Heart className={styles.svgLink} />
+            </Link>
+            <Link to="/cart">
+              <ShoppingBag className={styles.svgLink} />
+            </Link>
             {isMobile && <Menu className={styles.svgBtn} />}
           </div>
         </div>
