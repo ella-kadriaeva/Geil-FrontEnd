@@ -8,8 +8,11 @@ import LogoThemeBlock from '../logoThemeBlock/LogoThemeBlock';
 import styles from './Header.module.scss';
 import { useModal } from '../../context/ModalContext';
 import { Heart, ShoppingBag } from 'lucide-react';
+import { useSelector } from 'react-redux';
 export default function Header() {
   const { isMobile } = useModal();
+  const likes = useSelector((state) => state.like.likesData);
+
   return (
     <header className={styles.header}>
       <Container>
@@ -30,6 +33,8 @@ export default function Header() {
           <div className={styles.icons}>
             <Link to="/likes">
               <Heart className={styles.svgLink} />
+              {likes.length > 0 ? <span className={styles.likesCounter}>{likes.length}</span> : null} 
+              
             </Link>
             <Link to="/cart">
               <ShoppingBag className={styles.svgLink} />
