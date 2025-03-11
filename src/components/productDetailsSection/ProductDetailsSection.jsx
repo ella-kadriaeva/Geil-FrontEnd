@@ -11,6 +11,7 @@ const ProductDetailsSection = ({
   price,
   discont_price,
   title,
+  loading,
 }) => {
   const count = 1;
   const [isExpanded, setIsExpanded] = useState(false);
@@ -73,7 +74,9 @@ const ProductDetailsSection = ({
         <div className={styles.productDescriptionWrapper_laptop}>
           <h3 className={styles.descriptionTitle}>Description</h3>
           <p className={styles.descriptionText}>
-            {isExpanded ? description : `${description.slice(0, 200)}...`}
+            {!loading && isExpanded
+              ? description
+              : `${description.slice(0, 200)}...`}
           </p>
           <span className={styles.moreBtn} onClick={toggleDescription}>
             {isExpanded ? 'hide' : 'Read more'}
@@ -84,7 +87,9 @@ const ProductDetailsSection = ({
       <div className={styles.productDescriptionWrapper}>
         <h3 className={styles.descriptionTitle}>Description</h3>
         <p className={styles.descriptionText}>
-          {isExpanded ? description : `${description.slice(0, 200)}...`}
+          {!loading && isExpanded
+            ? description
+            : `${description.slice(0, 200)}...`}
         </p>
         <span className={styles.moreBtn} onClick={toggleDescription}>
           {isExpanded ? 'hide' : 'Read more'}
