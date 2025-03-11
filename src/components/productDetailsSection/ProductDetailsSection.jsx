@@ -35,7 +35,7 @@ const ProductDetailsSection = ({
       <div className={styles.productInfoWrapper}>
         <div className={styles.titleWrapper_tablet}>
           <h2 className={styles.productTitle}>{title}</h2>
-          <button className={styles.heartBtn}>
+          <button className={`${styles.heartBtn} product`}>
             <Heart />
           </button>
         </div>
@@ -95,4 +95,3 @@ const ProductDetailsSection = ({
 };
 
 export default ProductDetailsSection;
-
