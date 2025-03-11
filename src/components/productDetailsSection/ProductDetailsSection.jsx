@@ -17,17 +17,14 @@ const ProductDetailsSection = ({
   const dispatch = useDispatch();
   const product = useSelector((state) => state.details.details[0]);
   const { value } = product;
-  const percent = discont_percent;
-  // Убрали Math.round чтобы сохранить десятичные знаки
-  const finalPrice = price - (price * percent) / 100;
-  const count = 1;
+
   const [isExpanded, setIsExpanded] = useState(false);
   // Функция для переключения состояния
   const toggleDescription = () => {
     setIsExpanded((prevState) => !prevState);
   };
   const discountPercentage = Math.round(100 - (discont_price * 100) / price);
-
+  const actualPrice = discont_price > 0 ? discont_price : price;
   return (
     <div className={styles.productContainer}>
       <div className={styles.titleWrapper_mobile}>
@@ -50,12 +47,12 @@ const ProductDetailsSection = ({
         <div className={styles.flexWrapper}>
           <p className={styles.productPrice}>
             &#36;
-            {discont_price}
+            {actualPrice}
           </p>
-          {discountPercentage > 0 && (
+          {discont_price > 0 && (
             <p className={styles.productDiscountPrice}>&#36;{price}</p>
           )}
-          {discountPercentage > 0 && (
+          {discont_price > 0 && (
             <div className={styles.discountChip}>
               &#8722;{discountPercentage}&#37;
             </div>
