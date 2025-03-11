@@ -1,5 +1,5 @@
-@use "../../assets/styles/colors" as *;
-@use "../../assets/styles/mixin" as *;
+@use '../../assets/styles/colors' as *;
+@use '../../assets/styles/mixin' as *;
 
 .cart {
   padding-block: 40px;
@@ -107,11 +107,68 @@
     transition-duration: 300ms;
     border-radius: 6px;
     border: 1px solid $green;
-    
 
     &:hover {
       background-color: $light_green;
       cursor: pointer;
+    }
+  }
+
+  &_orderDetails {
+    width: 100%;
+    max-width: 548px;
+    // max-height: 610px;
+    padding: 32px;
+    border-radius: 10px;
+    background-color: #f2f6d3;
+    margin-left: 20px;
+    h3 {
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 44px;
+      color: #424436;
+      margin-bottom: 12px;
+      @media screen and (max-width: 768px) {
+        font-size: 32px;
+        line-height: 35px;
+      }
+
+      @media screen and (max-width: 500px) {
+        font-size: 28px;
+        line-height: 31px;
+      }
+    }
+    @media screen and (max-width: 1200px) {
+      padding: 32px 20px;
+    }
+    @media screen and (max-width: 900px) {
+      max-width: none;
+      margin-left: 0;
+    }
+  }
+
+  &_orderPreis {
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 52px;
+    color: #8b8b8b;
+
+    p {
+      font-size: 40px;
+      line-height: 41px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    p {
+      font-size: 32px;
+      line-height: 41px;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    p {
+      font-size: 27px;
+      line-height: 36px;
     }
   }
 }
