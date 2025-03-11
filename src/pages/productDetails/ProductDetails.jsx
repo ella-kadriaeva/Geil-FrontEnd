@@ -17,13 +17,13 @@ const ProductDetails = () => {
         {loading && <div>Loading...</div>}
         {details?.length > 0 && product && (
           <ProductDetailsSection
+            loading={loading}
             categoryId={product.categoryId}
             description={product.description}
             image={product.image}
             price={product.price}
             discont_price={product.discont_price}
             title={product.title}
-           
           />
         )}
       </Container>
