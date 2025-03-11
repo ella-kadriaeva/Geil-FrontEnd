@@ -9,7 +9,6 @@ const ProductDetails = () => {
   const { details, error, loading } = useFetchDetails(productId);
   const product = details[0];
 
-  console.log('Raw product data:', product);
 
   return (
     <section>
@@ -18,11 +17,12 @@ const ProductDetails = () => {
         {loading && <div>Loading...</div>}
         {details?.length > 0 && product && (
           <ProductDetailsSection
+            loading={loading}
             categoryId={product.categoryId}
             description={product.description}
             image={product.image}
             price={product.price}
-            discont_percent={product.discont_price}
+            discont_price={product.discont_price}
             title={product.title}
           />
         )}

@@ -1,0 +1,11 @@
+.page {
+  body {
+    &.dark {
+      .product {
+        svg {
+          stroke: #ffffff;
+        }
+      }
+    }
+  }
+}

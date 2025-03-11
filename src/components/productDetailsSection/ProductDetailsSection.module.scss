@@ -1,250 +1,214 @@
+@use '../../assets/styles/colors' as *;
+@use '../../assets/styles/_mixin' as *;
 
-@use "../../assets/styles/colors" as *;
-@use "../../assets/styles/_mixin" as *;
-
-.productCart {
-    font-family: Montserrat;
-    display: flex;
-    flex-direction: column;
-    background-color: $bg-light;
-    border-radius: 12px;
-    padding: 16px;
-    gap: 24px;
-    height: 100%;
-
-    @include on-tablet {
-        flex-direction: row;
-        padding: 24px;
-        gap: 32px;
-    }
-
-    @include on-laptop {
-        padding: 32px;
-        gap: 48px;
-    }
+.productContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 20px;
+  height: fit-content;
+  transition-duration: 300ms;
+  @include on-tablet {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
 }
 
 .productImg {
-    width: 320px;
-    aspect-ratio: 4/3;
-    object-fit: cover;
-    @include borderFilter;
-
-
-    @include on-mobile {
-        width: 210px;
-    }
-
-    @include on-tablet {
-        width: 354px;
-    }
-
-    @include on-laptop {
-        width: 470px;
-    }
-
-    @include on-design {
-        width: 780px;
-    }
+  @include borderFilter;
+  border-radius: 8px;
+  overflow: hidden;
+  grid-column: span 1;
+  align-self: start;
+  @include on-mobile {
+    grid-column: 1 / 2;
+  }
+}
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .productInfoWrapper {
-    width: 100%;
-    max-width: 548px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  gap: 12px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  grid-column: span 1;
 
-    @include on-tablet {
-        gap: 28px;
-    }
-
-    @include on-laptop {
-        gap: 32px;
-    }
+  @include on-mobile {
+    align-items: flex-start;
+    grid-column: 2;
+    gap: 20px;
+  }
 }
 
-.productTitleWrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+.titleWrapper_mobile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  grid-column: span 1;
 
+  @include on-mobile {
+    grid-column: 1 / 3;
+  }
+  @include on-tablet {
+    display: none;
+  }
+}
+.titleWrapper_tablet {
+  display: none;
+  @include on-tablet {
+    display: flex;
+  }
+}
 .productTitle {
-    font-weight: 700;
-    font-size: 28px;
-    line-height: 1.1;
-    letter-spacing: 3%;
-
-    @include on-tablet {
-        font-size: 32px;
-    }
-
-    @include on-laptop {
-        font-size: 40px;
-    }   
-    @include on-design {
-        font-size: 40px;
-    }
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.1;
+  letter-spacing: 3%;
+  white-space: normal;
+  @include on-tablet {
+    font-size: 32px;
+  }
+  @include on-laptop {
+    font-size: 40px;
+  }
 }
 
 .flexWrapper {
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-    margin-top: 16px;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-top: 16px;
 }
 
 .productPrice {
-    font-family: Montserrat;
-    font-size: 32px;
-    font-weight: 600;
-    color: $txt-black;
+  font-family: Montserrat;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.1;
+
+  @include on-tablet {
+    font-size: 36px;
+  }
+
+  @include on-laptop {
+    font-size: 40px;
+    line-height: 1.2;
+  }
+  @include on-design {
+    font-size: 64px;
     line-height: 1.1;
-
-    @include on-tablet {
-        font-size: 36px;
-    }
-
-    @include on-laptop {
-        font-size: 40px;
-        line-height: 1.2;
-    }
-    @include on-design {
-        font-size: 64px;
-        line-height: 1.1;
-    }
+  }
 }
 
 .productDiscountPrice {
-    font-family: Montserrat;
-    font-size: 24px;
-    color: $txt-grey;
-    text-decoration: line-through;
-    line-height: 1.2;
+  font-family: Montserrat;
+  font-size: 24px;
+  color: $txt-grey;
+  text-decoration: line-through;
+  line-height: 1.2;
 
-    @include on-tablet {
-        font-size: 28px;
-    }
+  @include on-tablet {
+    font-size: 28px;
+  }
 
-    @include on-laptop {
-        font-size: 32px;
-    }
+  @include on-laptop {
+    font-size: 32px;
+  }
 
-    @include on-design {
-        font-size: 40px;
-        line-height: 1.3;
-        font-weight: medium;
-    }
+  @include on-design {
+    font-size: 40px;
+    line-height: 1.3;
+  }
 }
 
 .discountChip {
-    display: flex;
-    align-self: flex-start;
-    align-items: center;
-    justify-content: center;
-    padding: 4px 8px;
-    background-color: $sale;
-    color: $txt-white;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 500;
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  background-color: $sale;
+  color: $txt-white;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
 
-    @include on-tablet {
-        font-size: 16px;
-        padding: 6px 10px;
-    }
+  @include on-tablet {
+    font-size: 16px;
+    padding: 6px 10px;
+  }
 
-    @include on-design {
-        font-size: 20px;
-        font-weight: semi-bold;
-        // padding: 8px 12px;
-    }
+  @include on-design {
+    font-size: 20px;
+  }
 }
 
 .actionsWrapper {
+  width: 100%;
+  @include on-laptop {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 20px;
-
-    @include on-tablet {
-        flex-direction: row;
-        align-items: center;
-        gap: 16px;
-        margin-top: 24px;
-    }
+    align-items: normal;
+    gap: 16px;
+    margin-top: 24px;
+  }
 }
 
 .quantityControl {
-    display: flex;
-    align-items: center;
-    border-radius: 4px;
-    overflow: hidden;
-    background: $bg-light;
-    width: 100%;
-    @include borderFilter;
-    width: 164px;
-    
+  @include borderFilter;
+  width: 167px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+  overflow: hidden;
+  background: $txt-white;
+  margin-bottom: 20px;
 
-    @include on-tablet {
-        width: 200px;
-    }
-
-    @include on-laptop {
-        width: 175px;
-    }
-
-    @include on-design {
-        width: 200px;
-    }
+  @include borderFilter;
+  @include on-tablet {
+    min-width: 200px;
+  }
 }
 
 .quantityBtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    border: none;
-    background: $bg-light;
-    color: $txt-grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: $txt-white;
+  color: $txt-grey;
+  font-size: 20px;
+  cursor: pointer;
+  @include borderFilter;
+  transition: all 0.2s ease;
+
+  @include on-mobile {
+    width: 47px;
+    height: 47px;
     font-size: 20px;
-    cursor: pointer;
-    @include borderFilter;
-    transition: all 0.2s ease;
-
-    @include on-mobile {
-        width: 47px;
-        height: 47px;
-        font-size: 20px;
-    }
-
-    @include on-tablet {
-        width: 58px;
-        height: 58px;
-        font-size: 22px;
-    }
-
-    @include on-laptop {
-        width: 58px;
-        height: 58px;
-        font-size: 24px;
-    }
-
-    @include on-design {
-      width: 58px;
-      height: 58px;
-      font-size: 24px;
   }
 
-//   &:hover {
-//       background: darken($bg-light, 5%);
-//   }
+  @include on-tablet {
+    width: 58px;
+    height: 58px;
+    font-size: 22px;
+  }
 
-//   &:active {
-//       background: darken($bg-light, 10%);
-//   }
+  @include on-laptop {
+    font-size: 24px;
+  }
+
+  &:hover {
+    background: #f2f6d3;
+    color: $grey;
+  }
 }
 
 .quantityValue {
@@ -253,39 +217,40 @@
   align-items: center;
   flex: 1;
   height: 40px;
-  background: $bg-light;
+  background: $txt-white;
   font-size: 16px;
   color: $txt-grey;
   user-select: none;
   min-width: 40px;
 
   @include on-mobile {
-      width: 70px;
-      height: 47px;
-      font-size: 16px;
+    width: 70px;
+    height: 47px;
+    font-size: 16px;
   }
   @include on-tablet {
-      flex: none;
-      width: 84px;
-      height: 58px;
-      font-size: 24px;
+    flex: none;
+    width: 84px;
+    height: 58px;
+    font-size: 24px;
   }
 
   @include on-laptop {
-      width: 59px;
-      height: 58px;
-      font-size: 24px;
+    width: 59px;
+    height: 58px;
+    font-size: 24px;
   }
 
   @include on-design {
-      width: 84px;
-      height: 58px;
-      font-size: 24px;
+    width: 84px;
+    height: 58px;
+    font-size: 24px;
   }
 }
 
 .addToCartBtn {
   width: 100%;
+  margin: 0 auto;
   height: 40px;
   border: none;
   border-radius: 4px;
@@ -296,75 +261,79 @@
   cursor: pointer;
   transition: all 0.2s ease;
   padding: 0 32px;
-
+  border: 1px solid $green;
+  background-color: $green;
+  color: $txt-white;
+  &:hover {
+    color: $green;
+    background-color: $light_green;
+  }
   @include on-tablet {
-      width: auto;
-      flex: 1;
-      height: 44px;
-      font-size: 17px;
-      padding: 0 40px;
+    height: 44px;
+    font-size: 17px;
+    padding: 0 40px;
   }
 
   @include on-mobile {
-      height: 58px;
-      font-size: 18px;
-      padding: 0 48px;
+    height: 58px;
+    font-size: 18px;
+    padding: 0 48px;
   }
 
   @include on-tablet {
-      height: 58px;
-      font-size: 18px;
-      padding: 0 48px;
+    height: 58px;
+    font-size: 18px;
+    padding: 0 48px;
   }
 
   @include on-laptop {
-      height: 58px;
-      font-size: 18px;
-      padding: 0 48px;
+    height: 58px;
+    font-size: 18px;
+    padding: 0 48px;
   }
 
   @include on-design {
-      height: 58px;
-      font-size: 24px;
-      padding: 0 48px;
+    height: 58px;
+    font-size: 24px;
+    padding: 0 48px;
   }
-
-  &:hover {
-      background: $light-green;
-  }
-
-//   &:active {
-//       background: darken($light-green, 5%);
-//       transform: translateY(1px);
-//   }
 }
 
 .productDescriptionWrapper {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  grid-column: span 1;
 
+  @include on-mobile {
+    grid-column: 1 / 3;
+  }
   @include on-tablet {
-      gap: 14px;
+    gap: 14px;
   }
 
   @include on-laptop {
-      gap: 16px;
+    display: none;
   }
 }
-
+.productDescriptionWrapper_laptop {
+  display: none;
+  @include on-laptop {
+    display: block;
+  }
+}
 .descriptionTitle {
   font-weight: 600;
   font-size: 18px;
   line-height: 1.3;
 
   @include on-tablet {
-      font-size: 19px;
+    font-size: 19px;
   }
 
   @include on-laptop {
-      font-size: 20px;
-      line-height: 26px;
+    font-size: 20px;
+    line-height: 26px;
   }
 }
 
@@ -374,15 +343,18 @@
   line-height: 1.4;
 
   @include on-tablet {
-      font-size: 15px;
+    font-size: 15px;
   }
 
   @include on-laptop {
-      font-size: 16px;
-      line-height: 20.8px;
+    font-size: 16px;
+    line-height: 20.8px;
   }
 }
 
+body.dark {
+  --svg-stroke: var(--link-color-light);
+}
 .moreBtn {
   text-decoration: underline;
   font-size: 14px;
@@ -390,31 +362,30 @@
   transition-duration: 300ms;
 
   @include on-tablet {
-      font-size: 15px;
+    font-size: 15px;
   }
 
   @include on-laptop {
-      font-size: 16px;
+    font-size: 16px;
   }
 }
 
-.svgLink {
-  stroke-width: 1.1;
-  width: 40px;
-  height: 40px;
-  fill: white;
+.heartBtn {
+  background-color: transparent;
   cursor: pointer;
   transition-duration: 300ms;
+  justify-content: flex-end;
+  & svg {
+    stroke-width: 1.1;
+    width: 40px;
+    height: 40px;
+    &:hover {
+      stroke: $green;
+    }
 
-  @include on-tablet {
-      size: 48px;
-  }
-
-  @include on-laptop {
-      size: 48px;
-  }
-
-  @include on-design {
-      size: 48px;
+    @include on-tablet {
+      width: 48px;
+      height: 48px;
+    }
   }
 }

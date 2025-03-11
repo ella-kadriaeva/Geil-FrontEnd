@@ -10,18 +10,33 @@ import {
   removeAllProductbyIdFromCart,
   initDataFromLocalStorage,
 } from '../../store/slices/cartSlice';
+import { 
+  addToWishlist, 
+  removeLikeProductbyIdFromCart, 
+  initLikeDataFromLocalStorage
+} from '../../store/slices/likeSlice';
 
 export default function ProductsList({ data }) {
   const { isDarkTheme } = useTheme();
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cart.cartData);
+  const likeItems = useSelector((state) => state.like.likesData);
+  console.log(likeItems);
+  
   useEffect(() => {
     dispatch(initDataFromLocalStorage());
+    dispatch(initLikeDataFromLocalStorage());
   }, []);
+  
   const handleClickIcons = useCallback(
     (type, item) => {
       if (type === 'heart') {
-        console.log('item to likes'); // TODO: function if item in likes
+        let isItLiked = likeItems.some((likeItems) => likeItems.id === item.id); // TODO: check if item in likes
+        if (isItLiked) {
+          dispatch(removeLikeProductbyIdFromCart(item.id));
+        } else {
+          dispatch(addToWishlist(item));
+        }
       } else if (type === 'cart') {
         let isInCart = items.some((cartItem) => cartItem.id === item.id);
         if (isInCart) {
@@ -31,7 +46,7 @@ export default function ProductsList({ data }) {
         }
       }
     },
-    [items]
+    [items, likeItems]
   );
 
   return (
@@ -39,7 +54,7 @@ export default function ProductsList({ data }) {
       {data.length > 0 &&
         data.map((item) => {
           let isInCart = items.some((cartItem) => cartItem.id === item.id);
-          let isInLikes = false; // TODO: check if item in likes
+          let isInLikes = likeItems.some((likeItem) => likeItem.id === item.id);
           return (
             <div key={item.id} className={styles.wrapperLink}>
               <div
@@ -66,7 +81,8 @@ export default function ProductsList({ data }) {
                   price={item.price}
                   title={item.title}
                   image={item.image}
-                  percent={item.discont_price}
+                  discont_price={item.discont_price}
+                  discountPercentage={item.discountPercentage}
                 />
               </Link>
             </div>
