@@ -3,7 +3,8 @@ import { useState } from 'react';
 import styles from './ProductDetailsSection.module.scss';
 import ButtonLink from '../ui/ButtonLink';
 import { Heart } from 'lucide-react';
-
+import { increment, decrement } from '../../store/slices/detailsSlice';
+import { useDispatch, useSelector } from 'react-redux';
 const BASE_URL = 'http://localhost:3333';
 
 const formatPrice = (price) => {
@@ -19,6 +20,9 @@ const ProductDetailsSection = ({
   discont_percent,
   title,
 }) => {
+  const dispatch = useDispatch();
+  const product = useSelector((state) => state.details.details[0]);
+  const { value } = product;
   const percent = discont_percent;
   // Убрали Math.round чтобы сохранить десятичные знаки
   const finalPrice = price - (price * percent) / 100;
@@ -29,7 +33,6 @@ const ProductDetailsSection = ({
   const toggleDescription = () => {
     setIsExpanded((prevState) => !prevState);
   };
-
 
   return (
     <div className={styles.productCart}>
@@ -60,11 +63,19 @@ const ProductDetailsSection = ({
 
         <div className={styles.actionsWrapper}>
           <div className={styles.quantityControl}>
-            <button type="button" className={styles.quantityBtn}>
+            <button
+              type="button"
+              className={styles.quantityBtn}
+              onClick={() => dispatch(decrement())}
+            >
               &#8722;
             </button>
-            <div className={styles.quantityValue}>{count}</div>
-            <button type="button" className={styles.quantityBtn}>
+            <div className={styles.quantityValue}>{value}</div>
+            <button
+              type="button"
+              className={styles.quantityBtn}
+              onClick={() => dispatch(increment())}
+            >
               &#43;
             </button>
           </div>
@@ -76,7 +87,7 @@ const ProductDetailsSection = ({
           <h3 className={styles.descriptionTitle}>Description</h3>
           <p className={styles.descriptionText}>
             {' '}
-            {isExpanded ? description : `${description.slice(0, 200)}...`}
+            {/* {isExpanded ? description : `${description.slice(0, 200)}...`} */}
           </p>
           <span className={styles.moreBtn} onClick={toggleDescription}>
             {isExpanded ? 'hide' : 'Read more'}

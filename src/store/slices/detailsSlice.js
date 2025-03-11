@@ -8,6 +8,16 @@ export const detailsSlice = createSlice({
     loading: false,
     error: '',
   },
+  reducers: {
+    increment: (state) => {
+      state.details[0].value += 1;
+    },
+    decrement: (state) => {
+      if (state.details[0].value > 0) {
+        state.details[0].value -= 1;
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchProductById.pending, (state) => {
@@ -15,8 +25,10 @@ export const detailsSlice = createSlice({
         state.error = '';
       })
       .addCase(fetchProductById.fulfilled, (state, action) => {
+        console.log(action.payload);
         state.loading = false;
         state.details = action.payload;
+        state.details[0].value = 0; // Reset the counter to 0 upon loading a new product
       })
       .addCase(fetchProductById.rejected, (state, action) => {
         state.loading = false;
@@ -24,5 +36,5 @@ export const detailsSlice = createSlice({
       });
   },
 });
-
+export const { increment, decrement } = detailsSlice.actions;
 export default detailsSlice.reducer;
