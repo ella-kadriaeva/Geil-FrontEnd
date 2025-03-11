@@ -2,10 +2,11 @@ import styles from "./Cart.module.scss"
 import ButtonLink from "../../components/ui/ButtonLink";
 import Container from "../../components/container/Container";
 import ItemInCart from "../../components/itemInCart/ItemInCart";
-import SectionTitle from "../../components/sectionTitle/SectionTitle";
+import SectionTitle from "../../components/sectionTitle/sectionTitle";
 
 export default function Cart() {
   const id = 17;
+  // const productsFromLocalStorage = localStorage.getItem("")
 
   return (
     <section className={styles.cart}>
@@ -22,7 +23,7 @@ export default function Cart() {
           />
         </div>
 
-        {/* <div className={styles.cart_empty}>
+        <div className={styles.cart_empty}>
           <p className={styles.cart_emptyInfo}>
             Looks like you have no items in your basket currently.
           </p>
@@ -31,7 +32,7 @@ export default function Cart() {
             text="Continue Shopping"
             className={styles.cart_button}
           />
-        </div> */}
+        </div>
 
         <div className={styles.cart_withItems}>
           <div className={styles.cart_items}>
