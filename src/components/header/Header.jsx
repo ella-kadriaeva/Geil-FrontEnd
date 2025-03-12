@@ -11,12 +11,16 @@ import { Heart, ShoppingBag } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { initLikeDataFromLocalStorage } from '../../store/slices/likeSlice';
 export default function Header() {
-  const { isMobile } = useModal();
+  const { isMobile, setModalOpen } = useModal();
   const likes = useSelector((state) => state.like.likesData);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(initLikeDataFromLocalStorage());
   }, []);
+  const handleModal = () => {
+    setModalOpen((prevState) => !prevState);
+  };
+
   return (
     <header className={styles.header}>
       <Container>
@@ -44,7 +48,14 @@ export default function Header() {
             <Link to="/cart">
               <ShoppingBag className={styles.svgLink} />
             </Link>
-            {isMobile && <Menu className={styles.svgBtn} />}
+            {isMobile && (
+              <button
+                className={`button ${styles.burgerBtn}`}
+                onClick={handleModal}
+              >
+                <Menu className={styles.svgBtn} />
+              </button>
+            )}
           </div>
         </div>
       </Container>
