@@ -10,10 +10,12 @@ import { useModal } from '../../context/ModalContext';
 import { Heart, ShoppingBag } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { initLikeDataFromLocalStorage } from '../../store/slices/likeSlice';
+
 export default function Header() {
   const { isMobile, setModalOpen } = useModal();
   const likes = useSelector((state) => state.like.likesData);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(initLikeDataFromLocalStorage());
   }, []);

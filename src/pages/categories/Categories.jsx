@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategories } from '../../utils/fetchClient';
 import Container from '../../components/container/Container';
 import SectionTitle from '../../components/sectionTitle/SectionTitle';
+import { CategoryCard } from '../../components/categoryCard/CategoryCard';
 
 export default function Categories() {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ export default function Categories() {
   );
   useEffect(() => {
     dispatch(fetchCategories());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Container>
@@ -26,6 +27,7 @@ export default function Categories() {
           </Link>
         ))}
       {error && <div>{error}</div>}
+
     </Container>
   );
 }

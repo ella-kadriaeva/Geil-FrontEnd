@@ -4,6 +4,7 @@ import MainSection from '../../components/mainSection/MainSection';
 import SaleSection from '../../components/saleSection/SaleSection';
 import Discount from '../../components/Discount/Discount.jsx';
 import MainSectionTitle from '../../components/mainSectionTitle/MainSectionTitle.jsx';
+import { CategoryCard } from '../../components/categoryCard/CategoryCard.jsx';
 
 export default function Home() {
   return (
