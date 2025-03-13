@@ -15,6 +15,19 @@ const ProductDetailsSection = ({
 }) => {
   const count = 1;
   const [isExpanded, setIsExpanded] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(`${BASE_URL}${image}`);
+  const [isOpen, setIsOpen] = useState(false);
+  // const imgLink = `${BASE_URL}${image}`;
+  const openPhotoModal = () => {
+    setSelectedImage(`${BASE_URL}${image}`);
+    console.log(selectedImage);
+    setIsOpen(true); // Открываем модальное окно
+    console.log(isOpen);
+  };
+
+  const closePhotoModal = () => {
+    setIsOpen(false); // Закрываем модальное окно
+  };
   // Функция для переключения состояния
   const toggleDescription = () => {
     setIsExpanded((prevState) => !prevState);
@@ -29,8 +42,18 @@ const ProductDetailsSection = ({
           <Heart />
         </button>
       </div>
-      <div className={styles.productImg}>
-        <img className={styles.img} src={`${BASE_URL}${image}`} alt={title} />
+      <div
+        className={styles.productImg}
+        // onClick={() => {
+        //   console.log('click');
+        // }}
+      >
+        <img
+          className={styles.img}
+          src={selectedImage}
+          alt={title}
+          onClick={openPhotoModal}
+        />
       </div>
 
       <div className={styles.productInfoWrapper}>
@@ -76,7 +99,9 @@ const ProductDetailsSection = ({
           <p className={styles.descriptionText}>
             {!loading && isExpanded
               ? description
-              : `${description.slice(0, 200)}...`}
+              : typeof description === 'string'
+                ? `${description.slice(0, 200)}...`
+                : 'Описание недоступно'}
           </p>
           <span className={styles.moreBtn} onClick={toggleDescription}>
             {isExpanded ? 'hide' : 'Read more'}
@@ -89,12 +114,29 @@ const ProductDetailsSection = ({
         <p className={styles.descriptionText}>
           {!loading && isExpanded
             ? description
-            : `${description.slice(0, 200)}...`}
+            : typeof description === 'string'
+              ? `${description.slice(0, 200)}...`
+              : 'Описание недоступно'}
         </p>
         <span className={styles.moreBtn} onClick={toggleDescription}>
           {isExpanded ? 'hide' : 'Read more'}
         </span>
       </div>
+      {isOpen && (
+        <dialog className={styles.modalPhoto} onClick={closePhotoModal}>
+          <div
+            className={styles.modalPhotoBackdrop}
+            onClick={closePhotoModal}
+          ></div>
+          <div className={styles.modalPhotoContent}>
+            <img
+              src={selectedImage}
+              alt={styles.title}
+              className={styles.modalImage}
+            />
+          </div>
+        </dialog>
+      )}
     </div>
   );
 };
