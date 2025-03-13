@@ -1,0 +1,59 @@
+.page {
+  body {
+    overflow-x: hidden;
+    .modal {
+      overflow: hidden;
+      position: absolute;
+      z-index: 20;
+      color: #424436;
+      background-color: #fffff1;
+      height: 100vh;
+      width: 300px;
+      transition-duration: 500ms;
+      transform: translateX(100%);
+      opacity: 0;
+      top: 0;
+      right: -300px;
+      &.open {
+        right: 0px;
+        transform: translateX(0%);
+        opacity: 1;
+        width: 300px;
+        overflow: hidden;
+        visibility: visible;
+      }
+      &.close {
+        width: 300px;
+        right: -300px;
+        transform: translateX(100%);
+        transition-duration: 500ms;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    &.dark {
+      .button {
+        svg {
+          stroke: #ffffff;
+        }
+      }
+      .modal {
+        background-color: #424436;
+        color: #fffff1;
+        button {
+          color: #fffff1;
+        }
+        svg {
+          stroke: #ffffff;
+        }
+      }
+      .product {
+        svg {
+          stroke: #ffffff;
+        }
+      }
+    }
+  }
+}
