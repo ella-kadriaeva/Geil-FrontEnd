@@ -2,8 +2,8 @@ import { Instagram } from 'lucide-react';
 import styles from './Footer.module.scss';
 import Container from '../container/Container';
 import React from 'react';
-import SectionTitle from '../sectionTitle/sectionTitle';
-
+import SectionTitle from '../sectionTitle/SectionTitle';
+import Icon from '../ui/Icon';
 export default function Footer() {
   return (
     <footer className={styles.footer}>
@@ -23,7 +23,7 @@ export default function Footer() {
           </li>
           <li className={styles.footerListCard}>
             <p className={styles.cardTitle}>Socials</p>
-            <p className={styles.cardData}>
+            <div className={styles.cardData}>
               <a
                 className={styles.cardDataLink}
                 href="https://www.instagram.com/startainstitute"
@@ -38,16 +38,13 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img
-                  src="src/components/footer/icon/ic-whatsapp.svg"
-                  alt="whatsapp icon"
-                />
+                <Icon id="ic-whatsapp" w={43} h={43} />
               </a>
-            </p>
+            </div>
           </li>
           <li className={styles.footerListCard}>
             <p className={styles.cardTitle}>Address</p>
-            <p className={styles.cardData}>
+            <div className={styles.cardData}>
               <a
                 href="https://maps.google.com/?q=Linkstraße+2,+8+OG,+10785,+Berlin,+Deutschland"
                 className={styles.addressLink}
@@ -56,7 +53,7 @@ export default function Footer() {
               >
                 Linkstraße 2, 8 OG, 10 785, Berlin, Deutschland
               </a>
-            </p>
+            </div>
           </li>
           <li className={styles.footerListCard}>
             <p className={styles.cardTitle}>Working Hours</p>

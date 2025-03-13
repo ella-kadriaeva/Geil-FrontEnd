@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 const BASE_URL = 'http://localhost:3333';
-// const BASE_URL = "http://exam-server-5c4e.onrender.com";
 export const getAllCategories = async () => {
   try {
     const response = await fetch(`${BASE_URL}/categories/all`);
@@ -114,6 +113,19 @@ export const fetchProductsByCategoryId = createAsyncThunk(
   'product/fetchProductsByCategoryId',
   async (categoryId) => {
     const response = await fetch(`${BASE_URL}/categories/${categoryId}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch!' + response.statusText);
+    }
+
+    let data = await response.json();
+    return data;
+  }
+);
+
+export const fetchProductById = createAsyncThunk(
+  'product/fetchProductById',
+  async (id) => {
+    const response = await fetch(`${BASE_URL}/products/${id}`);
     if (!response.ok) {
       throw new Error('Failed to fetch!' + response.statusText);
     }

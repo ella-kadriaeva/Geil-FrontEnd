@@ -28,15 +28,17 @@ export const productSlice = createSlice({
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.selectedCategoryId = '';
         state.loading = false;
-        state.data = action.payload;
-        if (action.payload.type === 'sale') {
-          state.data = action.payload.map((item) => ({
+        state.data = action.payload.map((item) => {
+          let discountPercentage = 0;
+        
+          if (item.price > 0 && item.discont_price > 0) {
+            discountPercentage = 100 - (item.discont_price * 100) / item.price;
+          }
+          return {
             ...item,
-            discontPrice: parseFloat(
-              (item.price - item.price * (item.discont_price / 100)).toFixed(2)
-            ),
-          }));
-        }
+            discountPercentage: parseFloat(discountPercentage.toFixed(2)),
+          };
+        });
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.loading = false;

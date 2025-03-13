@@ -3,18 +3,18 @@ import useFetchCategoryId from '../../utils/useFetchCategoryId';
 import ProductsList from '../../components/productsList/ProductsList';
 import Filter from '../../components/filter/Filter';
 import Container from '../../components/container/Container';
-import SectionTitle from '../../components/sectionTitle/sectionTitle';
+import SectionTitle from '../../components/sectionTitle/SectionTitle';
 export default function CategoryProducts() {
   const { id } = useParams();
   const { category, data } = useFetchCategoryId(id);
 
   return (
-    <div>
+    <section>
       <Container>
         <SectionTitle>{category.title}</SectionTitle>
         <Filter />
         <ProductsList data={data} />
       </Container>
-    </div>
+    </section>
   );
 }

@@ -6,12 +6,18 @@ import Categories from './pages/categories/Categories';
 import CategoryProducts from './pages/categoryProducts/CategoryProducts';
 import Products from './pages/products/Products';
 import Sales from './pages/sales/Sales';
+
 import NotFound from './pages/notFound/NotFound';
 import './App.scss';
-import Discount from "./components/DiscountForm/Discount.jsx";
-import Cart from "./pages/cart/Cart";
-import Likes from "./pages/likes/Likes";
+
+import Cart from './pages/cart/Cart';
+import Likes from './pages/likes/Likes';
+
+import BurgerMenu from './components/burgerMenu/BurgerMenu';
+import { useModal } from './context/ModalContext';
+import ProductDetails from './pages/productDetails/ProductDetails';
 function App() {
+  const { isMobile } = useModal();
   return (
     <>
       <Header />
@@ -20,13 +26,14 @@ function App() {
         <Route path="categories" element={<Categories />} />
         <Route path="/categories/:id" element={<CategoryProducts />} />
         <Route path="/products" element={<Products />} />
-        {/* <Route path="products/:productId" element={<ProductDetails />} /> */}
+        <Route path="/products/:productId" element={<ProductDetails />} />
         <Route path="/sale" element={<Sales />} />
         <Route path="cart" element={<Cart />} />
         <Route path="likes" element={<Likes />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {/*<Discount />*/}
+      {isMobile && <BurgerMenu />}
       <Footer />
     </>
   );
