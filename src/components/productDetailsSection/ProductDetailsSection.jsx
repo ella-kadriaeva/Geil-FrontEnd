@@ -36,6 +36,7 @@ const ProductDetailsSection = ({
 
   return (
     <div className={styles.productContainer}>
+
       <div className={styles.titleWrapper_mobile}>
         <h2 className={styles.productTitle}>{title}</h2>
         <button className={styles.heartBtn}>
@@ -57,12 +58,14 @@ const ProductDetailsSection = ({
       </div>
 
       <div className={styles.productInfoWrapper}>
+        
         <div className={styles.titleWrapper_tablet}>
           <h2 className={styles.productTitle}>{title}</h2>
           <button className={`${styles.heartBtn} product`}>
             <Heart />
           </button>
         </div>
+
         <div className={styles.flexWrapper}>
           <p className={styles.productPrice}>
             &#36;

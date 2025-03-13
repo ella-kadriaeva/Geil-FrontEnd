@@ -6,7 +6,7 @@ import ProductsList from '../../components/productsList/ProductsList';
 import Filter from '../../components/filter/Filter';
 export default function Sale() {
   const { data, loading, error } = useFetchProducts('sale');
-  console.log(22, data);
+
   return (
     <Container>
       <SectionTitle>Sale Products</SectionTitle>
