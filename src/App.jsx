@@ -12,6 +12,8 @@ import './App.scss';
 
 import Cart from './pages/cart/Cart';
 import Likes from './pages/likes/Likes';
+import ProductDetails from './pages/productDetails/ProductDetails';
+
 
 import BurgerMenu from './components/burgerMenu/BurgerMenu';
 import { useModal } from './context/ModalContext';
