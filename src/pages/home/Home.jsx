@@ -17,8 +17,8 @@ export default function Home() {
           to="/categories "
           text="All categories"
         />
-      <Categories />
       </Container>
+      <Categories />
       <Discount />
       <SaleSection />
     </>
