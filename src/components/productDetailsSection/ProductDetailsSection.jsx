@@ -3,6 +3,7 @@ import { useState } from 'react';
 import styles from './ProductDetailsSection.module.scss';
 import ButtonLink from '../ui/ButtonLink';
 import { Heart } from 'lucide-react';
+import { useDialog } from '../../context/DialogContect';
 
 const BASE_URL = 'http://localhost:3333';
 const ProductDetailsSection = ({
@@ -16,18 +17,8 @@ const ProductDetailsSection = ({
   const count = 1;
   const [isExpanded, setIsExpanded] = useState(false);
   const [selectedImage, setSelectedImage] = useState(`${BASE_URL}${image}`);
-  const [isOpen, setIsOpen] = useState(false);
+  const { openDialog } = useDialog();
   // const imgLink = `${BASE_URL}${image}`;
-  const openPhotoModal = () => {
-    setSelectedImage(`${BASE_URL}${image}`);
-    console.log(selectedImage);
-    setIsOpen(true); // Открываем модальное окно
-    console.log(isOpen);
-  };
-
-  const closePhotoModal = () => {
-    setIsOpen(false); // Закрываем модальное окно
-  };
   // Функция для переключения состояния
   const toggleDescription = () => {
     setIsExpanded((prevState) => !prevState);
@@ -36,29 +27,27 @@ const ProductDetailsSection = ({
 
   return (
     <div className={styles.productContainer}>
-
       <div className={styles.titleWrapper_mobile}>
         <h2 className={styles.productTitle}>{title}</h2>
         <button className={styles.heartBtn}>
           <Heart />
         </button>
       </div>
-      <div
-        className={styles.productImg}
-        // onClick={() => {
-        //   console.log('click');
-        // }}
-      >
+      <div className={styles.productImg}>
         <img
           className={styles.img}
           src={selectedImage}
           alt={title}
-          onClick={openPhotoModal}
+          onClick={() =>
+            openDialog(
+              'type1',
+              <img className={styles.img} src={selectedImage} alt={title} />
+            )
+          }
         />
       </div>
 
       <div className={styles.productInfoWrapper}>
-        
         <div className={styles.titleWrapper_tablet}>
           <h2 className={styles.productTitle}>{title}</h2>
           <button className={`${styles.heartBtn} product`}>
@@ -125,21 +114,6 @@ const ProductDetailsSection = ({
           {isExpanded ? 'hide' : 'Read more'}
         </span>
       </div>
-      {isOpen && (
-        <dialog className={styles.modalPhoto} onClick={closePhotoModal}>
-          <div
-            className={styles.modalPhotoBackdrop}
-            onClick={closePhotoModal}
-          ></div>
-          <div className={styles.modalPhotoContent}>
-            <img
-              src={selectedImage}
-              alt={styles.title}
-              className={styles.modalImage}
-            />
-          </div>
-        </dialog>
-      )}
     </div>
   );
 };

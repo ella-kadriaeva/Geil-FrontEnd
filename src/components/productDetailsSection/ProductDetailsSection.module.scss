@@ -390,62 +390,70 @@ body.dark {
   }
 }
 // ______Стили диалога
-dialog {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 0;
-  background: transparent;
-  border: none;
-  max-width: 90%;
-  max-height: 90%;
-  z-index: 9999;
-  overflow: hidden;
-}
+// dialog {
+//   position: fixed;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   padding: 0;
+//   background-color: blue;
+//   border: none;
+//   width: 90%;
+//   height: 90%;
+// z-index: 9999;
+// overflow: hidden;
+// }
+// dialog::backdrop {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   background: rgba(211, 7, 7, 0.7);
+//   z-index: 9998;
+// }
+// .modalPhotoBackdrop {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   background: rgba(0, 0, 0, 0.7);
+//   z-index: -1;
+// }
 
-.modalPhotoBackdrop {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.7); /* Затемнение фона */
-  z-index: -1; /* Фон должен быть под модальным контентом */
-}
+// .modalPhotoContent {
+//   position: relative;
+//   padding: 20px;
+//   background: white;
+//   border-radius: 10px;
+//   max-width: 90%;
+//   max-height: 90%;
+//   overflow: hidden;
+// }
 
-.modalPhotoContent {
-  position: relative;
-  padding: 20px;
-  background: white;
-  border-radius: 10px;
-  max-width: 90%;
-  max-height: 90%;
-  overflow: hidden;
-}
+// .modalImage {
+//   width: 100%;
+//   height: auto;
+//   object-fit: contain;
+//   display: block;
+//   margin: 0 auto;
+// }
 
-.modalImage {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-}
+// .productImg {
+//   display: flex;
+//   justify-content: center;
+//   margin: 20px;
+// }
 
-.productImg {
-  display: flex;
-  justify-content: center;
-  margin: 20px;
-}
+// .img {
+//   width: 200px;
+//   height: 200px;
+//   object-fit: cover;
+//   cursor: pointer;
+//   transition: transform 0.3s ease;
+// }
 
-.img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.img:hover {
-  transform: scale(1.1); /* Увеличение миниатюры при наведении */
-}
+// .img:hover {
+//   transform: scale(1.1);
+// }
