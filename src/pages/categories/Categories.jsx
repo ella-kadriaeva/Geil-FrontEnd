@@ -4,7 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategories } from '../../utils/fetchClient';
 import Container from '../../components/container/Container';
 import SectionTitle from '../../components/sectionTitle/SectionTitle';
+import { BASE_URL } from '../../constants/constants';
+import styles from './Categories.module.scss';
 import { CategoryCard } from '../../components/categoryCard/CategoryCard';
+
 
 export default function Categories() {
   const dispatch = useDispatch();
@@ -17,17 +20,27 @@ export default function Categories() {
 
   return (
     <Container>
-      <SectionTitle />
       {loading && <div>Loading</div>}
-      {categories &&
-        categories.length > 0 &&
-        categories.map((item) => (
-          <Link to={`/categories/${item.id}`} key={item.id}>
-            {item.title}
-          </Link>
-        ))}
+      <div className={styles.categoriesItemWrapper}>
+        {categories &&
+          categories.length > 0 &&
+          categories.map((item) => (
+            <Link
+              to={`/categories/${item.id}`}
+              key={item.id}
+              className={styles.categoriesItem}
+            >
+              {/* {console.log(item.image)} */}
+              <img
+                className={styles.categoriesImage}
+                src={`${BASE_URL}${item.image}`}
+                alt={`Category ${item.title}`}
+              />
+              <h3 className={styles.categoriesTitle}>{item.title}</h3>
+            </Link>
+          ))}
+      </div>
       {error && <div>{error}</div>}
-
     </Container>
   );
 }

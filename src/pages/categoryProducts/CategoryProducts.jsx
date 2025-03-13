@@ -4,7 +4,10 @@ import ProductsList from '../../components/productsList/ProductsList';
 import Filter from '../../components/filter/Filter';
 import Container from '../../components/container/Container';
 import SectionTitle from '../../components/sectionTitle/SectionTitle';
+import { useTheme } from '../../context/ThemeContext';
 export default function CategoryProducts() {
+  
+  const { isDarkTheme } = useTheme();
   const { id } = useParams();
   const { category, data } = useFetchCategoryId(id);
 
