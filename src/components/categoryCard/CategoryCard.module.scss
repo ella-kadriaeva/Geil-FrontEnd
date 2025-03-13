@@ -1,0 +1,41 @@
+.categoriesItemWrapper {
+  max-width: 354px;
+  width: 100%;
+  max-height: 392px;
+  aspect-ratio: 354 / 392;
+  @media screen and (max-width: 768px) {
+    aspect-ratio: 354 / 292;
+  }
+  @media screen and (max-width: 580px) {
+    aspect-ratio: 210 / 289;
+  }
+
+  .categoriesImage {
+    max-width: 316px;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .categoriesTitle {
+    max-width: 316px;
+    color: #424436;
+    font-size: 50px;
+    line-height: 26px;
+    text-align: center;
+    font-weight: 500;
+    padding-top: 16px;
+    @media screen and (max-width: 480px) {
+      font-size: 18px;
+      line-height: 23px;
+    }
+    .link {
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 26px;
+      text-align: center;
+      color: #424436;
+    }
+  }
+}

@@ -6,6 +6,8 @@ import Container from '../../components/container/Container';
 import SectionTitle from '../../components/sectionTitle/SectionTitle';
 import { BASE_URL } from '../../constants/constants';
 import styles from './Categories.module.scss';
+import { CategoryCard } from '../../components/categoryCard/CategoryCard';
+
 
 export default function Categories() {
   const dispatch = useDispatch();
@@ -14,7 +16,7 @@ export default function Categories() {
   );
   useEffect(() => {
     dispatch(fetchCategories());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Container>
@@ -39,7 +41,6 @@ export default function Categories() {
           ))}
       </div>
       {error && <div>{error}</div>}
-      
     </Container>
   );
 }

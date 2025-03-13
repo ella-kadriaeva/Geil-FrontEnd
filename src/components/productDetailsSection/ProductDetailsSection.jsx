@@ -23,23 +23,27 @@ const ProductDetailsSection = ({
 
   return (
     <div className={styles.productContainer}>
+
       <div className={styles.titleWrapper_mobile}>
         <h2 className={styles.productTitle}>{title}</h2>
         <button className={styles.heartBtn}>
           <Heart />
         </button>
       </div>
+
       <div className={styles.productImg}>
         <img className={styles.img} src={`${BASE_URL}${image}`} alt={title} />
       </div>
 
       <div className={styles.productInfoWrapper}>
+        
         <div className={styles.titleWrapper_tablet}>
           <h2 className={styles.productTitle}>{title}</h2>
           <button className={`${styles.heartBtn} product`}>
             <Heart />
           </button>
         </div>
+
         <div className={styles.flexWrapper}>
           <p className={styles.productPrice}>
             &#36;

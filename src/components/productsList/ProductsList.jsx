@@ -10,10 +10,10 @@ import {
   removeAllProductbyIdFromCart,
   initDataFromLocalStorage,
 } from '../../store/slices/cartSlice';
-import { 
-  addToWishlist, 
-  removeLikeProductbyIdFromCart, 
-  initLikeDataFromLocalStorage
+import {
+  addToWishlist,
+  removeLikeProductbyIdFromCart,
+  initLikeDataFromLocalStorage,
 } from '../../store/slices/likeSlice';
 
 export default function ProductsList({ data }) {
@@ -21,13 +21,12 @@ export default function ProductsList({ data }) {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cart.cartData);
   const likeItems = useSelector((state) => state.like.likesData);
-  console.log(likeItems);
-  
+
   useEffect(() => {
     dispatch(initDataFromLocalStorage());
     dispatch(initLikeDataFromLocalStorage());
   }, []);
-  
+
   const handleClickIcons = useCallback(
     (type, item) => {
       if (type === 'heart') {
