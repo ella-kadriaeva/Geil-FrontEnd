@@ -11,6 +11,8 @@ import Sales from './pages/sales/Sales';
 import NotFound from './pages/notFound/NotFound';
 import Cart from './pages/cart/Cart';
 import Likes from './pages/likes/Likes';
+import BurgerMenu from './components/burgerMenu/BurgerMenu';
+
 import ProductDetails from './pages/productDetails/ProductDetails';
 import { useModal } from './context/ModalContext';
 import './App.scss';
