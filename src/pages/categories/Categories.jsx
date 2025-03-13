@@ -4,6 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategories } from '../../utils/fetchClient';
 import Container from '../../components/container/Container';
 import SectionTitle from '../../components/sectionTitle/SectionTitle';
+import SaleCard from '../../components/saleCard/SaleCard';
+
+const BASE_URL = 'http://localhost:3333';
 
 export default function Categories() {
   const dispatch = useDispatch();
@@ -21,9 +24,16 @@ export default function Categories() {
       {categories &&
         categories.length > 0 &&
         categories.map((item) => (
+          
+          
           <Link to={`/categories/${item.id}`} key={item.id}>
+            {console.log(item.image)}
+            <img 
+            src={`${BASE_URL}${item.image}`} 
+            alt={`Category ${item.title}`} />
             {item.title}
-          </Link>
+
+          </Link> 
         ))}
       {error && <div>{error}</div>}
     </Container>
