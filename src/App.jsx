@@ -12,9 +12,12 @@ import './App.scss';
 
 import Cart from './pages/cart/Cart';
 import Likes from './pages/likes/Likes';
-import ProductDetailsSection from './components/productDetailsSection/ProductDetailsSection';
 
+import BurgerMenu from './components/burgerMenu/BurgerMenu';
+import { useModal } from './context/ModalContext';
+import ProductDetails from './pages/productDetails/ProductDetails';
 function App() {
+  const { isMobile } = useModal();
   return (
     <>
       <Header />
@@ -23,13 +26,14 @@ function App() {
         <Route path="categories" element={<Categories />} />
         <Route path="/categories/:id" element={<CategoryProducts />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/products/:productId" element={<ProductDetailsSection />} />
+        <Route path="/products/:productId" element={<ProductDetails />} />
         <Route path="/sale" element={<Sales />} />
         <Route path="cart" element={<Cart />} />
         <Route path="likes" element={<Likes />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {/*<Discount />*/}
+      {isMobile && <BurgerMenu />}
       <Footer />
     </>
   );
