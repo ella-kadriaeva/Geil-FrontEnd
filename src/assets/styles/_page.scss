@@ -2,7 +2,7 @@
   body {
     overflow-x: hidden;
     .modal {
-      overflow: hidden;
+      // overflow: hidden;
       position: absolute;
       z-index: 20;
       color: #424436;
@@ -19,7 +19,7 @@
         transform: translateX(0%);
         opacity: 1;
         width: 300px;
-        overflow: hidden;
+        // overflow: hidden;
         visibility: visible;
       }
       &.close {
@@ -27,7 +27,7 @@
         right: -300px;
         transform: translateX(100%);
         transition-duration: 500ms;
-        overflow: hidden;
+        // overflow: hidden;
         opacity: 0;
         visibility: hidden;
       }
@@ -55,5 +55,8 @@
         }
       }
     }
+  }
+  dialog [open] {
+    overflow-x: hidden;
   }
 }

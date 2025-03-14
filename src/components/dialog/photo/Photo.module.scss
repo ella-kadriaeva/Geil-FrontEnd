@@ -1,0 +1,44 @@
+@use '../../../assets/styles/mixin' as *;
+@use '../../../assets/styles/colors' as *;
+
+dialog {
+  position: fixed;
+  padding: 0;
+  border: none;
+  margin: auto;
+  height: auto;
+  z-index: 100;
+  top: 108px;
+  @include on-tablet {
+    top: 180px;
+  }
+}
+
+.dialogOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #28282866;
+  height: 100vh;
+  z-index: 2;
+}
+
+.photo {
+  width: 320px;
+  margin: 0 auto;
+  background-color: transparent;
+  @include on-mobile {
+    width: 440px;
+    height: 300px;
+  }
+  @include on-tablet {
+    width: 728px;
+    height: 494px;
+  }
+  @include on-laptop {
+    width: 900px;
+    height: 610px;
+  }
+}
