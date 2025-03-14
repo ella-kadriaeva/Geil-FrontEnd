@@ -2,16 +2,15 @@ import React, { useState } from "react";
 import styles from "./Select.module.scss";
 import { ChevronDown } from "lucide-react";
 
-const Select = () => {
+const Select = ({ value, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("");
 
   const toggleSelect = () => {
     setIsOpen(!isOpen);
   };
 
   const handleOptionSelect = (option) => {
-    setSelectedOption(option);
+    onChange(option);
     setIsOpen(false);
   };
 
@@ -19,7 +18,7 @@ const Select = () => {
     <div className={styles.selectContainer}>
       <div className={styles.selectBox} onClick={toggleSelect}>
         <span className={styles.selectText}>
-          {selectedOption || "by default"}
+          {value || "by default"}
         </span>
         <span className={`${styles.selectArrow} ${isOpen ? styles.open : ""}`}>
           <ChevronDown size="20" color=" #424436" />
