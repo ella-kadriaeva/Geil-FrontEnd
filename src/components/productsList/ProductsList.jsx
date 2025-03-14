@@ -21,13 +21,16 @@ export default function ProductsList({data, loading, error}) {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cart.cartData);
   const likeItems = useSelector((state) => state.like.likesData);
-  console.log(likeItems);
+  const filters = useSelector((state) => state.filters);
+
   
+
   useEffect(() => {
     dispatch(initDataFromLocalStorage());
     dispatch(initLikeDataFromLocalStorage());
   }, []);
-  
+
+
   const handleClickIcons = useCallback(
     (type, item) => {
       if (type === 'heart') {
@@ -82,6 +85,21 @@ export default function ProductsList({data, loading, error}) {
       return 0;
     });
   }, [data, filters]);
+  if (loading) {
+    return (
+      <div className={styles.loading}>
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={styles.error}>
+        <p>Error: {error}</p>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.cardsContainer}>
@@ -89,7 +107,9 @@ export default function ProductsList({data, loading, error}) {
         filteredData.map((item) => {
           let isInCart = items.some((cartItem) => cartItem.id === item.id);
           let isInLikes = likeItems.some((likeItem) => likeItem.id === item.id);
+          
           return (
+            
             <div key={item.id} className={styles.wrapperLink}>
               <div
                 className={` ${styles.icons} ${isDarkTheme ? styles.icons_dark : styles.icons_light}`}
@@ -115,7 +135,7 @@ export default function ProductsList({data, loading, error}) {
                   price={item.price}
                   title={item.title}
                   image={item.image}
-                  discount_price={item.discont_price}
+                  discont_price={item.discont_price}
                   discountPercentage={item.discountPercentage}
                 />
               </Link>
