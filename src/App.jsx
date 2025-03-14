@@ -14,9 +14,9 @@ import Likes from './pages/likes/Likes';
 import ProductDetails from './pages/productDetails/ProductDetails';
 
 
-import BurgerMenu from './components/burgerMenu/BurgerMenu';
+
 import { useModal } from './context/ModalContext';
-import ProductDetails from './pages/productDetails/ProductDetails';
+
 function App() {
   const { isMobile } = useModal();
   return (
