@@ -8,7 +8,6 @@ import CategoryProducts from '../categoryProducts/CategoryProducts.jsx';
 import Categories from '../categories/Categories.jsx';
 import { CategoryCard } from '../../components/categoryCard/CategoryCard.jsx';
 
-
 export default function Home() {
   return (
     <>
@@ -20,7 +19,7 @@ export default function Home() {
           text="All categories"
         />
       </Container>
-      <Categories />
+      <Categories limit={4} />
       <Discount />
       <SaleSection />
     </>
