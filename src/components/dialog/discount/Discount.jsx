@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Discount.module.scss';
 
-export default function Discount({ dialogContent, onClick = { handleDialog } }) {
+export default function Discount({ dialogContent, handleDialog }) {
   return (
     <dialog open>
       <div className={styles.discount}>
@@ -10,7 +10,7 @@ export default function Discount({ dialogContent, onClick = { handleDialog } }) 
             className={`button ${styles.closeBtn}`}
             onClick={handleDialog}
           >
-            <X className={styles.svgBtn} />
+            <X className={styles.svgBtn} onClick={handleDialog} />
           </button>
         </div>
         <div>

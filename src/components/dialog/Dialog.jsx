@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useDialog } from '../../context/DialogContect';
 import Photo from './photo/Photo';
 import Congratulations from './congratulations/Congratulations';
+
+import Discount from './discount/Discount';
 import styles from './Dialog.module.scss';
 const Dialog = () => {
   const { isDialogOpen, dialogContent, dialogType, closeDialog } = useDialog();
