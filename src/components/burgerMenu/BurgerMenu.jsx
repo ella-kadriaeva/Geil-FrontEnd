@@ -3,12 +3,15 @@ import styles from './BurgerMenu.module.scss';
 import { useModal } from '../../context/ModalContext';
 import { X } from 'lucide-react';
 import ButtonLink from '../ui/ButtonLink';
-import { useNavigate } from 'react-router-dom'; // Хук для перенаправления
+import { useNavigate } from 'react-router-dom';
+import { useDialog } from '../../context/DialogContect';
+
 function preventScroll(event) {
   event.preventDefault();
 }
 export default function BurgerMenu() {
   const { isModalOpen, setModalOpen } = useModal();
+  const { openDialog } = useDialog();
   const navigate = useNavigate(); // Хук для перенаправления
   const modalRef = useRef(false);
   const handleModal = () => {
@@ -17,6 +20,14 @@ export default function BurgerMenu() {
   const handleClose = (url) => {
     setModalOpen(false); // Закрытие модального окна
     navigate(url); // Перенаправление на новую страницу
+  };
+  const handleDialog = () => {
+    setModalOpen(false);
+    openDialog(
+      'type3',
+      <span>A manager will contact you shortly to confirm your order.</span>
+    );
+    navigate('/'); // Перенаправление на новую страницу
   };
   useEffect(() => {
     if (modalRef.current) {
@@ -44,9 +55,7 @@ export default function BurgerMenu() {
         <div className={styles.closeBtnWrapper}>
           <button
             className={`button ${styles.closeBtn}`}
-            onClick={() => {
-              setModalOpen(false);
-            }}
+            onClick={handleDialog}
           >
             <X className={styles.svgBtn} />
           </button>
@@ -79,6 +88,7 @@ export default function BurgerMenu() {
             text="1 day discount"
             className={styles.discountBtn}
             type="button"
+            onClick={handleDialog}
           />
         </nav>
       </div>

@@ -7,16 +7,19 @@ import { ModalProvider } from "./context/ModalContext";
 import store from "./store/store.js";
 import "./index.scss";
 import App from "./App.jsx";
+import { DialogProvider } from "./context/DialogContect.jsx";
 
-createRoot(document.getElementById("root")).render(
+createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <ThemeProvider>
-          <ModalProvider>
-            <App />
-          </ModalProvider>
-        </ThemeProvider>
+        <DialogProvider>
+          <ThemeProvider>
+            <ModalProvider>
+              <App />
+            </ModalProvider>
+          </ThemeProvider>
+        </DialogProvider>
       </Provider>
     </BrowserRouter>
   </StrictMode>
