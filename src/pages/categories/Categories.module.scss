@@ -1,5 +1,12 @@
+@use '../../assets/styles/mixin' as *;
+
 .categoriesWrapper {
   display: flex;
+  flex-wrap: wrap;
   gap: 24px;
   padding-bottom: 25px;
+
+  @include on-laptop {
+    flex-wrap: nowrap;
+  }
 }

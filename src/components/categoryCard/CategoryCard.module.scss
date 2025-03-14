@@ -1,18 +1,14 @@
 .categoriesItemWrapper {
   display: flex;
   flex-direction: column;
+  flex: 1 1 320px;
+  flex-wrap: wrap;
   gap: 16px;
   padding-bottom: 20px;
-  width: 100%;
+  max-width: 100%;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.3s ease-in-out;
-
-  .categoriesWrapper {
-    display: flex;
-    gap: 24px;
-    padding-bottom: 25px;
-  }
+  transition: transform 0.4s ease-in-out;
 
   &:hover {
     transform: scale(1.01);
@@ -35,9 +31,14 @@
     line-height: 130%;
   }
 
+  .imageContainer {
+    width: 100%;
+    max-width: 400px; /* Максимальная ширина картинки */
+  }
+
   .categoriesImage {
     width: 100%;
-    height: 392px;
+    height: 390px; /* Высота картинки */
     object-fit: cover;
     border-radius: 5px;
     display: block;

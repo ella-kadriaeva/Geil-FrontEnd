@@ -5,16 +5,18 @@ import { useTheme } from '../../context/ThemeContext';
 import { BASE_URL } from '../../constants/constants';
 
 export const CategoryCard = ({ title, image, id, limit }) => {
-  const limitClass = limit === 4 ? styles["limit-4"] : styles["limit-5"];
+  const limitClass = limit === 4 ? styles['limit-4'] : styles['limit-5'];
   const { isDarkTheme } = useTheme();
   return (
     <div className={`${styles.categoriesItemWrapper} ${limitClass}`}>
+      <div className={styles.imageContainer}>
         <img
           src={`${BASE_URL}${image}`}
           alt={`Category ${title}`}
           className={styles.categoriesImage}
         />
-      
+      </div>
+
       <div className={styles.categoriesTitle}>
         <Link className={styles.link} to={`/categories/${id}`}>
           <h3 className={styles.categoriesTitle}>{title}</h3>
