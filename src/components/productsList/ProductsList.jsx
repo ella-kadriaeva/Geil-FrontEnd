@@ -21,14 +21,13 @@ export default function ProductsList({data, loading, error}) {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cart.cartData);
   const likeItems = useSelector((state) => state.like.likesData);
-  const filters = useSelector((state) => state.filters);
-
+  console.log(likeItems);
   
   useEffect(() => {
     dispatch(initDataFromLocalStorage());
     dispatch(initLikeDataFromLocalStorage());
   }, []);
-
+  
   const handleClickIcons = useCallback(
     (type, item) => {
       if (type === 'heart') {
