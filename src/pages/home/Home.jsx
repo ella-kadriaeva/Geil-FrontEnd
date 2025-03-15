@@ -12,15 +12,16 @@ export default function Home() {
   return (
     <>
       <MainSection />
-      <Container>
-        <MainSectionTitle
-          title="Categories "
-          to="/categories "
-          text="All categories"
-        />
-        <CategoryCard limit={4} />
-      </Container>
-
+      <section>
+        <Container>
+          <MainSectionTitle
+            title="Categories "
+            to="/categories "
+            text="All categories"
+          />
+          <CategoryCard limit={4} />
+        </Container>
+      </section>
       <Discount />
       <SaleSection />
     </>

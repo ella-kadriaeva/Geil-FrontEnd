@@ -81,6 +81,11 @@ export default function Form({type}) {
             {errors.email.message}
           </p>)}
 
+      {successMessage && <p className={styles.success}>{successMessage}</p>}
+      <div className={styles.form_buttonWrapper}>
+        <button className={styles.form_button}>{text}</button>
+      </div>
+    </form>
           {successMessage && <p className={styles.success}>{successMessage}</p>}
 
           <button className={styles.form_button}>{text}</button>
