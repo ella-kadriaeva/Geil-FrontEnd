@@ -14,15 +14,13 @@ export default function BurgerMenu() {
   const { openDialog } = useDialog();
   const navigate = useNavigate(); // Хук для перенаправления
   const modalRef = useRef(false);
-  const handleModal = () => {
+
+  const handleClose = (url) => {
+    navigate(url);
     setModalOpen((prevState) => !prevState);
   };
-  const handleClose = (url) => {
-    setModalOpen(false); // Закрытие модального окна
-    navigate(url); // Перенаправление на новую страницу
-  };
   const handleDialog = () => {
-    setModalOpen(false);
+    setModalOpen((prevState) => !prevState);
     openDialog(
       'type3',
       <span>A manager will contact you shortly to confirm your order.</span>
@@ -45,17 +43,19 @@ export default function BurgerMenu() {
       window.removeEventListener('wheel', preventScroll, { passive: false });
     };
   }, [isModalOpen]);
-  // if (!isModalOpen) return null;
+  if (!isModalOpen) return null;
   return (
     <div className="wrapper">
       <div
         className={` ${styles.backdrop} ${isModalOpen ? styles.block : styles.not}`}
       ></div>
-      <div className="modal" ref={modalRef}>
+      <div className={`${styles.modalBlock} modal`} ref={modalRef}>
         <div className={styles.closeBtnWrapper}>
           <button
             className={`button ${styles.closeBtn}`}
-            onClick={handleDialog}
+            onClick={() => {
+              setModalOpen((prevState) => !prevState);
+            }}
           >
             <X className={styles.svgBtn} />
           </button>

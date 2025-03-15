@@ -84,8 +84,9 @@ export default function Form({ type }) {
       )}
 
       {successMessage && <p className={styles.success}>{successMessage}</p>}
-
-      <button className={styles.form_button}>{text}</button>
+      <div className={styles.form_buttonWrapper}>
+        <button className={styles.form_button}>{text}</button>
+      </div>
     </form>
   );
 }

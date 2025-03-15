@@ -22,9 +22,13 @@ const CategoryCard = ({ limit }) => {
     return <div>No categories available.</div>;
 
   return (
-      <div className={styles.categoriesWrapper}>
-        {categories.slice(0, limit).map((item) => (
-          <div key={item.id} className={styles.categoriesItemWrapper}>
+    <div className={styles.categoriesWrapper}>
+      {categories.slice(0, limit).map((item) => (
+        <Link
+          key={item.id}
+          to={`/categories/${item.id}`}
+        >
+          <div className={styles.itemWrapper}>
             <div className={styles.imageContainer}>
               <img
                 src={`${BASE_URL}${item.image}`}
@@ -33,13 +37,12 @@ const CategoryCard = ({ limit }) => {
               />
             </div>
             <div className={styles.categoriesTitle}>
-              <Link className={styles.link} to={`/categories/${item.id}`}>
-                <span>{item.title}</span>
-              </Link>
+              <span>{item.title}</span>
             </div>
           </div>
-        ))}
-      </div>
+        </Link>
+      ))}
+    </div>
   );
 };
 
