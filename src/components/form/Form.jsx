@@ -20,11 +20,16 @@ export default function Form({type}) {
   const onSubmit = (data) => {
     console.log('Form submitted', data);
 
-    console.log('The discount has been successfully sent by email', data);
-    setSuccessMessage('The discount has been successfully sent by email');
+    if (type === 'discount') {
 
+      console.log('The discount has been successfully sent by email', data);
+      setSuccessMessage('The discount has been successfully sent by email');
+
+
+    }
     setIsDialogOpen(true)
   };
+
   console.log(watch('Email'));
 
   return (
@@ -83,13 +88,11 @@ export default function Form({type}) {
           <button className={styles.form_button}>{text}</button>
         </form>
 
-        {isDialogOpen &&
+        {type === 'order' && isDialogOpen &&
             (<Congratulations
                 dialogContent={dialogContent}
                 handleDialog={() => setIsDialogOpen(false)}
             />)}
       </>
-
-
   );
 }
