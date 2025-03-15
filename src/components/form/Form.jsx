@@ -86,11 +86,6 @@ export default function Form({type}) {
         <button className={styles.form_button}>{text}</button>
       </div>
     </form>
-          {successMessage && <p className={styles.success}>{successMessage}</p>}
-
-          <button className={styles.form_button}>{text}</button>
-        </form>
-
         {type === 'order' && isDialogOpen &&
             (<Congratulations
                 // dialogContent={dialogContent}
