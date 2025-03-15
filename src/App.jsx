@@ -12,8 +12,11 @@ import NotFound from './pages/notFound/NotFound';
 import Cart from './pages/cart/Cart';
 import Likes from './pages/likes/Likes';
 import ProductDetails from './pages/productDetails/ProductDetails';
-import { useModal } from './context/ModalContext';
 import './App.scss';
+
+
+import { useModal } from './context/ModalContext';
+
 function App() {
   const { isMobile } = useModal();
   return (
