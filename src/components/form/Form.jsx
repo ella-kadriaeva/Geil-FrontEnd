@@ -7,8 +7,6 @@ import Congratulations from "../dialog/congratulations/Congratulations.jsx";
 export default function Form({type}) {
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [dialogContent, setDialogContent] = useState('');
-
 
   const [successMessage, setSuccessMessage] = useState('');
   const stylesForm = type === 'discount' ? styles.discount : styles.order;
@@ -90,7 +88,7 @@ export default function Form({type}) {
 
         {type === 'order' && isDialogOpen &&
             (<Congratulations
-                dialogContent={dialogContent}
+                // dialogContent={dialogContent}
                 handleDialog={() => setIsDialogOpen(false)}
             />)}
       </>
