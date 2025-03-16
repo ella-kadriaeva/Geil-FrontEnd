@@ -4,7 +4,6 @@ import filtersReducer from './slices/filtersSlice';
 import categoriesReducer from './slices/categoriesSlice';
 import detailsReducer from './slices/detailsSlice';
 import cartReducer from './slices/cartSlice';
-import counterSlice from './slices/counterSlice';
 import likeReducer from './slices/likeSlice';
 
 export default configureStore({
@@ -15,6 +14,5 @@ export default configureStore({
     details: detailsReducer,
     cart: cartReducer,
     like: likeReducer,
-    counter: counterSlice,
   },
 });
