@@ -15,6 +15,15 @@
     @include on-tablet {
       margin-block-end: 0;
     }
+
+    @include on-laptop {
+      display: flex;
+      column-gap: 20px;
+    }
+
+    @include on-design {
+      column-gap: 32px;
+    }
   }
 
   &_items {
@@ -22,6 +31,10 @@
     flex-direction: column;
     row-gap: 12px;
     margin-block-end: 20px;
+
+    @include on-laptop {
+      flex: 1;
+    }
   }
 
   &_titleBlock {
@@ -135,24 +148,24 @@
   &_formTitle {
     font-weight: 700;
     font-size: clamp(1.75rem, 4vw, 2.5rem);
-    line-height: 110%;
     color: $txt-black;
     margin-bottom: 12px;
+
+    @include on-design {
+      margin-bottom: 24px;
+    }
   }
 
   &_orderDetails {
     width: 100%;
-    padding: 32px;
+    height: fit-content;
+    padding-inline: clamp(20px, 3vw, 32px);
+    padding-block: clamp(24px, 4vw, 32px);
     border-radius: 10px;
     background-color: $light_green;
-    margin-left: 20px;
 
-    @media screen and (max-width: 1200px) {
-      padding: 32px 20px;
-    }
-    @media screen and (max-width: 900px) {
-      max-width: none;
-      margin-left: 0;
+    @include on-laptop {
+      flex: 0 0 clamp(470px, 47vw, 548px);
     }
   }
 
@@ -161,23 +174,22 @@
     font-size: 40px;
     line-height: 52px;
     color: #8b8b8b;
+    margin-block-end: 20px;
 
     p {
-      font-size: 40px;
-      line-height: 41px;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+
+      &:last-of-type {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      span {
+        font-size: clamp(40px, 5vw, 64px);
+        font-weight: bold;
+        color: $txt-black;
+      }
     }
   }
-
-  // @media screen and (max-width: 768px) {
-  //   p {
-  //     font-size: 32px;
-  //     line-height: 41px;
-  //   }
-  // }
-  // @media screen and (max-width: 500px) {
-  //   p {
-  //     font-size: 27px;
-  //     line-height: 36px;
-  //   }
-  // }
 }
