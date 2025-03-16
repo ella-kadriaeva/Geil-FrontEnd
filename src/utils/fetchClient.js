@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 const BASE_URL = 'http://localhost:3333';
-// const BASE_URL = "http://exam-server-5c4e.onrender.com";
 export const getAllCategories = async () => {
   try {
     const response = await fetch(`${BASE_URL}/categories/all`);

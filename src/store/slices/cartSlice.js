@@ -83,6 +83,34 @@ export const cartSlice = createSlice({
 
       localStorage.setItem('cart', JSON.stringify(state.cartData));
     },
+
+    removeItemFromCart: (state, action) => {
+      console.log(action.payload.id);
+      state.cartData = state.cartData.filter(
+        (item) => item.id !== action.payload.id
+      );
+      localStorage.setItem('cart', JSON.stringify(state.cartData));
+    },
+
+    increaseCountInCartItem: (state, action) => {
+      let currData = state.cartData.map(item => ({...item}))
+      let tempItem = state.cartData.find(item => item.id === +action.payload);
+      state.cartData.forEach(item => console.log(item.count))
+      tempItem = {...tempItem, count: tempItem.count + 1};
+      state.cartData = currData.map(item => item.id === +action.payload ? tempItem : item)
+
+      localStorage.setItem('cart', JSON.stringify(state.cartData));
+    },
+
+    decreaseCountInCartItem: (state, action) => {
+      let currData = state.cartData.map(item => ({...item}))
+      let tempItem = state.cartData.find(item => item.id === +action.payload);
+      state.cartData.forEach(item => console.log(item.count))
+      tempItem = {...tempItem, count: tempItem.count - 1};
+      state.cartData = currData.map(item => item.id === +action.payload ? tempItem : item)
+
+      localStorage.setItem('cart', JSON.stringify(state.cartData));
+    },
   },
 });
 
@@ -92,6 +120,9 @@ export const {
   removeAllProductbyIdFromCart,
   decreaseQuantity,
   increaseQuantity,
+  removeItemFromCart,
+  increaseCountInCartItem,
+  decreaseCountInCartItem,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

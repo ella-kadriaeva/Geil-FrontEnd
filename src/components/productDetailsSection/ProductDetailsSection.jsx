@@ -3,6 +3,7 @@ import { useState } from 'react';
 import styles from './ProductDetailsSection.module.scss';
 import ButtonLink from '../ui/ButtonLink';
 import { Heart } from 'lucide-react';
+import { useDialog } from '../../context/DialogContect';
 import { increment, decrement } from '../../store/slices/detailsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 const BASE_URL = 'http://localhost:3333';
@@ -19,6 +20,9 @@ const ProductDetailsSection = ({
   const { value } = product;
 
   const [isExpanded, setIsExpanded] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(`${BASE_URL}${image}`);
+  const { openDialog } = useDialog();
+  // const imgLink = `${BASE_URL}${image}`;
   // Функция для переключения состояния
   const toggleDescription = () => {
     setIsExpanded((prevState) => !prevState);
@@ -34,7 +38,17 @@ const ProductDetailsSection = ({
         </button>
       </div>
       <div className={styles.productImg}>
-        <img className={styles.img} src={`${BASE_URL}${image}`} alt={title} />
+        <img
+          className={styles.img}
+          src={selectedImage}
+          alt={title}
+          onClick={() =>
+            openDialog(
+              'type1',
+              <img className={styles.img} src={selectedImage} alt={title} />
+            )
+          }
+        />
       </div>
 
       <div className={styles.productInfoWrapper}>
@@ -44,6 +58,7 @@ const ProductDetailsSection = ({
             <Heart />
           </button>
         </div>
+
         <div className={styles.flexWrapper}>
           <p className={styles.productPrice}>
             &#36;
@@ -88,7 +103,9 @@ const ProductDetailsSection = ({
           <p className={styles.descriptionText}>
             {!loading && isExpanded
               ? description
-              : `${description.slice(0, 200)}...`}
+              : typeof description === 'string'
+                ? `${description.slice(0, 200)}...`
+                : 'Описание недоступно'}
           </p>
           <span className={styles.moreBtn} onClick={toggleDescription}>
             {isExpanded ? 'hide' : 'Read more'}
@@ -101,7 +118,9 @@ const ProductDetailsSection = ({
         <p className={styles.descriptionText}>
           {!loading && isExpanded
             ? description
-            : `${description.slice(0, 200)}...`}
+            : typeof description === 'string'
+              ? `${description.slice(0, 200)}...`
+              : 'Описание недоступно'}
         </p>
         <span className={styles.moreBtn} onClick={toggleDescription}>
           {isExpanded ? 'hide' : 'Read more'}
