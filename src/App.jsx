@@ -15,6 +15,7 @@ import { useModal } from './context/ModalContext';
 import './App.scss';
 import ProductDetailsSection from './components/productDetailsSection/ProductDetailsSection';
 
+
 function App() {
   const { isMobile } = useModal();
   return (
