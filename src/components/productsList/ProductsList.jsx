@@ -34,7 +34,7 @@ export default function ProductsList({data, loading, error}) {
   const handleClickIcons = useCallback(
     (type, item) => {
       if (type === 'heart') {
-        let isItLiked = likeItems.some((likeItems) => likeItems.id === item.id); // TODO: check if item in likes
+        let isItLiked = likeItems.some((likeItems) => likeItems.id === item.id); 
         if (isItLiked) {
           dispatch(removeLikeProductbyIdFromCart(item.id));
         } else {
@@ -131,7 +131,7 @@ export default function ProductsList({data, loading, error}) {
               </div>
               <Link to={`/products/${item.id}`}>
                 <SaleCard
-                  key={item.id}
+                  id={item.id}
                   price={item.price}
                   title={item.title}
                   image={item.image}

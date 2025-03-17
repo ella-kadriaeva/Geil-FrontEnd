@@ -15,6 +15,7 @@
 }
 
 .productImg {
+  position: relative;
   @include borderFilter;
   border-radius: 8px;
   overflow: hidden;
@@ -134,6 +135,32 @@
 }
 
 .discountChip {
+  display: none;
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  background-color: $sale;
+  color: $txt-white;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  display: none;
+  @include on-tablet {
+    display: block;
+    font-size: 16px;
+    padding: 6px 10px;
+  }
+
+  @include on-design {
+    font-size: 20px;
+  }
+}
+.discountChip_mobile {
+  position: absolute;
+  top: 16px;
+  right: 16px;
   display: flex;
   align-self: flex-start;
   align-items: center;
@@ -146,15 +173,9 @@
   font-weight: 500;
 
   @include on-tablet {
-    font-size: 16px;
-    padding: 6px 10px;
-  }
-
-  @include on-design {
-    font-size: 20px;
+    display: none;
   }
 }
-
 .actionsWrapper {
   width: 100%;
   @include on-laptop {
@@ -166,7 +187,9 @@
 }
 
 .quantityControl {
-  @include borderFilter;
+  height: 40px;
+  border: 1px solid $light-grey;
+  border-radius: 6px;
   width: 167px;
   margin: auto;
   display: flex;
@@ -176,9 +199,11 @@
   overflow: hidden;
   background: $txt-white;
   margin-bottom: 20px;
-
-  @include borderFilter;
+  border-inline-end: none;
+  border-inline-start: none;
+  overflow: hidden;
   @include on-tablet {
+    height: 58px;
     min-width: 200px;
   }
 }
@@ -187,7 +212,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px;
+  flex: 0 0 40px;
   height: 40px;
   border: none;
   background: $txt-white;
@@ -198,13 +223,13 @@
   transition: all 0.2s ease;
 
   @include on-mobile {
-    width: 47px;
+    flex: 0 0 47px;
     height: 47px;
     font-size: 20px;
   }
 
   @include on-tablet {
-    width: 58px;
+    flex: 0 0 58px;
     height: 58px;
     font-size: 22px;
   }
@@ -227,7 +252,7 @@
   height: 40px;
   background: $txt-white;
   font-size: 16px;
-  color: $txt-grey;
+  color: $txt-black;
   user-select: none;
   min-width: 40px;
 
@@ -257,18 +282,9 @@
 }
 
 .addToCartBtn {
-  width: 100%;
-  margin: 0 auto;
-  height: 40px;
-  border: none;
-  border-radius: 4px;
+  @include productCartBtn;
   background: $green;
   color: $txt-white;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  padding: 0 32px;
   border: 1px solid $green;
   background-color: $green;
   color: $txt-white;
@@ -306,7 +322,43 @@
     padding: 0 48px;
   }
 }
+.addToCartBtn_inactive {
+  @include productCartBtn;
+  background-color: $txt-white;
+  border: 1px solid $txt-black;
+  color: $txt-black;
+  cursor: not-allowed;
 
+  @include on-tablet {
+    height: 44px;
+    font-size: 17px;
+    padding: 0 40px;
+  }
+
+  @include on-mobile {
+    height: 58px;
+    font-size: 18px;
+    padding: 0 48px;
+  }
+
+  @include on-tablet {
+    height: 58px;
+    font-size: 18px;
+    padding: 0 48px;
+  }
+
+  @include on-laptop {
+    height: 58px;
+    font-size: 18px;
+    padding: 0 48px;
+  }
+
+  @include on-design {
+    height: 58px;
+    font-size: 24px;
+    padding: 0 48px;
+  }
+}
 .productDescriptionWrapper {
   display: flex;
   flex-direction: column;
@@ -397,71 +449,57 @@ body.dark {
     }
   }
 }
-// ______Стили диалога
-// dialog {
-//   position: fixed;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   padding: 0;
-//   background-color: blue;
-//   border: none;
-//   width: 90%;
-//   height: 90%;
-// z-index: 9999;
-// overflow: hidden;
-// }
-// dialog::backdrop {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-//   bottom: 0;
-//   background: rgba(211, 7, 7, 0.7);
-//   z-index: 9998;
-// }
-// .modalPhotoBackdrop {
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-//   bottom: 0;
-//   background: rgba(0, 0, 0, 0.7);
-//   z-index: -1;
-// }
 
-// .modalPhotoContent {
-//   position: relative;
-//   padding: 20px;
-//   background: white;
-//   border-radius: 10px;
-//   max-width: 90%;
-//   max-height: 90%;
-//   overflow: hidden;
-// }
 
-// .modalImage {
-//   width: 100%;
-//   height: auto;
-//   object-fit: contain;
-//   display: block;
-//   margin: 0 auto;
-// }
+.icons {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  & button {
+    background-color: transparent;
+  }
+  & svg {
+    fill: $txt-white;
+    stroke: $txt-black;
+    stroke-width: 1.1;
+    width: 32px;
+    height: 32px;
+    @include on-tablet {
+      width: 44px;
+      height: 44px;
+    }
 
-// .productImg {
-//   display: flex;
-//   justify-content: center;
-//   margin: 20px;
-// }
-
-// .img {
-//   width: 200px;
-//   height: 200px;
-//   object-fit: cover;
-//   cursor: pointer;
-//   transition: transform 0.3s ease;
-// }
-
-// .img:hover {
-//   transform: scale(1.1);
-// }
+    @include on-design {
+      width: 46px;
+      height: 46px;
+    }
+  }
+  &_light {
+    & svg {
+      stroke: $txt-black;
+    }
+    & svg:hover {
+      stroke: $green;
+    }
+  }
+  &_dark {
+    & svg {
+      stroke: $txt-black;
+    }
+    & svg:hover {
+      stroke: $green;
+    }
+  }
+  &_active {
+    & svg {
+      fill: $green;
+    }
+    & svg:hover {
+      fill: $green;
+      stroke: $divider_grey;
+    }
+  }
+}
