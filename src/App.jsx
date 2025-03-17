@@ -11,11 +11,10 @@ import Sales from './pages/sales/Sales';
 import NotFound from './pages/notFound/NotFound';
 import Cart from './pages/cart/Cart';
 import Likes from './pages/likes/Likes';
-import ProductDetails from './pages/productDetails/ProductDetails';
-import './App.scss';
-
-
 import { useModal } from './context/ModalContext';
+import './App.scss';
+import ProductDetailsSection from './components/productDetailsSection/ProductDetailsSection';
+
 
 function App() {
   const { isMobile } = useModal();
@@ -27,7 +26,7 @@ function App() {
         <Route path="categories" element={<Categories />} />
         <Route path="/categories/:id" element={<CategoryProducts />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/products/:productId" element={<ProductDetails />} />
+        <Route path="/products/:productId" element={<ProductDetailsSection />} />
         <Route path="/sale" element={<Sales />} />
         <Route path="cart" element={<Cart />} />
         <Route path="likes" element={<Likes />} />
