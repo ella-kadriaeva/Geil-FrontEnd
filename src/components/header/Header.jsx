@@ -3,7 +3,7 @@ import { Menu } from 'lucide-react';
 import Container from '../container/Container';
 import NavMenu from '../navMenu/NavMenu';
 import ButtonLink from '../ui/ButtonLink';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import LogoThemeBlock from '../logoThemeBlock/LogoThemeBlock';
 import styles from './Header.module.scss';
 import { useModal } from '../../context/ModalContext';
@@ -14,6 +14,7 @@ import { initLikeDataFromLocalStorage } from '../../store/slices/likeSlice';
 export default function Header() {
   const { isMobile, setModalOpen } = useModal();
   const likes = useSelector((state) => state.like.likesData);
+  const cartCounter = useSelector((state) => state.cart.cartData);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,7 +32,7 @@ export default function Header() {
           {!isMobile && (
             <div className={styles.navWrapper}>
               <ButtonLink
-                to="/categories" //НУЖНО ВЫЯСНИТЬ КУДА ПЕРЕБРАСЫВАЕТ
+                to="/categories" 
                 text="1 day discount"
                 className={styles.discountBtn}
                 type="button"
@@ -44,11 +45,14 @@ export default function Header() {
             <Link to="/likes">
               <Heart className={styles.svgLink} />
               {likes.length > 0 ? (
-                <span className={styles.likesCounter}>{likes.length}</span>
+                <span className={styles.сounter}>{likes.length}</span>
               ) : null}
             </Link>
             <Link to="/cart">
-              <ShoppingBag className={styles.svgLink} />
+              <ShoppingBag className={styles.svgLink}/>
+              {cartCounter.length > 0 ? (
+                <span className={styles.сounter}>{cartCounter.length}</span>
+              ) : null}
             </Link>
             {isMobile && (
               <button
