@@ -12,24 +12,27 @@ const Discount = () => {
     setDiscountStatus(true);
   };
   return (
-    <Container>
-      <section>
-        <div className={styles.discountFormWrapper}>
-          <div className={styles.discountForm}>
-            <div className={styles.discountFormText}>
-              <h2>5% off on the first order</h2>
+    <section>
+      <Container>
+        <div className={styles.discountForm}>
+          <div className={styles.discountFormText}>
+            <h2>5% off on the first order</h2>
+          </div>
+          <div className={styles.discountFormInfoWrapper}>
+            <div className={styles.imageContainer}>
+              <img
+                className={styles.image}
+                src="media/background.png"
+                alt="garten tools"
+              />
             </div>
-            <div className={styles.discountFormInfoWrapper}>
-              <div
-                className={styles.discountFormBackImg}
-                style={{ backgroundImage: `url(${discountFormBackImg})` }}
-              ></div>
+            <div className={styles.formWrapper}>
               <Form type="discount" />
             </div>
           </div>
         </div>
-      </section>
-    </Container>
+      </Container>
+    </section>
   );
 };
 

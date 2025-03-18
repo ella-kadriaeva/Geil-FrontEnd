@@ -11,11 +11,9 @@ import Sales from './pages/sales/Sales';
 import NotFound from './pages/notFound/NotFound';
 import Cart from './pages/cart/Cart';
 import Likes from './pages/likes/Likes';
-import ProductDetails from './pages/productDetails/ProductDetails';
 import { useModal } from './context/ModalContext';
 import './App.scss';
-import ProductOfTheDayCard from './components/productOfTheDayCard/ProductOfTheDayCard';
-
+import ProductDetails from './pages/productDetails/ProductDetails';
 
 function App() {
   const { isMobile } = useModal();
@@ -31,8 +29,6 @@ function App() {
         <Route path="/sale" element={<Sales />} />
         <Route path="cart" element={<Cart />} />
         <Route path="likes" element={<Likes />} />
-        {/* <Route path="/product-of-the-day" element={<ProductOfTheDayCard title="Super Product"
-      image="https://via.placeholder.com/300"/>} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
       {isMobile && <BurgerMenu />}

@@ -9,6 +9,7 @@ import {
   increaseCountInCartItem,
   decreaseCountInCartItem
 } from '../../store/slices/cartSlice';
+import {Link} from "react-router";
 
 export default function ItemInCart({product}) {
   const dispatch = useDispatch();
@@ -38,7 +39,12 @@ export default function ItemInCart({product}) {
   return (
     <div className={styles.itemInCart}>
       <div className={styles.itemInCart_imageContainer}>
-        <img src={`${BASE_BACKEND_URL}${product.image}`} alt={product.title} />
+        <Link to={`/products/${product.id}`}>
+          <img
+            src={`${BASE_BACKEND_URL}${product.image}`}
+            alt={product.title}
+          />
+        </Link>
       </div>
       <div className={styles.itemInCart_infoContainer}>
         <div className={styles.itemInCart_titleBox}>
