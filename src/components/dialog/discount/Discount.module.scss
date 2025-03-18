@@ -1,69 +1,79 @@
+
+
 @use '../../../assets/styles/mixin' as *;
 @use '../../../assets/styles/colors' as *;
 
-dialog {
+.dialog {
   background-color: $green;
   position: fixed;
-  padding: 0;
+  padding: 20px;
   border: none;
   margin: auto;
-  height: auto;
+  max-width: 548px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   z-index: 100;
   top: 160px;
+
   @include on-mobile {
     top: 180px;
   }
-}
 
-.discount {
-  background-color: $green;
-  color: $txt-white;
-  width: 320px;
-  padding: 0 20px;
-  margin: 0 auto;
-  height: auto;
-  background-color: transparent;
-  border-radius: 8px;
-  @include on-mobile {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: flex-start;
-    width: 440px;
-    padding: 24px 20px;
-  }
   @include on-tablet {
-    width: 548px;
-    height: 246px;
     padding: 32px;
   }
-  &_title {
-    font-weight: 600;
-    font-size: 28px;
-    line-height: 1.1;
-    margin-bottom: 20px;
-  }
+}
+
+
+.discount {
+  background-color: transparent;
+  color: $txt-white;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.discountTitle {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 110%;
+  letter-spacing: 0;
+  color: $txt-white;
+  margin: 0;
+
   @include on-mobile {
+    font-size: 40px;
+  }
+
+  @include on-tablet {
     font-size: 36px;
   }
-  @include on-tablet {
-    font-size: 40x;
-  }
-}
-.closeBtnWrapper {
-  padding-top: 24px;
-  padding-bottom: 10px;
 
-  display: flex;
-  justify-content: flex-end;
-  @include on-mobile {
-    padding: 0;
-  }
 }
+
 .closeBtn {
   background-color: transparent;
-  & svg {
-    width: 40px;
-    height: 40px;
-    stroke: $txt-white;
-  }
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
+
+.svgBtn {
+  width: 40px;
+  height: 40px;
+  stroke: $txt-white;
+}
+

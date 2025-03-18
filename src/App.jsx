@@ -31,10 +31,8 @@ function App() {
         <Route path="/sale" element={<Sales />} />
         <Route path="cart" element={<Cart />} />
         <Route path="likes" element={<Likes />} />
-        <Route path="/product-of-the-day" element={<ProductOfTheDayCard title="Super Product"
-      image="https://via.placeholder.com/300"
-      discountPrice={19.99}
-      originalPrice={29.99} />} />
+        {/* <Route path="/product-of-the-day" element={<ProductOfTheDayCard title="Super Product"
+      image="https://via.placeholder.com/300"/>} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
       {isMobile && <BurgerMenu />}

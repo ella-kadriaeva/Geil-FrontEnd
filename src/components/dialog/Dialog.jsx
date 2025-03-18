@@ -3,6 +3,7 @@ import { useDialog } from '../../context/DialogContect';
 import Photo from './photo/Photo';
 import Congratulations from './congratulations/Congratulations';
 import styles from './Dialog.module.scss';
+import Discount from './discount/Discount';
 const Dialog = () => {
   const { isDialogOpen, dialogContent, dialogType, closeDialog } = useDialog();
 

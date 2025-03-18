@@ -24,7 +24,7 @@ export default function BurgerMenu() {
   const handleDialog = () => {
     setModalOpen(false);
     openDialog(
-      'type3',
+      'type2',
       <span>A manager will contact you shortly to confirm your order.</span>
     );
     navigate('/'); // Перенаправление на новую страницу
