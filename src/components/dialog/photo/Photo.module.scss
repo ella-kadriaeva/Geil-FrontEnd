@@ -26,19 +26,11 @@ dialog {
 }
 
 .photo {
-  width: 320px;
+  max-width: 440px;
   margin: 0 auto;
   background-color: transparent;
-  @include on-mobile {
-    width: 440px;
-    height: 300px;
-  }
-  @include on-tablet {
-    width: 728px;
-    height: 494px;
-  }
+
   @include on-laptop {
-    width: 900px;
-    height: 610px;
+    max-width: 900px;
   }
 }
