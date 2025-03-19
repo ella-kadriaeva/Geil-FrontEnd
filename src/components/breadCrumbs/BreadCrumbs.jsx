@@ -12,10 +12,8 @@ export default function BreadCrumbs() {
     prodId: '',
   });
 
-  const [currentItem, setCurrentItem] = useState(null);
   const [placeName, setPlaceName] = useState(null);
   
-
   useEffect(() => {
     switch (way.place) {
       case 'categories':
@@ -51,10 +49,6 @@ export default function BreadCrumbs() {
         break;
       default:
         console.log('other!');
-    }
-
-    if (currentItem) {
-      setWay((prev) => ({ ...prev, prodId: currentItem.title }));
     }
 
   }, [wayArray])
