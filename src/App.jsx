@@ -22,13 +22,29 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="categories" element={<Categories />} />
-        <Route path="/categories/:id" element={<CategoryProducts />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/products/:productId" element={<ProductDetails />} />
-        <Route path="/sale" element={<Sales />} />
+        <Route path="categories">
+          <Route index element={<Categories />} />
+          <Route path=":id?">
+            <Route index element={<CategoryProducts />} />
+            <Route path=":productId?" element={<ProductDetails />} />
+          </Route>
+        </Route>
+
+        <Route path="products">
+          <Route index element={<Products />} />
+          <Route path=":productId?" element={<ProductDetails />} />
+        </Route>
+
+        <Route path="sale">
+          <Route index element={<Sales />} />
+          <Route path=":productId?" element={<ProductDetails />} />
+        </Route>
+
         <Route path="cart" element={<Cart />} />
-        <Route path="likes" element={<Likes />} />
+        <Route path="likes">
+          <Route index element={<Likes />} />
+          <Route path=":productId?" element={<ProductDetails />} />
+        </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
       {isMobile && <BurgerMenu />}
