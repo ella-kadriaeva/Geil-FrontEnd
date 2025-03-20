@@ -5,6 +5,7 @@ import Congratulations from './congratulations/Congratulations';
 
 import Discount from './discount/Discount';
 import styles from './Dialog.module.scss';
+import Discount from './discount/Discount';
 const Dialog = () => {
   const { isDialogOpen, dialogContent, dialogType, closeDialog } = useDialog();
 

@@ -10,9 +10,12 @@ import { useModal } from '../../context/ModalContext';
 import { Heart, ShoppingBag } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { initLikeDataFromLocalStorage } from '../../store/slices/likeSlice';
+import { useDialog } from '../../context/DialogContect';
+import ProductOfTheDayCard from '../productOfTheDayCard/ProductOfTheDayCard';
 
 export default function Header() {
   const { isMobile, setModalOpen } = useModal();
+  const {openDialog} = useDialog()
   const likes = useSelector((state) => state.like.likesData);
   const cartCounter = useSelector((state) => state.cart.cartData);
   const dispatch = useDispatch();
@@ -24,6 +27,7 @@ export default function Header() {
     setModalOpen((prevState) => !prevState);
   };
 
+  const handleDialog = ()=>{openDialog("type2", <ProductOfTheDayCard/>)}
   return (
     <header className={styles.header}>
       <Container>
@@ -32,7 +36,7 @@ export default function Header() {
           {!isMobile && (
             <div className={styles.navWrapper}>
               <ButtonLink
-                to="/categories" 
+               onClick={handleDialog}
                 text="1 day discount"
                 className={styles.discountBtn}
                 type="button"

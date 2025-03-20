@@ -129,7 +129,7 @@ export default function ProductsList({data, loading, error}) {
                   <ShoppingBag className={styles.svgLink} />
                 </button>
               </div>
-              <Link to={`/products/${item.id}`}>
+              <Link to={`./${item.id}`}>
                 <SaleCard
                   id={item.id}
                   price={item.price}

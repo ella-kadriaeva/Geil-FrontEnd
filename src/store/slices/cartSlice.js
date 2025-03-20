@@ -72,7 +72,6 @@ export const cartSlice = createSlice({
     },
 
     removeItemFromCart: (state, action) => {
-      console.log(action.payload.id);
       state.cartData = state.cartData.filter(
         (item) => item.id !== action.payload.id
       );
@@ -82,7 +81,6 @@ export const cartSlice = createSlice({
     increaseCountInCartItem: (state, action) => {
       let currData = state.cartData.map(item => ({...item}))
       let tempItem = state.cartData.find(item => item.id === +action.payload);
-      state.cartData.forEach(item => console.log(item.count))
       tempItem = {...tempItem, count: tempItem.count + 1};
       state.cartData = currData.map(item => item.id === +action.payload ? tempItem : item)
 
@@ -92,7 +90,6 @@ export const cartSlice = createSlice({
     decreaseCountInCartItem: (state, action) => {
       let currData = state.cartData.map(item => ({...item}))
       let tempItem = state.cartData.find(item => item.id === +action.payload);
-      state.cartData.forEach(item => console.log(item.count))
       tempItem = {...tempItem, count: tempItem.count - 1};
       state.cartData = currData.map(item => item.id === +action.payload ? tempItem : item)
 
