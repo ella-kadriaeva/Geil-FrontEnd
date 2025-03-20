@@ -8,8 +8,8 @@ const SaleCard = ({
   title,
   image,
   discont_price,
-  price,
-  discountPercentage,
+  price
+
 }) => {
   const { isDarkTheme } = useTheme();
   const cardBackground = isDarkTheme
@@ -17,7 +17,7 @@ const SaleCard = ({
     : styles.productCard_text_light;
 
   // Если скидка есть, то показываем цену со скидкой, иначе обычную цену
-  const actualPrice = discountPercentage > 0 ? discont_price : price;
+  const actualPrice = discont_price > 0 ? discont_price : price;
 
   return (
     <div className={styles.productCard}>
