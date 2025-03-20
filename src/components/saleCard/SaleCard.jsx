@@ -27,7 +27,7 @@ const SaleCard = ({
           alt={`Product ${title}`}
         />
       </div>
-      {discountPercentage > 0 && (
+      {discont_price > 0 && (
         <div className={styles.productCard_discount}>
           -{discountPercentage}%
         </div>
@@ -36,7 +36,7 @@ const SaleCard = ({
         <h3>{title}</h3>
         <div className={styles.productCard_text_priceBlock}>
           <p className={styles.productCard_text_actualPrice}>${actualPrice}</p>
-          {discountPercentage > 0 && (
+          {discont_price > 0 && (
             <p className={styles.productCard_text_price}>${price}</p>
           )}
         </div>
