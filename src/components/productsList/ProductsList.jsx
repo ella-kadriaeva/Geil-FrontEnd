@@ -15,6 +15,7 @@ import {
   removeLikeProductbyIdFromCart,
   initLikeDataFromLocalStorage,
 } from '../../store/slices/likeSlice';
+import Skeleton from '../skeleton/Skeleton';
 
 export default function ProductsList({data, loading, error}) {
   const { isDarkTheme } = useTheme();
@@ -22,7 +23,7 @@ export default function ProductsList({data, loading, error}) {
   const items = useSelector((state) => state.cart.cartData);
   const likeItems = useSelector((state) => state.like.likesData);
   const filters = useSelector((state) => state.filters);
-
+  
   
 
   useEffect(() => {
@@ -87,8 +88,10 @@ export default function ProductsList({data, loading, error}) {
   }, [data, filters]);
   if (loading) {
     return (
-      <div className={styles.loading}>
-        <p>Loading...</p>
+      <div className={styles.cardsContainer}>
+        {[...Array(8)].map((_, index) => (
+          <Skeleton key={index} />
+        ))}
       </div>
     );
   }
@@ -144,6 +147,7 @@ export default function ProductsList({data, loading, error}) {
       ) : (
         <h2>No items found</h2>
       )}
+      
     </div>
   );
 }
