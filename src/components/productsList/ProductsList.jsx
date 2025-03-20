@@ -136,7 +136,6 @@ export default function ProductsList({data, loading, error}) {
                   title={item.title}
                   image={item.image}
                   discont_price={item.discont_price}
-                  discountPercentage={item.discountPercentage}
                 />
               </Link>
             </div>
