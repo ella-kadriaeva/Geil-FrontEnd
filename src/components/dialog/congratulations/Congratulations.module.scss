@@ -15,7 +15,7 @@ dialog {
 .congratulations {
   background-color: $green;
   color: $txt-white;
-  width: 320px;
+  max-width: 548px;
   padding: 0 20px;
   margin: 0 auto;
   height: auto;
@@ -25,12 +25,9 @@ dialog {
     display: flex;
     flex-direction: row-reverse;
     align-items: flex-start;
-    width: 440px;
     padding: 24px 20px;
   }
   @include on-tablet {
-    width: 548px;
-    height: 246px;
     padding: 32px;
   }
   &_title {

@@ -187,10 +187,9 @@
 }
 
 .quantityControl {
-  height: 40px;
   border: 1px solid $light-grey;
   border-radius: 6px;
-  width: 167px;
+  max-width: 167px;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -203,7 +202,7 @@
   border-inline-start: none;
   overflow: hidden;
   @include on-tablet {
-    height: 58px;
+    margin-bottom: 0px;
     min-width: 200px;
   }
 }
@@ -282,6 +281,7 @@
 }
 
 .addToCartBtn {
+  height: auto;
   @include productCartBtn;
   background: $green;
   color: $txt-white;
@@ -293,36 +293,29 @@
     background-color: $light_green;
   }
   @include on-tablet {
-    height: 44px;
     font-size: 17px;
     padding: 0 40px;
   }
 
   @include on-mobile {
-    height: 58px;
     font-size: 18px;
     padding: 0 48px;
   }
 
   @include on-tablet {
-    height: 58px;
     font-size: 18px;
-    padding: 0 48px;
   }
 
   @include on-laptop {
-    height: 58px;
     font-size: 18px;
-    padding: 0 48px;
   }
 
   @include on-design {
-    height: 58px;
     font-size: 24px;
-    padding: 0 48px;
   }
 }
 .addToCartBtn_inactive {
+  height: auto;
   @include productCartBtn;
   background-color: $txt-white;
   border: 1px solid $txt-black;
@@ -330,33 +323,25 @@
   cursor: not-allowed;
 
   @include on-tablet {
-    height: 44px;
     font-size: 17px;
-    padding: 0 40px;
+    padding: 0px 40px;
   }
 
   @include on-mobile {
-    height: 58px;
     font-size: 18px;
-    padding: 0 48px;
+    padding: 0px 48px;
   }
 
   @include on-tablet {
-    height: 58px;
     font-size: 18px;
-    padding: 0 48px;
   }
 
   @include on-laptop {
-    height: 58px;
     font-size: 18px;
-    padding: 0 48px;
   }
 
   @include on-design {
-    height: 58px;
     font-size: 24px;
-    padding: 0 48px;
   }
 }
 .productDescriptionWrapper {
@@ -449,7 +434,6 @@ body.dark {
     }
   }
 }
-
 
 .icons {
   position: absolute;

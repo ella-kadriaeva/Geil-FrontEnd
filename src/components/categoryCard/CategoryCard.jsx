@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategories } from '../../utils/fetchClient';
 import { BASE_URL } from '../../constants/constants';
 import styles from './CategoryCard.module.scss';
-import Container from '../container/Container';
+
 
 const CategoryCard = ({ limit }) => {
   const dispatch = useDispatch();

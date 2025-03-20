@@ -1,8 +1,60 @@
-# React + Vite
+### О проекте
+**"Интернет-магазин товаров для дома и сада"** *(Garden Products)*
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Дизайн-макет
+Используется [макет в Figma](https://www.figma.com/file/SDNWLzCWkh9ZXdCpWEaByv/project-frontend?type=design&node-id=280-1136&mode=design&t=NJTGdloftvn8I6Vz-0 ) с мобильной адаптацией.
 
-Currently, two official plugins are available:
+### Техническое задание 
+[TЗ](https://docs.google.com/document/d/1RU3XZ0tYzUHOfF7ijKEsZjT7f086xNL8-OiYQt-cKFk/edit?tab=t.0)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Задеплоенная реализация
+[Link]()
+
+### Описание проекта
+Веб-приложение для интернет-магазина товаров для дома и сада. Сайт предоставляет пользователю удобный интерфейс для просмотра товаров, их категоризации, добавления в корзину и оформления заказа.
+
+### Используемые Технологии
+- React + Vite
+- Redux / Redux Toolkit
+- React Router
+- React DOM
+- React Hook Form
+- Sass
+
+#### Авторы проекта
+Описание вклада в проект:    
+*Элла Кадряева*     
+[Linkedin](https://www.linkedin.com/in/ella-kadriaieva-79a197259/)    
+ella.kadriaieva@gmail.com    
+1. Верстка: header, hero-section, страниц продуктов по категориям, фильтры. 
+2. Реализована тема светлая/темная. Создание контекста для отображения модальных окон. 
+3. Работа с Redux Toolkit AsyncThunk для получения данных с backend.
+4. Teamlead.
+-----
+*Ирина Данилко*    
+ [Linkedin](https://www.linkedin.com/feed/)     
+irinadanilkor@gmail.com    
+1. Верстка: созданы и стилизованы компоненты - карточка продукта Sale Card, Sale-section главной страницы, страница продукта ProductDetails, модальное окно "1 day discount".
+2. Реализованы функции добавление рандомных товаров со скидкой на главной странице, вычисление товара дня. 
+3. Работа с Redux Toolkit AsyncThunk для получения данных с backend.
+4. Участие в фиксировании ошибок и отладки кода с командой.
+-------
+*Михаил Губко*     
+[Linkedin](https://www.linkedin.com/in/michael-hubko/)     
+mixelios@gmail.com    
+1. Верстка: Созданы и стилизованы компоненты: страница корзины, компоненты карточек товаров в корзине и компонент BreadCrumbs. система глобальных стилей и использование возможностей SASS.
+2. Роутинг: Реализован роутинг в приложении (App).
+3. Получение данных: Реализованы функции FetchClient для получения данных с бекенда.
+4. Работа с Redux: Разработан и внедрен cartSlice с использованием Redux Toolkit.
+5. Консультации и отладка: Оказаны консультации по верстке, участие в фиксировании ошибок и отладке кода.
+-------
+*Юрий Бугир*    
+[Linkedin](https://www.linkedin.com/in/yurii-buhir-b83b87291/)    
+say.to.yurii@gmail.com    
+1.  Верстка: созданы и стилизованы три ключевых компонента (Discount, CategoryCard, Form), отвечающие за отображение скидок, карточек категорий и пользовательских форм соответственно.
+2.  Реализована логика:
+  •  Discount.jsx: управление и расчёт скидок, оптимизированный рендер UI.
+  •  CategoryCard.jsx: вывод карточек с контентом (изображения, описания), SCSS-модули для гибкой стилизации.
+  •  Form.jsx: формы ввода данных, валидирование, оптимизированная работа со стейтом (hooks, React Hook Form).
+3.  Работа с состоянием: используется современный подход React — функциональные компоненты, хуки, подключение Redux Toolkit для глобального стейта.
+4. Участие в фиксировании ошибок и отладки кода с командой.
