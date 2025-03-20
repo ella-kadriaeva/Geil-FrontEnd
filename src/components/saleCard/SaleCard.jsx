@@ -8,8 +8,7 @@ const SaleCard = ({
   title,
   image,
   discont_price,
-  price
-
+  price,
 }) => {
   const { isDarkTheme } = useTheme();
   const cardBackground = isDarkTheme
@@ -18,7 +17,7 @@ const SaleCard = ({
 
   // Если скидка есть, то показываем цену со скидкой, иначе обычную цену
   const actualPrice = discont_price > 0 ? discont_price : price;
-
+  const discountPercentage = Math.round(100 - (discont_price * 100) / price);
   return (
     <div className={styles.productCard}>
       <div className={styles.productCard_image}>
@@ -30,7 +29,7 @@ const SaleCard = ({
       </div>
       {discountPercentage > 0 && (
         <div className={styles.productCard_discount}>
-          -{Math.round(discountPercentage)}%
+          -{discountPercentage}%
         </div>
       )}
       <div className={`${styles.productCard_text} ${cardBackground}`}>
