@@ -5,12 +5,9 @@
 .cardWrapper {
   position: relative;
   max-width: 548px;
-  background: #FFFFFF;  /* Белый фон для всего контейнера */
-  border-radius: 12px;  /* Скругление углов для контейнера */
-  overflow: hidden;  /* Чтобы изображение не выходило за пределы контейнера */
-  // display: flex;
-  // flex-direction: column; /* Располагаем элементы внутри вертикально */
-
+  background: #FFFFFF;  
+  border-radius: 12px;  
+  overflow: hidden;  
   @include on-tablet {
     gap: 20px;
   }
@@ -28,13 +25,11 @@
   width: 100%;
   height: auto;
   object-fit: contain;
-  // padding: 30px;
-
 }
 .cardDetails {
   padding: 20px;
-  border-top: 1px solid #DDDDDD;  /* Добавляем разделение между изображением и карточкой */
-  background: #FFFFFF;  /* Белый фон для карточки с текстом */
+  border-top: 1px solid #DDDDDD;  
+  background: #FFFFFF; 
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -62,7 +57,7 @@
     &:hover {
       stroke: $green;
     }
-
+      
     @include on-tablet {
       width: 44px;
       height: 44px;
@@ -72,7 +67,23 @@
       height: 48px;
     }
   }
+
+  &:hover svg {
+    stroke: $green;
+  }
+
+  &.icons_active {
+    svg {
+      fill: $green;
+      
+      &:hover {
+        fill: $green;
+        stroke: $divider_grey;
+      }
+    }
+  }
 }
+
 
 .discountChip {
   position: absolute;
@@ -106,9 +117,6 @@
 
   .priceContainer {
   max-width: 240px;
-  // padding-right: 32px;
-  // padding-bottom: 32px;
-  // padding-left: 32px; 
   display: flex;
     align-items: center;
     gap: 12px;
@@ -122,45 +130,30 @@
     }
 
   }
- .discontPrice {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 40px;
-    line-height: 1.1; /* 110% */
-    letter-spacing: normal;
-    width: 91px;
-    height: 44px;
-    box-sizing: border-box;
-  }
-.priceWrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: first baseline;
-  gap: 16px;
-}
-
- 
-  .discontPrice {
-    font-size: 40px;
-    font-weight: bold;
-    color: #424436;
-    
-  }
-
-  .originalPrice {
-    font-weight: 500;
-    font-size: 20px;
-    text-decoration: line-through;
-    color: #888888;
-  }
   
+  .priceWrapper {
+    display: flex;
+    align-items: baseline;
   
+    .discontPrice {
+      font-size: 40px;
+      font-weight: 600;
+      margin-right: 16px;
+      color: #424436;
+    }
+  
+    .originalPrice {
+      font-size: 20px;
+      text-decoration: line-through;
+      color: #8B8B8B;
+    }
+  }
 
 .buttonWrapper {
-  margin-top: 16px;  // Отступ сверху для кнопки
-  width: 100%;  // Ширина кнопки по всему контейнеру
+  margin-top: 16px;  
+  width: 100%;  
   display: flex;
-  justify-content: center;  // Центрируем кнопку
+  justify-content: center;  
 }
 
 .addToCart {
@@ -168,7 +161,6 @@
   width: 100%;  
   border-radius: 4px;  
   gap: 10px;  
-
   background-color: #FFFFF1;  
   color: $txt-black;
   font-size: 20px;

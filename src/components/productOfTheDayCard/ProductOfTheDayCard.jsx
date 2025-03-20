@@ -1,88 +1,113 @@
-
-import React from "react";
-// import "./ProductOfTheDayCard.module.scss";
-import getRandomOne from "../../utils/randomOne";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import useFetchProducts from "../../utils/useFetchProducts";
 import styles from './ProductOfTheDayCard.module.scss';
 import { Heart } from 'lucide-react';
-import ButtonLink from '../ui/ButtonLink';
+import {
+  addToWishlist,
+  removeLikeProductbyIdFromCart,
+  initLikeDataFromLocalStorage,
+} from '../../store/slices/likeSlice';
+import {addToCart} from "../../store/slices/cartSlice"
 
+const BASE_URL = "http://localhost:3333";
 
-const BASE_URL = "http://localhost:3333"; 
+const getSeededRandomIndex = (seed, max) => {
+  return seed % max;
+};
 
 const ProductOfTheDayCard = () => {
   const { data, loading, error } = useFetchProducts('all');
-  
-  // Проверка на наличие данных
+  const [productOfTheDay, setProductOfTheDay] = useState(null);
+
+  const dispatch = useDispatch();
+  const likeItems = useSelector((state) => state.like.likesData);
+
+
+  useEffect(() => {
+    dispatch(initLikeDataFromLocalStorage());
+  }, []);
+
+  useEffect(() => {
+    if (data && data.length > 0) {
+      const today = new Date().toISOString().split('T')[0];
+      const savedData = JSON.parse(localStorage.getItem('productOfTheDay'));
+
+      if (savedData && savedData.date === today) {
+        setProductOfTheDay(savedData.product);
+      } else {
+        const seed = new Date(today).getTime();
+        const randomIndex = getSeededRandomIndex(seed, data.length);
+        const selectedProduct = data[randomIndex];
+
+        setProductOfTheDay(selectedProduct);
+        localStorage.setItem('productOfTheDay', JSON.stringify({ date: today, product: selectedProduct }));
+      }
+    }
+  }, [data]);
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error loading product</div>;
-  if (!data || data.length === 0) return <div>No product available</div>;
-  
-  // Выбираем случайный товар
-  const product = getRandomOne(data);
+  if (!productOfTheDay) return <div>No product available</div>;
 
-  // Если товар не выбран, показываем ошибку
-  if (!product || product.length === 0) return <div>No product available</div>;
-
-  // Извлекаем необходимые данные
-  const { image, title, discont_price, price } = product[0]; 
-  const discountPercentage = Math.round(100 - (discont_price * 100) / price);
-  const actualPrice = discont_price > 0 ? discont_price:price;
-
-  // Формируем полный URL для изображения
+  const { image, title, price } = productOfTheDay;
+  const discountPercentage = 50;
+  const discont_price = price / 2;
   const imageUrl = `${BASE_URL}${image}`;
 
-    return (
-      <div className={styles.productOfTheDayCard}>
-        {/* Зеленая основная карточка */}
-        <div className={styles.cardWrapper}>
-
-          <div className={styles.cardImageWrapper}>
-            <img src={imageUrl} className={styles.productImage} />
-                      {/* Контейнер с изображением */} 
+  const handleLike = () => {
+    if (!productOfTheDay) return;
     
-              { (discont_price > 0 ) && (
-                  <div className={styles.discountChip}>
-                    &#8722;{discountPercentage}&#37;
-                  </div> )
-              } 
-              
-                          
-                                      
-              <button className={`${styles.heartBtn} product`}>
-                <Heart />
-              </button>
-          </div>
-      
-    
-
-          {/* Карточка с названием, ценой и скидкой */}
-          <div className={styles.cardDetails}>
-            <h3 className={styles.productTitle}>{title}</h3>
-                <div className={styles.priceContainer}>
-                  <div className={styles.priceWrapper}>
-                    <p className={styles.discontPrice}>
-                        &#36;
-                        {actualPrice}
-                      </p>
-                      {discont_price > 0 && (
-                        <p className={styles.originalPrice}>&#36;{price}</p>
-                      )}
-                  </div>
-                </div>
-          </div>
+    const isItLiked = likeItems.some((likeItem) => likeItem.id === productOfTheDay.id);
+    if (isItLiked) {
+      dispatch(removeLikeProductbyIdFromCart(productOfTheDay.id));
+    } else {
+      dispatch(addToWishlist({...productOfTheDay, discont_price: price / 2}));
+    }
+  };
+  
+  return (
+    <div className={styles.productOfTheDayCard}>
+      <div className={styles.cardWrapper}>
+        <div className={styles.cardImageWrapper}>
+          <img src={imageUrl} className={styles.productImage} alt={title} />
+          {discont_price > 0 && (
+            <div className={styles.discountChip}>
+              &#8722;{discountPercentage}&#37;
+            </div>
+          )}
+          <button className={`${styles.heartBtn} product ${likeItems.some
+          (item => item.id === productOfTheDay?.id) ? styles.icons_active : ''}`}
+            onClick={handleLike}>
+            <Heart />
+          </button>
         </div>
-
-        {/* Кнопка вне контейнера */}
-        <div className={styles.buttonWrapper}>
-          <button className={styles.addToCart} type="button">Add to Cart</button>
+        <div className={styles.cardDetails}>
+          <h3 className={styles.productTitle}>{title}</h3>
+          <div className={styles.priceContainer}>
+            <div className={styles.priceWrapper}>
+               {discont_price > 0 ? (
+                <>
+                  <p className={styles.discontPrice}>&#36;{discont_price}</p>
+                  <p className={styles.originalPrice}>&#36;{price}</p>
+                </>
+              ) : (
+                <p className={styles.discontPrice}>&#36;{price}</p>
+              )}
+            </div>
+          </div>
         </div>
       </div>
+      <div className={styles.buttonWrapper}>
+        <button onClick={()=>{dispatch(addToCart({...productOfTheDay, discont_price: price / 2}));}}  className={styles.addToCart} type="button">Add to Cart</button>
+      </div>
+    </div>
   );
 };
 
 export default ProductOfTheDayCard;
+
+
 
 
 
