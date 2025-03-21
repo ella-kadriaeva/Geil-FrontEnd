@@ -24,7 +24,7 @@ export default function Filter() {
       dispatch(setPriceFrom(value ? Number(value) : ''));
     } else if (name === 'to') {
       dispatch(setPriceTo(value ? Number(value) : ''));
-    } 
+    }
   };
 
   const handleCheckboxChange = (e) => {
@@ -40,9 +40,8 @@ export default function Filter() {
     <Container>
       <form className={styles.formContainer}>
         <div className={styles.container}>
-          <label htmlFor={'from'} className={styles.label}>
-            Price
-          </label>
+          Price
+          <label htmlFor={'from'} className={styles.label}></label>
           <Input
             name="from"
             id="from"
@@ -51,6 +50,7 @@ export default function Filter() {
             placeholder="from"
             className={styles.inputField}
           />
+          <label htmlFor={'to'} className={styles.label}></label>
           <Input
             name="to"
             id="to"
@@ -77,7 +77,7 @@ export default function Filter() {
           <label htmlFor={'sortBy'} className={styles.label}>
             Selected
           </label>
-          <Select value={sortBy} onChange={handleSortChange}/>
+          <Select value={sortBy} onChange={handleSortChange}  />
         </div>
       </form>
     </Container>

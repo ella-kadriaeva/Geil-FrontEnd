@@ -17,25 +17,22 @@ import {
 } from '../../store/slices/likeSlice';
 import Skeleton from '../skeleton/Skeleton';
 
-export default function ProductsList({data, loading, error}) {
+export default function ProductsList({ data, loading, error, path = '' }) {
   const { isDarkTheme } = useTheme();
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cart.cartData);
   const likeItems = useSelector((state) => state.like.likesData);
   const filters = useSelector((state) => state.filters);
-  
-  
 
   useEffect(() => {
     dispatch(initDataFromLocalStorage());
     dispatch(initLikeDataFromLocalStorage());
   }, []);
 
-
   const handleClickIcons = useCallback(
     (type, item) => {
       if (type === 'heart') {
-        let isItLiked = likeItems.some((likeItems) => likeItems.id === item.id); 
+        let isItLiked = likeItems.some((likeItems) => likeItems.id === item.id);
         if (isItLiked) {
           dispatch(removeLikeProductbyIdFromCart(item.id));
         } else {
@@ -82,7 +79,7 @@ export default function ProductsList({data, loading, error}) {
         return new Date(b.date) - new Date(a.date);
       } else if (filters.sortBy === 'by default') {
         return data;
-      } 
+      }
       return 0;
     });
   }, [data, filters]);
@@ -110,9 +107,8 @@ export default function ProductsList({data, loading, error}) {
         filteredData.map((item) => {
           let isInCart = items.some((cartItem) => cartItem.id === item.id);
           let isInLikes = likeItems.some((likeItem) => likeItem.id === item.id);
-          
+
           return (
-            
             <div key={item.id} className={styles.wrapperLink}>
               <div
                 className={` ${styles.icons} ${isDarkTheme ? styles.icons_dark : styles.icons_light}`}
@@ -132,7 +128,7 @@ export default function ProductsList({data, loading, error}) {
                   <ShoppingBag className={styles.svgLink} />
                 </button>
               </div>
-              <Link to={`./${item.id}`}>
+              <Link to={`./${path}${item.id}`}>
                 <SaleCard
                   id={item.id}
                   price={item.price}
@@ -147,7 +143,6 @@ export default function ProductsList({data, loading, error}) {
       ) : (
         <h2>No items found</h2>
       )}
-      
     </div>
   );
 }

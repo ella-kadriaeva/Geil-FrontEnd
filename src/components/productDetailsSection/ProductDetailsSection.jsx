@@ -16,16 +16,14 @@ const BASE_URL = 'http://localhost:3333';
 
 const ProductDetailsSection = ({ product, loading }) => {
   const { description, image, price, discont_price, title, id } = product;
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   const [isExpanded, setIsExpanded] = useState(false);
   const [selectedImage, setSelectedImage] = useState(`${BASE_URL}${image}`);
-  const [isClicked, setIsClicked] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { openDialog } = useDialog();
-  const isAdded = isClicked
-    ? `${styles.addToCartBtn_inactive}`
-    : `${styles.addToCartBtn}`;
+
   // Функция для переключения состояния
   const toggleDescription = () => {
     setIsExpanded((prevState) => !prevState);
@@ -45,14 +43,10 @@ const ProductDetailsSection = ({ product, loading }) => {
       dispatch(addToWishlist(product));
     }
   };
-  const handlerAddToCart = (event) => {
-    if (isClicked) {
-      event.preventDefault();
-      return;
-    }
+  const handlerAddToCart = () => {
     dispatch(addToCartByAmount({ ...product, count }));
-    setIsClicked(true);
-    // navigate('/cart');
+
+    navigate('/cart');
   };
   return (
     <div className={styles.productContainer}>
@@ -131,10 +125,9 @@ const ProductDetailsSection = ({ product, loading }) => {
           </div>
           <ButtonLink
             type="button"
-            text={isClicked ? 'Added' : 'Add to cart'}
-            className={isAdded}
+            className={styles.addToCartBtn}
             onClick={handlerAddToCart}
-            disabled={isClicked}
+            text="Add to cart"
           />
         </div>
         <div className={styles.productDescriptionWrapper_laptop}>

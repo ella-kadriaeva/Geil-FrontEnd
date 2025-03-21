@@ -1,5 +1,3 @@
-
-
 @use '../../../assets/styles/mixin' as *;
 @use '../../../assets/styles/colors' as *;
 
@@ -8,30 +6,22 @@
   position: fixed;
   padding: 20px;
   border: none;
-  margin: auto;
-  max-width: 548px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   gap: 16px;
   z-index: 100;
-  top: 160px;
-
-  @include on-mobile {
-    top: 180px;
-  }
-
+  max-width: 440px;
+  top: 60px;
   @include on-tablet {
     padding: 32px;
+    max-width: 548px;
   }
 }
-
 
 .discount {
   background-color: transparent;
   color: $txt-white;
-  width: 100%;
-  height: 100%;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -61,7 +51,6 @@
   @include on-tablet {
     font-size: 36px;
   }
-
 }
 
 .closeBtn {
@@ -76,4 +65,3 @@
   height: 40px;
   stroke: $txt-white;
 }
-

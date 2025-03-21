@@ -5,7 +5,7 @@ import { X } from 'lucide-react';
 import ButtonLink from '../ui/ButtonLink';
 import { useNavigate } from 'react-router-dom';
 import { useDialog } from '../../context/DialogContect';
-
+import ProductOfTheDayCard from '../productOfTheDayCard/ProductOfTheDayCard';
 function preventScroll(event) {
   event.preventDefault();
 }
@@ -21,10 +21,7 @@ export default function BurgerMenu() {
   };
   const handleDialog = () => {
     setModalOpen((prevState) => !prevState);
-    openDialog(
-      'type2',
-      <span>A manager will contact you shortly to confirm your order.</span>
-    );
+    openDialog('type2', <ProductOfTheDayCard />);
     navigate('/'); // Перенаправление на новую страницу
   };
   useEffect(() => {

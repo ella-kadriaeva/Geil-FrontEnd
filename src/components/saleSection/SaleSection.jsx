@@ -14,7 +14,7 @@ const SaleSection = () => {
         <MainSectionTitle title="Sale" to="/sale" text="All sales" />
         {error && <div>Error fetching data</div>}
         {loading && <div>Loading...</div>}
-        {data && <ProductsList data={randomCards} />}
+        {data && <ProductsList data={randomCards} path="sale/" />}
         <ButtonLink
           to="/sale"
           text="All sales"
