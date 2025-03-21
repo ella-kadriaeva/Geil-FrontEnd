@@ -44,6 +44,7 @@
       @include on-tablet {
         padding: 32px;
         gap: 16px;
+        height: 100%;
       }
 
       &:nth-child(2) {

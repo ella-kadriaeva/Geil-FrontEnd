@@ -68,3 +68,44 @@
     height: 44px;
   }
 }
+
+.modalBlock {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 60%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  z-index: 20;
+  animation: slideIn 0.5s ease forwards;
+
+}
+
+.close {
+  animation: slideOut 0.5s ease forwards; /* Анимация закрытия */
+}
+
+/* Анимация для появления окна */
+@keyframes slideIn {
+  0% {
+    right: -100%; /* Начало за пределами экрана */
+    opacity: 0;
+  }
+  100% {
+    right: 0; /* Модальное окно становится видимым */
+    opacity: 1;
+  }
+}
+
+/* Анимация для закрытия окна */
+@keyframes slideOut {
+  0% {
+    right: 0;
+    opacity: 1;
+  }
+  100% {
+    right: -100%; /* Модальное окно уезжает вправо */
+    opacity: 0;
+  }
+}

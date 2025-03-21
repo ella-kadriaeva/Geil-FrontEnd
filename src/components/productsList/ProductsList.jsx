@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useMemo } from 'react';
 import { Link } from 'react-router';
 import styles from './ProductsList.module.scss';
 import SaleCard from '../saleCard/SaleCard';
@@ -15,12 +15,14 @@ import {
   removeLikeProductbyIdFromCart,
   initLikeDataFromLocalStorage,
 } from '../../store/slices/likeSlice';
+import Skeleton from '../skeleton/Skeleton';
 
-export default function ProductsList({ data }) {
+export default function ProductsList({ data, loading, error, path = '' }) {
   const { isDarkTheme } = useTheme();
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cart.cartData);
   const likeItems = useSelector((state) => state.like.likesData);
+  const filters = useSelector((state) => state.filters);
 
   useEffect(() => {
     dispatch(initDataFromLocalStorage());
@@ -30,7 +32,7 @@ export default function ProductsList({ data }) {
   const handleClickIcons = useCallback(
     (type, item) => {
       if (type === 'heart') {
-        let isItLiked = likeItems.some((likeItems) => likeItems.id === item.id); // TODO: check if item in likes
+        let isItLiked = likeItems.some((likeItems) => likeItems.id === item.id);
         if (isItLiked) {
           dispatch(removeLikeProductbyIdFromCart(item.id));
         } else {
@@ -48,12 +50,64 @@ export default function ProductsList({ data }) {
     [items, likeItems]
   );
 
+  const filteredData = useMemo(() => {
+    if (!Array.isArray(data)) return [];
+
+    let filtered = data.filter((item) => {
+      const priceFrom = filters.priceFrom ? Number(filters.priceFrom) : null;
+      const priceTo = filters.priceTo ? Number(filters.priceTo) : null;
+
+      const isDiscounted = filters.isDiscounted
+        ? item.discountPercentage > 0 || item.discount_price < item.price
+        : true;
+
+      const matchesPrice =
+        (!priceFrom || item.price >= priceFrom) &&
+        (!priceTo || item.price <= priceTo);
+
+      return matchesPrice && isDiscounted;
+    });
+
+    return [...filtered].sort((a, b) => {
+      if (filters.sortBy === 'by default') {
+        return 0;
+      } else if (filters.sortBy === 'price: low-high') {
+        return a.price - b.price;
+      } else if (filters.sortBy === 'price: high-low') {
+        return b.price - a.price;
+      } else if (filters.sortBy === 'newest') {
+        return new Date(b.date) - new Date(a.date);
+      } else if (filters.sortBy === 'by default') {
+        return data;
+      }
+      return 0;
+    });
+  }, [data, filters]);
+  if (loading) {
+    return (
+      <div className={styles.cardsContainer}>
+        {[...Array(8)].map((_, index) => (
+          <Skeleton key={index} />
+        ))}
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={styles.error}>
+        <p>Error: {error}</p>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.cardsContainer}>
-      {data.length > 0 &&
-        data.map((item) => {
+      {filteredData.length > 0 ? (
+        filteredData.map((item) => {
           let isInCart = items.some((cartItem) => cartItem.id === item.id);
           let isInLikes = likeItems.some((likeItem) => likeItem.id === item.id);
+
           return (
             <div key={item.id} className={styles.wrapperLink}>
               <div
@@ -74,19 +128,21 @@ export default function ProductsList({ data }) {
                   <ShoppingBag className={styles.svgLink} />
                 </button>
               </div>
-              <Link to={`/products/${item.id}`}>
+              <Link to={`./${path}${item.id}`}>
                 <SaleCard
-                  key={item.id}
+                  id={item.id}
                   price={item.price}
                   title={item.title}
                   image={item.image}
                   discont_price={item.discont_price}
-                  discountPercentage={item.discountPercentage}
                 />
               </Link>
             </div>
           );
-        })}
+        })
+      ) : (
+        <h2>No items found</h2>
+      )}
     </div>
   );
 }

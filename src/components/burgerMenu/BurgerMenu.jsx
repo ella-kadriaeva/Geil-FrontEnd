@@ -3,20 +3,26 @@ import styles from './BurgerMenu.module.scss';
 import { useModal } from '../../context/ModalContext';
 import { X } from 'lucide-react';
 import ButtonLink from '../ui/ButtonLink';
-import { useNavigate } from 'react-router-dom'; // Хук для перенаправления
+import { useNavigate } from 'react-router-dom';
+import { useDialog } from '../../context/DialogContect';
+import ProductOfTheDayCard from '../productOfTheDayCard/ProductOfTheDayCard';
 function preventScroll(event) {
   event.preventDefault();
 }
 export default function BurgerMenu() {
   const { isModalOpen, setModalOpen } = useModal();
+  const { openDialog } = useDialog();
   const navigate = useNavigate(); // Хук для перенаправления
   const modalRef = useRef(false);
-  const handleModal = () => {
+
+  const handleClose = (url) => {
+    navigate(url);
     setModalOpen((prevState) => !prevState);
   };
-  const handleClose = (url) => {
-    setModalOpen(false); // Закрытие модального окна
-    navigate(url); // Перенаправление на новую страницу
+  const handleDialog = () => {
+    setModalOpen((prevState) => !prevState);
+    openDialog('type2', <ProductOfTheDayCard />);
+    navigate('/'); // Перенаправление на новую страницу
   };
   useEffect(() => {
     if (modalRef.current) {
@@ -34,18 +40,18 @@ export default function BurgerMenu() {
       window.removeEventListener('wheel', preventScroll, { passive: false });
     };
   }, [isModalOpen]);
-  // if (!isModalOpen) return null;
+  if (!isModalOpen) return null;
   return (
     <div className="wrapper">
       <div
         className={` ${styles.backdrop} ${isModalOpen ? styles.block : styles.not}`}
       ></div>
-      <div className="modal" ref={modalRef}>
+      <div className={`${styles.modalBlock} modal`} ref={modalRef}>
         <div className={styles.closeBtnWrapper}>
           <button
             className={`button ${styles.closeBtn}`}
             onClick={() => {
-              setModalOpen(false);
+              setModalOpen((prevState) => !prevState);
             }}
           >
             <X className={styles.svgBtn} />
@@ -79,6 +85,7 @@ export default function BurgerMenu() {
             text="1 day discount"
             className={styles.discountBtn}
             type="button"
+            onClick={handleDialog}
           />
         </nav>
       </div>

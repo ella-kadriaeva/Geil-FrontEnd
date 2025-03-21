@@ -6,6 +6,7 @@ import SectionTitle from '../../components/sectionTitle/SectionTitle';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { initLikeDataFromLocalStorage } from '../../store/slices/likeSlice';
+import BreadCrumbs from '../../components/breadCrumbs/BreadCrumbs';
 
 export default function Likes() {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ export default function Likes() {
   return (
     <section>
       <Container>
+        <BreadCrumbs />
         <SectionTitle>Liked products</SectionTitle>
         <Filter />
         {data.length === 0 

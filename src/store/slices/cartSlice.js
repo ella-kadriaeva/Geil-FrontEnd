@@ -1,4 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
+
+const getTotalCartCount = (cart) => {
+  return cart.reduce((total, item) => total + (item.cartCount || 0), 0);
+};
+const updateLocalStorage = (cartData) => {
+  localStorage.setItem('cart', JSON.stringify(cartData));
+};
 const initialState = {
   cartData: [],
 };
@@ -28,9 +35,19 @@ export const cartSlice = createSlice({
         state.cartData.push({ ...action.payload, count: 1 });
       }
 
-      localStorage.setItem('cart', JSON.stringify(state.cartData));
+      updateLocalStorage(state.cartData);
     },
+    addToCartByAmount: (state, action) => {
+      const { id, count } = action.payload;
+      const foundProduct = state.cartData.find((product) => product.id === id);
 
+      if (foundProduct) {
+        foundProduct.count += count;
+      } else {
+        state.cartData.push({ ...action.payload });
+      }
+      updateLocalStorage(state.cartData);
+    },
     removeAllProductbyIdFromCart: (state, action) => {
       let foundProduct = state.cartData.find(
         (product) => product.id === action.payload
@@ -51,35 +68,32 @@ export const cartSlice = createSlice({
           .filter((product) => product);
       }
 
-      localStorage.setItem('cart', JSON.stringify(state.cartData));
+      updateLocalStorage(state.cartData);
     },
 
     removeItemFromCart: (state, action) => {
-      console.log(action.payload.id);
       state.cartData = state.cartData.filter(
         (item) => item.id !== action.payload.id
       );
-      localStorage.setItem('cart', JSON.stringify(state.cartData));
+      updateLocalStorage(state.cartData);
     },
 
     increaseCountInCartItem: (state, action) => {
       let currData = state.cartData.map(item => ({...item}))
       let tempItem = state.cartData.find(item => item.id === +action.payload);
-      state.cartData.forEach(item => console.log(item.count))
       tempItem = {...tempItem, count: tempItem.count + 1};
       state.cartData = currData.map(item => item.id === +action.payload ? tempItem : item)
 
-      localStorage.setItem('cart', JSON.stringify(state.cartData));
+      updateLocalStorage(state.cartData);
     },
 
     decreaseCountInCartItem: (state, action) => {
       let currData = state.cartData.map(item => ({...item}))
       let tempItem = state.cartData.find(item => item.id === +action.payload);
-      state.cartData.forEach(item => console.log(item.count))
       tempItem = {...tempItem, count: tempItem.count - 1};
       state.cartData = currData.map(item => item.id === +action.payload ? tempItem : item)
 
-      localStorage.setItem('cart', JSON.stringify(state.cartData));
+      updateLocalStorage(state.cartData);
     },
   },
 });
@@ -91,6 +105,7 @@ export const {
   removeItemFromCart,
   increaseCountInCartItem,
   decreaseCountInCartItem,
+  addToCartByAmount,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

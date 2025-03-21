@@ -69,9 +69,11 @@ export default function Cart() {
 
               <div className={styles.cart_orderPreis}>
                 <p>{cartData.length}items</p>
-                <p className={styles.total}>Total <span>{totalPrice}</span></p>
-                <Form type="order" />
+                <p className={styles.total}>
+                  Total <span>${totalPrice}</span>
+                </p>
               </div>
+              <Form type="order" />
             </div>
           </div>
         )}

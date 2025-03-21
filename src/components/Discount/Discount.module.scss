@@ -1,48 +1,75 @@
-@use "../../assets/styles/mixin" as *;
-@use "../../assets/styles/colors" as *;
-
-.discountFormWrapper {
-  max-width: 1440px;
-  width: 100%;
-}
+@use '../../assets/styles/mixin' as *;
+@use '../../assets/styles/colors' as *;
 
 .discountForm {
-  max-width: 1360px;
   width: 100%;
   border-radius: 10px;
   background: linear-gradient(80.46deg, #87933d -0.68%, #55610b 66.66%);
 }
 
 .discountFormText {
+  font-size: 38px;
   font-weight: 700;
-  font-size: 64px;
-  line-height: 70.4px;
+  line-height: 1.1;
   text-align: center;
   color: #ffffff;
-  padding: 32px 32px 24px 32px;
-  @media screen and (max-width: 480px) {
+  padding: 24px 20px;
+  @include on-tablet {
     font-size: 48px;
+    line-height: 53px;
+    padding: 32px 20px 24px;
+  }
+  @include on-design {
+    font-size: 64px;
     line-height: 53px;
   }
 }
 
-.discountFormBackImg {
-  height: 360px;
-  width: 100%;
-  background-position: bottom;
-  background-size: cover;
-  @media screen and (max-width: 480px) {
-    order: 2;
-  }
-
-}
-
 .discountFormInfoWrapper {
   display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
 
-  @media screen and (max-width: 480px) {
-    flex-wrap: wrap;
-    order: 1;
+  @include on-tablet {
+    flex-direction: row;
+    align-items: end;
   }
 }
+.formWrapper {
+  width: 100%;
+  padding: 0 20px;
+  @include on-tablet {
+    max-width: 490px;
+    padding: 0px 32px 24px;
+  }
+  @include on-laptop {
+    max-width: 580px;
+    padding: 32px 32px;
+  }
+}
+.image {
+  width: 100%;
+  height: auto;
+  min-height: 323px;
+  object-fit: cover;
 
+  @include on-tablet {
+    min-height: 308px;
+    object-position: right bottom;
+    max-width: 602px;
+  }
+  @include on-laptop {
+    min-height: 308px;
+    object-position: right bottom;
+    max-width: 748px;
+  }
+}
+.imageContainer {
+  position: relative;
+  margin-inline: auto;
+  overflow: clip;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}

@@ -16,7 +16,7 @@
     padding-inline-end: 0;
 
     @include on-tablet {
-      padding-inline-end: 20px;
+      padding-inline-end: 16px;
     }
 
     @include on-laptop {
@@ -38,6 +38,9 @@
 
   &_button__outlined {
     @include buttonOutlined;
+    @include on-design {
+      width: 156px;
+    }
 
     &:hover {
       background-color: $light_green;
