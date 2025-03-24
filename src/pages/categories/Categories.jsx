@@ -5,12 +5,13 @@ import CategoryCard from '../../components/categoryCard/CategoryCard';
 import BreadCrumbs from '../../components/breadCrumbs/BreadCrumbs';
 
 export default function Categories() {
+
+  
   return (
     <Container>
       <BreadCrumbs />
       <SectionTitle>Categories</SectionTitle>
-
-      <CategoryCard limit={5} />
+      <CategoryCard limit={5} onCategoriesPage={true} />
     </Container>
   );
 }

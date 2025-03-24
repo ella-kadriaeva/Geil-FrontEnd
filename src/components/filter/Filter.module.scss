@@ -1,5 +1,5 @@
-@use "../../assets/styles/mixin" as *;
-@use "../../assets/styles/colors" as *;
+@use '../../assets/styles/mixin' as *;
+@use '../../assets/styles/colors' as *;
 
 .label {
   display: block;
@@ -24,8 +24,9 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding: 12px 0;
+  padding: 16px 0;
   row-gap: 16px;
+  gap: 16px;
   @include on-tablet {
     padding: 16px 0;
     row-gap: 20px;
@@ -33,7 +34,7 @@
   }
   @include on-design {
     gap: 40px;
-    padding: 20px 0;
+    padding: 40px 0;
   }
 }
 .checkboxInput {
@@ -45,7 +46,9 @@
   background-color: $txt-white;
   appearance: none;
   margin-right: 10px;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
   position: relative;
 }
 
@@ -55,7 +58,7 @@
 }
 
 .checkboxInput:checked::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 2px;
   left: 10px;
@@ -72,7 +75,6 @@
   @include borderFilter;
   border-radius: 6px;
   line-height: 1.26%;
-  
 }
 
 .inputField:focus {
