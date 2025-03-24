@@ -36,7 +36,10 @@
   gap: 20px;
   align-items: center;
   position: relative;
-  .likesCounter {
+  a {
+    position: relative;
+  }
+  .сounter {
     position: absolute;
     left: 1px;
     top: 7px;
@@ -92,8 +95,10 @@ a:hover {
   display: flex;
   gap: 12px;
   cursor: pointer;
+  
 }
 .svgLink {
+  
   stroke-width: 1.1;
   width: 32px;
   height: 32px;

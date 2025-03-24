@@ -8,6 +8,7 @@ export const detailsSlice = createSlice({
     loading: false,
     error: '',
   },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchProductById.pending, (state) => {
@@ -24,5 +25,5 @@ export const detailsSlice = createSlice({
       });
   },
 });
-
+export const { increment, decrement } = detailsSlice.actions;
 export default detailsSlice.reducer;

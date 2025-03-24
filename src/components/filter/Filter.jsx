@@ -1,74 +1,83 @@
-import React, { useState } from "react";
-import Checkbox from "../ui/Checkbox";
-import styles from "./Filter.module.scss";
-import Select from "../select/Select";
-import Input from "../ui/Input";
-import Container from "../container/Container";
+import React, { useState } from 'react';
+import Checkbox from '../ui/Checkbox';
+import styles from './Filter.module.scss';
+import Select from '../select/Select';
+import Input from '../ui/Input';
+import Container from '../container/Container';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setIsDiscounted,
+  setPriceFrom,
+  setPriceTo,
+  setSortBy,
+} from '../../store/slices/filtersSlice';
 
 export default function Filter() {
-  const [formData, setFormData] = useState({
-    category: '',
-    from: "",
-    to: "",
-    isDiscounted: false
-  });
+  const dispatch = useDispatch();
+  const { priceFrom, priceTo, isDiscounted, sortBy } = useSelector(
+    (state) => state.filters
+  );
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
+    if (name === 'from') {
+      dispatch(setPriceFrom(value ? Number(value) : ''));
+    } else if (name === 'to') {
+      dispatch(setPriceTo(value ? Number(value) : ''));
+    }
   };
+
   const handleCheckboxChange = (e) => {
     const { checked } = e.target;
-    setFormData({
-      ...formData,
-      isDiscounted: checked
-    });
+    dispatch(setIsDiscounted(checked));
   };
+
+  const handleSortChange = (value) => {
+    dispatch(setSortBy(value));
+  };
+
   return (
     <Container>
       <form className={styles.formContainer}>
         <div className={styles.container}>
-          <label htmlFor={"from"} className={styles.label}>
-            Price
-          </label>
+          Price
+          <label htmlFor={'from'} className={styles.label}></label>
           <Input
             name="from"
             id="from"
-            value={formData.from}
+            value={priceFrom}
             onChange={handleChange}
             placeholder="from"
             className={styles.inputField}
           />
+          <label htmlFor={'to'} className={styles.label}></label>
           <Input
             name="to"
             id="to"
-            value={formData.to}
+            value={priceTo}
             onChange={handleChange}
             placeholder="to"
             className={styles.inputField}
           />
         </div>
         <div className={styles.container}>
-          <label htmlFor={"isDiscounted"} className={styles.label}>
+          <label htmlFor={'isDiscounted'} className={styles.label}>
             Discounted items
           </label>
 
           <Checkbox
             name="isDiscounted"
             id="isDiscounted"
-            checked={formData.isDiscounted}
+            checked={isDiscounted}
             onChange={handleCheckboxChange}
             className={styles.checkboxInput}
           />
         </div>
         <div className={styles.container}>
-          <label htmlFor={""} className={styles.label}>
+          <label htmlFor={'sortBy'} className={styles.label}>
             Selected
           </label>
-          <Select />
+          <Select value={sortBy} onChange={handleSortChange}  />
         </div>
       </form>
     </Container>
