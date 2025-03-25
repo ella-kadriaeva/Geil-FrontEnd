@@ -4,6 +4,7 @@ import ProductDetailsSection from '../../components/productDetailsSection/Produc
 import useFetchDetails from '../../utils/useFetchDetails';
 import { useParams } from 'react-router';
 import BreadCrumbs from '../../components/breadCrumbs/BreadCrumbs';
+import styles from './ProductDetails.module.scss';
 
 const ProductDetails = () => {
   const { productId } = useParams();
@@ -11,7 +12,7 @@ const ProductDetails = () => {
   const product = details[0];
 
   return (
-    <section>
+    <section className={styles.productDetails}>
       <Container>
         <BreadCrumbs />
         {error && <div>Error fetching data</div>}

@@ -2,8 +2,11 @@ import {Link, useLocation} from "react-router";
 import styles from "./BreadCrumbs.module.scss";
 import {useEffect, useMemo, useState} from "react";
 import {getCategoryById, getProductById} from "../../utils/fetchClient";
+import classNames from "classnames";
 
 export default function BreadCrumbs() {
+  const body = document.querySelector('body');
+  console.log(body.classList[0]);
   const location = useLocation();
   const wayArray = useMemo(() => location.pathname.split("/").slice(1), [location]);
   const [way, setWay] = useState({
@@ -47,6 +50,14 @@ export default function BreadCrumbs() {
           });
         }
         break;
+      case 'likes':
+        setPlaceName('Liked products');
+        if (wayArray[1]) {
+          getProductById(wayArray[1]).then((res) => {
+            setWay((prev) => ({ ...prev, prodId: res[0].title }));
+          });
+        }
+        break;
       default:
         console.log('other!');
     }
@@ -60,17 +71,32 @@ export default function BreadCrumbs() {
   return (
     <div className={styles.bread_crumbs}>
       {way.place && (
-        <Link to="/" className={styles.bread_crumbs__link}>
+        <Link
+          to="/"
+          className={`${styles.bread_crumbs__link} bread_crumbs__link`}
+        >
           Home Page
         </Link>
       )}
 
       {way.catId || way.prodId ? (
-        <Link to={`/${way.place}`} className={styles.bread_crumbs__link}>
+        <Link
+          to={`/${way.place}`}
+          className={`${styles.bread_crumbs__link} bread_crumbs__link`}
+        >
           {placeName}
         </Link>
       ) : (
-        <span className={styles.bread_crumbs__link}>{placeName}</span>
+        <span
+          className={classNames(
+            `${styles.bread_crumbs__link} bread_crumbs__link`,
+            {
+              [styles.dark]: body.classList.contains('dark'),
+            }
+          )}
+        >
+          {placeName}
+        </span>
       )}
 
       {way.catId && way.prodId && (
@@ -83,11 +109,15 @@ export default function BreadCrumbs() {
       )}
 
       {way.catId && !way.prodId && (
-        <span className={styles.bread_crumbs__link}>{way.catId}</span>
+        <span className={`${styles.bread_crumbs__link} bread_crumbs__link`}>
+          {way.catId}
+        </span>
       )}
 
       {way.prodId && (
-        <span className={styles.bread_crumbs__link}>{way.prodId}</span>
+        <span className={`${styles.bread_crumbs__link} bread_crumbs__link`}>
+          {way.prodId}
+        </span>
       )}
     </div>
   );

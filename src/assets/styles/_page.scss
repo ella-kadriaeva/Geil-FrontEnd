@@ -32,4 +32,12 @@
   dialog [open] {
     overflow-x: hidden;
   }
+
+  & .dark .bread_crumbs__link {
+    &:last-child {
+      &::after {
+        background: #424436;
+      }
+    }
+  }
 }
