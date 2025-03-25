@@ -12,6 +12,20 @@
   --btn-border: var(--txt-black);
 
   .error {
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    gap: 4px;
+    padding-bottom: 5px;
+    font-size: 12px;
+
+    @include on-mobile {
+      font-size: 16px;
+    }
+
+    @include on-laptop {
+      font-size: 18px;
+    }
     .error_icon {
       color: red;
     }
@@ -31,6 +45,32 @@
   --btn-border: var(--bg-green);
   --placeholder: var(--light-grey);
   --active-bg: var(--green);
+
+  .error {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding-bottom: 5px;
+    font-size: 12px;
+
+    @include on-mobile {
+      font-size: 16px;
+    }
+
+    @include on-laptop {
+      font-size: 18px;
+    }
+
+    --text-color: var(--txt-white);
+
+    .error_icon {
+      color: red;
+    }
+  }
+
+  .success {
+    color: var(--text-color);
+  }
 }
 
 .form {
@@ -58,6 +98,7 @@
       padding: 16px 32px;
       margin-bottom: 16px;
     }
+
     &::placeholder {
       font-size: 20px;
       line-height: 26px;
@@ -87,6 +128,7 @@
       translate: 0 2px;
     }
   }
+
   &_buttonWrapper {
     padding-top: 12px;
     @include on-tablet {
