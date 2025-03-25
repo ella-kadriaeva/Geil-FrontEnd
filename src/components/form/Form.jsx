@@ -52,7 +52,7 @@ export default function Form({type}) {
               type="tel"
               {...register('phone', {
                 required: 'Please, type your phone!', pattern: {
-                  value: /^\+?[78][-\(]?\d{3}\)?-?\d{3}-?\d{2}-?\d{2}$/i, message: 'Invalid phone number format.',
+                  value: /^[\d\s()+-]{10,20}$/, message: 'Invalid phone number format.',
                 },
               })}
           />
