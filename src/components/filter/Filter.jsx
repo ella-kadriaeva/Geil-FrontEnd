@@ -3,7 +3,7 @@ import Checkbox from '../ui/Checkbox';
 import styles from './Filter.module.scss';
 import Select from '../select/Select';
 import Input from '../ui/Input';
-import Container from '../container/Container';
+
 import { useDispatch, useSelector } from 'react-redux';
 import {
   setIsDiscounted,
@@ -37,49 +37,47 @@ export default function Filter() {
   };
 
   return (
-    <Container>
-      <form className={styles.formContainer}>
-        <div className={styles.container}>
-          Price
-          <label htmlFor={'from'} className={styles.label}></label>
-          <Input
-            name="from"
-            id="from"
-            value={priceFrom}
-            onChange={handleChange}
-            placeholder="from"
-            className={styles.inputField}
-          />
-          <label htmlFor={'to'} className={styles.label}></label>
-          <Input
-            name="to"
-            id="to"
-            value={priceTo}
-            onChange={handleChange}
-            placeholder="to"
-            className={styles.inputField}
-          />
-        </div>
-        <div className={styles.container}>
-          <label htmlFor={'isDiscounted'} className={styles.label}>
-            Discounted items
-          </label>
+    <form className={styles.formContainer}>
+      <div className={styles.container}>
+        <p className={styles.label}>Price</p>
+        <label htmlFor={'from'} className={styles.label}></label>
+        <Input
+          name="from"
+          id="from"
+          value={priceFrom}
+          onChange={handleChange}
+          placeholder="from"
+          className={styles.inputField}
+        />
+        <label htmlFor={'to'} className={styles.label}></label>
+        <Input
+          name="to"
+          id="to"
+          value={priceTo}
+          onChange={handleChange}
+          placeholder="to"
+          className={styles.inputField}
+        />
+      </div>
+      <div className={styles.container}>
+        <label htmlFor={'isDiscounted'} className={styles.label}>
+          Discounted items
+        </label>
 
-          <Checkbox
-            name="isDiscounted"
-            id="isDiscounted"
-            checked={isDiscounted}
-            onChange={handleCheckboxChange}
-            className={styles.checkboxInput}
-          />
-        </div>
-        <div className={styles.container}>
-          <label htmlFor={'sortBy'} className={styles.label}>
-            Selected
-          </label>
-          <Select value={sortBy} onChange={handleSortChange}  />
-        </div>
-      </form>
-    </Container>
+        <Checkbox
+          name="isDiscounted"
+          id="isDiscounted"
+          checked={isDiscounted}
+          onChange={handleCheckboxChange}
+          className={styles.checkboxInput}
+        />
+      </div>
+      <div className={styles.container}>
+        <label htmlFor={'sortBy'} className={styles.label}>
+          Selected
+        </label>
+        <Select value={sortBy} onChange={handleSortChange} />
+      </div>
+    </form>
   );
 }

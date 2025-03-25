@@ -4,9 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategories } from '../../utils/fetchClient';
 import { BASE_URL } from '../../constants/constants';
 import styles from './CategoryCard.module.scss';
-
-
-const CategoryCard = ({ limit }) => {
+import ButtonLink from '../ui/ButtonLink';
+const CategoryCard = ({ limit, onCategoriesPage }) => {
   const dispatch = useDispatch();
   const { categories, loading, error } = useSelector(
     (state) => state.categories
@@ -22,27 +21,35 @@ const CategoryCard = ({ limit }) => {
     return <div>No categories available.</div>;
 
   return (
-    <div className={styles.categoriesWrapper}>
-      {categories.slice(0, limit).map((item) => (
-        <Link
-          key={item.id}
-          to={`/categories/${item.id}`}
-        >
-          <div className={styles.itemWrapper}>
-            <div className={styles.imageContainer}>
-              <img
-                src={`${BASE_URL}${item.image}`}
-                alt={`Category ${item.title}`}
-                className={styles.categoriesImage}
-              />
+    <>
+      <div
+        className={
+          onCategoriesPage ? styles.onCategoriesPage : styles.onHomePage
+        }
+      >
+        {categories.slice(0, limit).map((item) => (
+          <Link key={item.id} to={`/categories/${item.id}`}>
+            <div className={styles.itemWrapper}>
+              <div className={styles.imageContainer}>
+                <img
+                  src={`${BASE_URL}${item.image}`}
+                  alt={`Category ${item.title}`}
+                  className={styles.categoriesImage}
+                />
+              </div>
             </div>
             <div className={styles.categoriesTitle}>
-              <span>{item.title}</span>
+              <p>{item.title}</p>
             </div>
-          </div>
-        </Link>
-      ))}
-    </div>
+          </Link>
+        ))}
+      </div>
+      <ButtonLink
+        to="/categories"
+        text="Categories"
+        className={`${styles.onHomePage_button__outlined} ${styles.onHomePage_button__outlined_inTitle}`}
+      />
+    </>
   );
 };
 

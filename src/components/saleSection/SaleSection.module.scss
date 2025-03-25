@@ -2,14 +2,20 @@
 @use '../../assets/styles/colors' as *;
 
 .section {
+  padding-top: 16px;
+  @include on-tablet {
+    padding-top: 20px;
+  }
+    @include on-design {
   padding-top: 68px;
-  padding-bottom: 40px;
+  }
+
 
   &_button__outlined {
     @include buttonOutlined;
     margin: auto;
 
-    margin-top: 24px;
+    margin-bottom: 56px;
 
     &:hover {
       background-color: $light_green;
