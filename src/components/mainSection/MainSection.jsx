@@ -7,10 +7,8 @@ export default function MainSection() {
 
 
   return (
-    <section>
+    <section className={styles.section}>
       <div className={styles.imageContainer}>
-        {/* <img className={styles.image} src="media/hero.jpg" alt="hero" /> */}
-
         <Container>
           <div className={styles.heroContent}>
             <h1 className={styles.heroTitle}>

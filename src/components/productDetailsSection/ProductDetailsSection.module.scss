@@ -8,9 +8,17 @@
   gap: 20px;
   height: fit-content;
   transition-duration: 300ms;
+  padding-bottom: 47px;
+
   @include on-mobile {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
+  }
+  @include on-tablet {
+    padding-bottom: 52px;
+  }
+  @include on-design {
+    padding-bottom: 60px;
   }
 }
 
@@ -54,7 +62,6 @@
 }
 
 .titleWrapper_mobile {
-  
   display: flex;
   justify-content: space-between;
   align-items: center;

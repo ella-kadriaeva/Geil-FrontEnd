@@ -24,17 +24,16 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding: 16px 0;
+  padding-top: 16px;
   row-gap: 16px;
   gap: 16px;
   @include on-tablet {
-    padding: 16px 0;
     row-gap: 20px;
     column-gap: 40px;
   }
   @include on-design {
     gap: 40px;
-    padding: 40px 0;
+    padding-top: 40px;
   }
 }
 .checkboxInput {

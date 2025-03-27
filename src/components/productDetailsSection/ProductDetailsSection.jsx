@@ -19,7 +19,7 @@ const ProductDetailsSection = ({ product, loading }) => {
   const { cartData } = useSelector((state) => state.cart);
   const [count, setCount] = useState(1);
   const [isExpanded, setIsExpanded] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(`${BASE_URL}${image}`);
+
 
   const dispatch = useDispatch();
   const navigate = useNavigate();

@@ -61,17 +61,17 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
-  padding-bottom: 24px;
+  padding: 24px 0;
   @include on-mobile {
-    padding-bottom: 56px;
+    padding: 56px 0;
     grid-template-columns: repeat(2, minmax(210px, 1fr));
   }
   @include on-laptop {
-    padding-bottom: 60px;
+    padding: 60px 0;
     grid-template-columns: repeat(4, minmax(225px, 1fr));
     gap: 32px;
   }
   @include on-design {
-    padding-bottom: 80px;
+    padding: 80px 0;
   }
 }

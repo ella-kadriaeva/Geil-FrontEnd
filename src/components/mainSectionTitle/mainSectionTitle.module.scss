@@ -1,8 +1,6 @@
 @use '../../assets/styles/mixin' as *;
 @use '../../assets/styles/colors' as *;
 .sectionTitle {
-  padding: 40px 0;
-
   &_titleBlock {
     display: flex;
     justify-content: space-between;

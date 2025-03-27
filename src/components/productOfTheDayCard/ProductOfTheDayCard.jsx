@@ -86,7 +86,7 @@ const ProductOfTheDayCard = () => {
             </div>
           )}
           <button
-            className={`${styles.heartBtn} product ${
+            className={`${styles.heartBtn}  ${
               likeItems.some((item) => item.id === productOfTheDay?.id)
                 ? styles.icons_active
                 : ''

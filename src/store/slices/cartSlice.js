@@ -1,8 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const getTotalCartCount = (cart) => {
-  return cart.reduce((total, item) => total + (item.cartCount || 0), 0);
-};
 const updateLocalStorage = (cartData) => {
   localStorage.setItem('cart', JSON.stringify(cartData));
 };
@@ -79,20 +76,28 @@ export const cartSlice = createSlice({
     },
 
     increaseCountInCartItem: (state, action) => {
-      let currData = state.cartData.map(item => ({...item}))
-      let tempItem = state.cartData.find(item => item.id === +action.payload);
-      tempItem = {...tempItem, count: tempItem.count + 1};
-      state.cartData = currData.map(item => item.id === +action.payload ? tempItem : item)
+      let currData = state.cartData.map((item) => ({ ...item }));
+      let tempItem = state.cartData.find((item) => item.id === +action.payload);
+      tempItem = { ...tempItem, count: tempItem.count + 1 };
+      state.cartData = currData.map((item) =>
+        item.id === +action.payload ? tempItem : item
+      );
 
       updateLocalStorage(state.cartData);
     },
 
     decreaseCountInCartItem: (state, action) => {
-      let currData = state.cartData.map(item => ({...item}))
-      let tempItem = state.cartData.find(item => item.id === +action.payload);
-      tempItem = {...tempItem, count: tempItem.count - 1};
-      state.cartData = currData.map(item => item.id === +action.payload ? tempItem : item)
+      let currData = state.cartData.map((item) => ({ ...item }));
+      let tempItem = state.cartData.find((item) => item.id === +action.payload);
+      tempItem = { ...tempItem, count: tempItem.count - 1 };
+      state.cartData = currData.map((item) =>
+        item.id === +action.payload ? tempItem : item
+      );
 
+      updateLocalStorage(state.cartData);
+    },
+    removeAllItemsFromCart: (state) => {
+      state.cartData = [];
       updateLocalStorage(state.cartData);
     },
   },
@@ -106,6 +111,7 @@ export const {
   increaseCountInCartItem,
   decreaseCountInCartItem,
   addToCartByAmount,
+  removeAllItemsFromCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
