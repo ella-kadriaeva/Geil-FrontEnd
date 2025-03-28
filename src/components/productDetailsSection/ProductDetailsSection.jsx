@@ -12,7 +12,7 @@ import {
   removeLikeProductbyIdFromCart,
   initLikeDataFromLocalStorage,
 } from '../../store/slices/likeSlice';
-const BASE_URL = 'http://localhost:3333';
+import { BASE_BACKEND_URL } from '../../utils/env';
 
 const ProductDetailsSection = ({ product, loading }) => {
   const { description, image, price, discont_price, title, id } = product;
@@ -63,14 +63,14 @@ const ProductDetailsSection = ({ product, loading }) => {
       <div className={styles.productImg}>
         <img
           className={styles.img}
-          src={`${BASE_URL}${image}`}
+          src={`${BASE_BACKEND_URL}${image}`}
           alt={title}
           onClick={() =>
             openDialog(
               'type1',
               <img
                 className={styles.img}
-                src={`${BASE_URL}${image}`}
+                src={`${BASE_BACKEND_URL}${image}`}
                 alt={title}
               />
             )
@@ -96,10 +96,7 @@ const ProductDetailsSection = ({ product, loading }) => {
         </div>
 
         <div className={styles.flexWrapper}>
-          <p className={styles.productPrice}>
-            $
-            {actualPrice}
-          </p>
+          <p className={styles.productPrice}>${actualPrice}</p>
           {discont_price > 0 && (
             <p className={styles.productDiscountPrice}>&#36;{price}</p>
           )}
@@ -109,7 +106,7 @@ const ProductDetailsSection = ({ product, loading }) => {
             </div>
           )}
         </div>
-        
+
         <div className={styles.actionsWrapper}>
           <div className={styles.quantityControl}>
             <button

@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { initDataFromLocalStorage } from '../../store/slices/cartSlice';
 import SectionTitle from '../../components/sectionTitle/SectionTitle';
-import ItemInCart from '../../components/itemInCart/ItemInCart'
+import ItemInCart from '../../components/itemInCart/ItemInCart';
 import Form from '../../components/form/Form';
 
 export default function Cart() {
@@ -17,19 +17,21 @@ export default function Cart() {
   useEffect(() => {
     const fetchCartData = async () => {
       await dispatch(initDataFromLocalStorage());
-    }
-    
+    };
+
     fetchCartData();
   }, []);
 
   useEffect(() => {
-    if(cartData.length > 0) {
-      const summ = cartData.reduce((acc, currVal) => 
-        acc + (currVal.discont_price ?? currVal.price) * currVal.count, 0);
-      setTotalPrice(summ);
+    if (cartData.length > 0) {
+      const summ = cartData.reduce(
+        (acc, currVal) =>
+          acc + (currVal.discont_price ?? currVal.price) * currVal.count,
+        0
+      );
+      setTotalPrice(summ.toFixed(2));
     }
-    
-  }, [cartData])
+  }, [cartData]);
   return (
     <section className={styles.cart}>
       <Container>

@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { initLikeDataFromLocalStorage } from '../../store/slices/likeSlice';
 import BreadCrumbs from '../../components/breadCrumbs/BreadCrumbs';
+import styles from "./Likes.module.scss"
 
 export default function Likes() {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ export default function Likes() {
         <SectionTitle>Liked products</SectionTitle>
         <Filter />
         {data.length === 0 
-        ?  <div>No liked products</div>
+        ?  <div className={styles.emptyContainer}>No liked products</div>
         :  <ProductsList data={data} />}
         
       </Container>

@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-const BASE_URL = 'http://localhost:3333';
+import { BASE_BACKEND_URL } from './env';
 export const getAllCategories = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/categories/all`);
+    const response = await fetch(`${BASE_BACKEND_URL}/categories/all`);
     if (!response.ok) {
       throw new Error('Something went wrong!');
     }
@@ -14,7 +14,7 @@ export const getAllCategories = async () => {
 
 export const getCategoryById = async (id) => {
   try {
-    const response = await fetch(`${BASE_URL}/categories/${id}`);
+    const response = await fetch(`${BASE_BACKEND_URL}/categories/${id}`);
     if (!response.ok) {
       throw new Error('Something went wrong!');
     }
@@ -26,7 +26,7 @@ export const getCategoryById = async (id) => {
 
 export const getAllProducts = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/products/all`);
+    const response = await fetch(`${BASE_BACKEND_URL}/products/all`);
     if (!response.ok) {
       throw new Error('Something went wrong!');
     }
@@ -38,7 +38,7 @@ export const getAllProducts = async () => {
 
 export const getProductById = async (id) => {
   try {
-    const response = await fetch(`${BASE_URL}/products/${id}`);
+    const response = await fetch(`${BASE_BACKEND_URL}/products/${id}`);
     if (!response.ok) {
       throw new Error('Something went wrong!');
     }
@@ -50,7 +50,7 @@ export const getProductById = async (id) => {
 
 export const sendForSale = async (data) => {
   try {
-    const response = await fetch(`${BASE_URL}/sale/send`, {
+    const response = await fetch(`${BASE_BACKEND_URL}/sale/send`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ export const sendForSale = async (data) => {
 
 export const sendForOrder = async (data) => {
   try {
-    const response = await fetch(`${BASE_URL}/order/send`, {
+    const response = await fetch(`${BASE_BACKEND_URL}/order/send`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ export const sendForOrder = async (data) => {
 export const fetchProducts = createAsyncThunk(
   'product/fetchProducts',
   async (type) => {
-    const response = await fetch(`${BASE_URL}/products/all`);
+    const response = await fetch(`${BASE_BACKEND_URL}/products/all`);
     if (!response.ok) {
       throw new Error('Failed to fetch!' + response.statusText);
     }
@@ -99,7 +99,7 @@ export const fetchProducts = createAsyncThunk(
 export const fetchCategories = createAsyncThunk(
   'product/fetchCategories',
   async () => {
-    const response = await fetch(`${BASE_URL}/categories/all`);
+    const response = await fetch(`${BASE_BACKEND_URL}/categories/all`);
     if (!response.ok) {
       throw new Error('Failed to fetch!' + response.statusText);
     }
@@ -112,7 +112,9 @@ export const fetchCategories = createAsyncThunk(
 export const fetchProductsByCategoryId = createAsyncThunk(
   'product/fetchProductsByCategoryId',
   async (categoryId) => {
-    const response = await fetch(`${BASE_URL}/categories/${categoryId}`);
+    const response = await fetch(
+      `${BASE_BACKEND_URL}/categories/${categoryId}`
+    );
     if (!response.ok) {
       throw new Error('Failed to fetch!' + response.statusText);
     }
@@ -125,7 +127,7 @@ export const fetchProductsByCategoryId = createAsyncThunk(
 export const fetchProductById = createAsyncThunk(
   'product/fetchProductById',
   async (id) => {
-    const response = await fetch(`${BASE_URL}/products/${id}`);
+    const response = await fetch(`${BASE_BACKEND_URL}/products/${id}`);
     if (!response.ok) {
       throw new Error('Failed to fetch!' + response.statusText);
     }

@@ -2,14 +2,9 @@ import React from 'react';
 import styles from './SaleCard.module.scss';
 import { useTheme } from '../../context/ThemeContext';
 
-const BASE_URL = 'http://localhost:3333';
+import { BASE_BACKEND_URL } from '../../utils/env';
 
-const SaleCard = ({
-  title,
-  image,
-  discont_price,
-  price,
-}) => {
+const SaleCard = ({ title, image, discont_price, price }) => {
   const { isDarkTheme } = useTheme();
   const cardBackground = isDarkTheme
     ? styles.productCard_text_dark
@@ -23,7 +18,7 @@ const SaleCard = ({
       <div className={styles.productCard_image}>
         <img
           className={styles.image}
-          src={`${BASE_URL}${image}`}
+          src={`${BASE_BACKEND_URL}${image}`}
           alt={`Product ${title}`}
         />
       </div>
