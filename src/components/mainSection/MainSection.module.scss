@@ -23,7 +23,7 @@
   transition: transform 0.3s ease;
 }
 .imageContainer {
-  width: 100%;
+  max-width: 1440px;
 
   background-image: url('/media/hero.jpg');
   background-position: center;

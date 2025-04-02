@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategories } from '../../utils/fetchClient';
-import { BASE_URL } from '../../constants/constants';
+import { BASE_BACKEND_URL } from '../../utils/env';
 import styles from './CategoryCard.module.scss';
 import ButtonLink from '../ui/ButtonLink';
 const CategoryCard = ({ limit, onCategoriesPage }) => {
@@ -32,7 +32,7 @@ const CategoryCard = ({ limit, onCategoriesPage }) => {
             <div className={styles.itemWrapper}>
               <div className={styles.imageContainer}>
                 <img
-                  src={`${BASE_URL}${item.image}`}
+                  src={`${BASE_BACKEND_URL}${item.image}`}
                   alt={`Category ${item.title}`}
                   className={styles.categoriesImage}
                 />
