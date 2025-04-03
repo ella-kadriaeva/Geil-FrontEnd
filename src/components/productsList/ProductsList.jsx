@@ -61,10 +61,7 @@ export default function ProductsList({ data, loading, error, path = '' }) {
       const priceFrom = filters.priceFrom ? Number(filters.priceFrom) : null;
       const priceTo = filters.priceTo ? Number(filters.priceTo) : null;
 
-      const isDiscounted = filters.isDiscounted
-        ? item.discountPercentage > 0 || item.discount_price < item.price
-        : true;
-
+      const isDiscounted = filters.isDiscounted ? item.discont_price > 0 : true;
       const matchesPrice =
         (!priceFrom || getActualPrice(item) >= priceFrom) &&
         (!priceTo || getActualPrice(item) <= priceTo);
