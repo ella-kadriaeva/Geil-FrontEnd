@@ -3,7 +3,7 @@
   line-height: 1.3;
   font-weight: 500;
   height: 100%;
-  color-scheme: light dark;
+  // color-scheme: light dark;
   color: #424436;
   background-color: #fffff1;
 
@@ -37,6 +37,7 @@ body.light {
 body.dark {
   background-color: var(--txt-black);
   color: var(--txt-white);
+
   footer {
     div {
       li {

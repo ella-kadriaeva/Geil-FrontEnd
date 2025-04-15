@@ -50,6 +50,10 @@ export default function ProductsList({ data, loading, error, path = '' }) {
     [items, likeItems]
   );
 
+  const getActualPrice = (item) => {
+    return item.discont_price > 0 ? item.discont_price : item.price;
+  };
+
   const filteredData = useMemo(() => {
     if (!Array.isArray(data)) return [];
 
@@ -57,13 +61,10 @@ export default function ProductsList({ data, loading, error, path = '' }) {
       const priceFrom = filters.priceFrom ? Number(filters.priceFrom) : null;
       const priceTo = filters.priceTo ? Number(filters.priceTo) : null;
 
-      const isDiscounted = filters.isDiscounted
-        ? item.discountPercentage > 0 || item.discount_price < item.price
-        : true;
-
+      const isDiscounted = filters.isDiscounted ? item.discont_price > 0 : true;
       const matchesPrice =
-        (!priceFrom || item.price >= priceFrom) &&
-        (!priceTo || item.price <= priceTo);
+        (!priceFrom || getActualPrice(item) >= priceFrom) &&
+        (!priceTo || getActualPrice(item) <= priceTo);
 
       return matchesPrice && isDiscounted;
     });
@@ -72,9 +73,9 @@ export default function ProductsList({ data, loading, error, path = '' }) {
       if (filters.sortBy === 'by default') {
         return 0;
       } else if (filters.sortBy === 'price: low-high') {
-        return a.price - b.price;
+        return getActualPrice(a) - getActualPrice(b);
       } else if (filters.sortBy === 'price: high-low') {
-        return b.price - a.price;
+        return getActualPrice(b) - getActualPrice(a);
       } else if (filters.sortBy === 'newest') {
         return new Date(b.date) - new Date(a.date);
       } else if (filters.sortBy === 'by default') {

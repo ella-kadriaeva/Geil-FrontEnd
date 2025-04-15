@@ -5,20 +5,21 @@ import ButtonLink from '../ui/ButtonLink';
 import { Heart, Plus, Minus } from 'lucide-react';
 import { useDialog } from '../../context/DialogContect';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCartByAmount } from '../../store/slices/cartSlice';
+import { addToCartByAmount, removeItemFromCart } from '../../store/slices/cartSlice';
 import { useNavigate } from 'react-router-dom';
 import {
   addToWishlist,
   removeLikeProductbyIdFromCart,
   initLikeDataFromLocalStorage,
 } from '../../store/slices/likeSlice';
-const BASE_URL = 'http://localhost:3333';
+import { BASE_BACKEND_URL } from '../../utils/env';
 
 const ProductDetailsSection = ({ product, loading }) => {
   const { description, image, price, discont_price, title, id } = product;
+  const { cartData } = useSelector((state) => state.cart);
   const [count, setCount] = useState(1);
   const [isExpanded, setIsExpanded] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(`${BASE_URL}${image}`);
+
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -45,9 +46,8 @@ const ProductDetailsSection = ({ product, loading }) => {
   };
   const handlerAddToCart = () => {
     dispatch(addToCartByAmount({ ...product, count }));
-
-    navigate('/cart');
   };
+
   return (
     <div className={styles.productContainer}>
       <div className={styles.titleWrapper_mobile}>
@@ -63,12 +63,16 @@ const ProductDetailsSection = ({ product, loading }) => {
       <div className={styles.productImg}>
         <img
           className={styles.img}
-          src={`${BASE_URL}${image}`}
+          src={`${BASE_BACKEND_URL}${image}`}
           alt={title}
           onClick={() =>
             openDialog(
               'type1',
-              <img className={styles.img} src={selectedImage} alt={title} />
+              <img
+                className={styles.img}
+                src={`${BASE_BACKEND_URL}${image}`}
+                alt={title}
+              />
             )
           }
         />
@@ -92,10 +96,7 @@ const ProductDetailsSection = ({ product, loading }) => {
         </div>
 
         <div className={styles.flexWrapper}>
-          <p className={styles.productPrice}>
-            &#36;
-            {actualPrice}
-          </p>
+          <p className={styles.productPrice}>${actualPrice}</p>
           {discont_price > 0 && (
             <p className={styles.productDiscountPrice}>&#36;{price}</p>
           )}
@@ -105,12 +106,18 @@ const ProductDetailsSection = ({ product, loading }) => {
             </div>
           )}
         </div>
+
         <div className={styles.actionsWrapper}>
           <div className={styles.quantityControl}>
             <button
               type="button"
               className={styles.quantityBtn}
-              onClick={() => setCount((prev) => Math.max(prev - 1, 1))}
+              onClick={() => {
+                setCount((prev) => Math.max(prev - 1, 1));
+                if (count > 1) {
+                  dispatch(removeItemFromCart(product));
+                }
+              }}
             >
               <Minus size={24} />
             </button>
@@ -118,17 +125,29 @@ const ProductDetailsSection = ({ product, loading }) => {
             <button
               type="button"
               className={styles.quantityBtn}
-              onClick={() => setCount((prev) => prev + 1)}
+              onClick={() => {
+                setCount((prev) => prev + 1);
+                dispatch(removeItemFromCart(product));
+              }}
             >
               <Plus size={24} />
             </button>
           </div>
-          <ButtonLink
-            type="button"
-            className={styles.addToCartBtn}
-            onClick={handlerAddToCart}
-            text="Add to cart"
-          />
+          {!cartData.find((item) => item.id === id) ? (
+            <ButtonLink
+              type="button"
+              className={styles.addToCartBtn}
+              onClick={handlerAddToCart}
+              text={'Add to cart'}
+            />
+          ) : (
+            <ButtonLink
+              type="button"
+              className={styles.addToCartBtn}
+              onClick={() => navigate('/cart')}
+              text={'Go to cart'}
+            />
+          )}
         </div>
         <div className={styles.productDescriptionWrapper_laptop}>
           <h3 className={styles.descriptionTitle}>Description</h3>

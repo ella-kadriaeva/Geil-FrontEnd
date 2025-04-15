@@ -74,7 +74,7 @@
 }
 .header {
   margin-inline: auto;
-  max-width: 1440px;
+  // max-width: 1440px;
   border-bottom: 1px solid $light-grey;
 }
 body.light {
@@ -88,17 +88,18 @@ body.dark {
 a {
   color: var(--link-color);
 }
+
 a:hover {
   color: var(--green);
 }
+
 .navIcons {
   display: flex;
   gap: 12px;
   cursor: pointer;
-  
 }
+
 .svgLink {
-  
   stroke-width: 1.1;
   width: 32px;
   height: 32px;

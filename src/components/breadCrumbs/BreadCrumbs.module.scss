@@ -2,7 +2,7 @@
 @use "../../assets/styles/mixin" as *;
 
 .bread_crumbs {
-  padding-block: 32px;
+  padding-block: 40px;
   display: none;
   visibility: hidden;
   align-items: center;
@@ -39,7 +39,16 @@
         background: rgb(254, 255, 240);
         background: linear-gradient(90deg, rgba(254, 255, 240, 0.7539390756302521) 24%, rgba(254, 255, 240, 1) 42%);
       }
+
+      &.dark {
+        &::after {
+          background: rgb(73, 73, 73);
+          background: linear-gradient(90deg, rgba(254, 255, 240, 0.7539390756302521) 24%, rgba(254, 255, 240, 1) 42%);
+        }
+      }
     }
+
+
 
     &:not(:last-child) {
       color: $txt-grey;

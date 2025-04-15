@@ -7,11 +7,10 @@ import SectionTitle from '../../components/sectionTitle/SectionTitle';
 import { useTheme } from '../../context/ThemeContext';
 import BreadCrumbs from '../../components/breadCrumbs/BreadCrumbs';
 export default function CategoryProducts() {
-  
   const { isDarkTheme } = useTheme();
   const { id } = useParams();
   const { category, data } = useFetchCategoryId(id);
-
+  console.log(data);
   return (
     <section>
       <Container>

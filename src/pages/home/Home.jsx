@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Container from '../../components/container/Container';
 import MainSection from '../../components/mainSection/MainSection';
 import SaleSection from '../../components/saleSection/SaleSection';
 import Discount from '../../components/Discount/Discount.jsx';
 import MainSectionTitle from '../../components/mainSectionTitle/MainSectionTitle.jsx';
-import CategoryProducts from '../categoryProducts/CategoryProducts.jsx';
-import Categories from '../categories/Categories.jsx';
 import CategoryCard from '../../components/categoryCard/CategoryCard.jsx';
-
 export default function Home() {
+  const [isSuccessMessage, setIsSuccessMessage] = useState(() => {
+    const savedMessage = localStorage.getItem('isSuccessMessage');
+    return savedMessage ? JSON.parse(savedMessage) : false;
+  });
   return (
     <>
       <MainSection />
@@ -19,10 +20,10 @@ export default function Home() {
             to="/categories "
             text="All categories"
           />
-          <CategoryCard limit={4} />
+          <CategoryCard limit={4} onCategoriesPage={false} />
         </Container>
       </section>
-      <Discount />
+      {!isSuccessMessage && <Discount />}
       <SaleSection />
     </>
   );

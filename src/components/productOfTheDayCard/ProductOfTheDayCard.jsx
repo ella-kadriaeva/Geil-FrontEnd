@@ -11,7 +11,7 @@ import {
 import { addToCart } from '../../store/slices/cartSlice';
 import { useDialog } from '../../context/DialogContect';
 
-const BASE_URL = 'http://localhost:3333';
+import { BASE_BACKEND_URL } from '../../utils/env';
 
 const getSeededRandomIndex = (seed, max) => {
   return seed % max;
@@ -57,7 +57,7 @@ const ProductOfTheDayCard = () => {
   const { image, title, price } = productOfTheDay;
   const discountPercentage = 50;
   const discont_price = price / 2;
-  const imageUrl = `${BASE_URL}${image}`;
+  const imageUrl = `${BASE_BACKEND_URL}${image}`;
 
   const handleLike = () => {
     if (!productOfTheDay) return;
@@ -86,7 +86,7 @@ const ProductOfTheDayCard = () => {
             </div>
           )}
           <button
-            className={`${styles.heartBtn} product ${
+            className={`${styles.heartBtn}  ${
               likeItems.some((item) => item.id === productOfTheDay?.id)
                 ? styles.icons_active
                 : ''
